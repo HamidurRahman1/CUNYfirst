@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <div><%@include file="AdminName.jsp" %></div>
+    <%@include file="AdminName.jsp" %>
 
     <div id="add-student">
         <form:form modelAttribute="newStudent" method="post" action="/admin/services/process">
@@ -67,6 +67,8 @@
             <input value="Submit" type="submit">
         </form:form>
     </div>
+
+    <%@include file="BackToService.jsp" %>
 
 </body>
 </html>

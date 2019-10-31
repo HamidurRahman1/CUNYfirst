@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div><%@include file="AdminName.jsp" %></div>
+    <%@include file="AdminName.jsp" %>
 
     <div class="successful">
         Course's Title: ${newCourse.courseCredits} <br><br>
@@ -17,8 +17,9 @@
         Course's Units: ${newCourse.courseCredits} <br><br>
         Course's Description: ${newCourse.description} <br><br>
         <br>
-        <a href="/admin/services">Back to Services</a>
     </div>
+
+    <%@include file="BackToService.jsp" %>
 
 </body>
 </html>

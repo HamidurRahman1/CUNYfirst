@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div class="name-section">
+    <div class="admin-section">
         <h4>Admin: ${sessionScope.get("admin").getFirstName()} ${sessionScope.get("admin").getLastName()} </h4>
     </div>
 

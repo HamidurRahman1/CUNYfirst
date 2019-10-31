@@ -7,15 +7,14 @@
     <title>Title</title>
 </head>
 <body>
-            <div><%@include file="AdminName.jsp" %></div>
+            <%@include file="AdminName.jsp" %>
 
             <div class="successful">
                 Student's Name: ${newStudent.firstName} ${newStudent.lastName} <br><br>
                 Student's ID: ${newStudent.studentId} <br><br>
                 Student's login username: ${newStudent.login.username} <br><br>
-
-                <br>
-                <a href="/admin/services">Back to Services</a>
             </div>
+
+            <%@include file="BackToService.jsp" %>
 </body>
 </html>

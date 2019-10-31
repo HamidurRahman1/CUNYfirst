@@ -8,7 +8,7 @@
 </head>
 <body>
 
-        <div><%@include file="AdminName.jsp" %></div>
+        <%@include file="AdminName.jsp" %>
 
         <div id="adminStudentServices">
             <h3>Student Services</h3>
@@ -31,7 +31,7 @@
             <h3>Course Services</h3>
             <ul>
                 <li><a href="/admin/services/insertCourse">Insert a Course</a></li>
-                <li>Get Courses</li>
+                <li><a href="/admin/services/getCourses">Get Courses</a></li>
             </ul>
         </div>
 </body>

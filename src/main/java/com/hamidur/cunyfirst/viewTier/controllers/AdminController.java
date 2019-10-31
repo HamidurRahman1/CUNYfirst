@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpSession;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/admin")
@@ -143,5 +144,13 @@ public class AdminController
         course.setCourseId(101);
         model.addAttribute("newCourse", course);
         return "admin/CourseAdded";
+    }
+
+    @GetMapping("/services/getCourses")
+    public String getCourses(Model model)
+    {
+        List<Course> courses = ViewRelatedTester.demoCourses();
+        model.addAttribute("courses", courses);
+        return "admin/GetCourses";
     }
 }

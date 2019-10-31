@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <div><%@include file="AdminName.jsp" %></div>
+    <%@include file="AdminName.jsp" %>
 
     <div>
         <form action="/admin/services/displayStudent" method="get">
@@ -16,5 +16,7 @@
             <input type="submit" value="Get Student">
         </form>
     </div>
+
+    <%@include file="BackToService.jsp" %>
 </body>
 </html>

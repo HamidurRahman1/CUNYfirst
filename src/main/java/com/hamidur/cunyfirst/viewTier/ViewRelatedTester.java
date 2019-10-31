@@ -3,6 +3,8 @@ package com.hamidur.cunyfirst.viewTier;
 import com.hamidur.cunyfirst.viewTier.models.Address;
 import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Contact;
+import com.hamidur.cunyfirst.viewTier.models.Course;
+import com.hamidur.cunyfirst.viewTier.models.CourseName;
 import com.hamidur.cunyfirst.viewTier.models.Gender;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Login;
@@ -13,6 +15,9 @@ import com.hamidur.cunyfirst.viewTier.models.TransferInfo;
 
 import java.io.File;
 import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class ViewRelatedTester
 {
@@ -74,5 +79,24 @@ public class ViewRelatedTester
     public static Login testLogin()
     {
         return new Login("hamidur.rahman@college.edu", "hashfunction", true);
+    }
+
+    public static List<Course> demoCourses()
+    {
+        List<Course> courses = new LinkedList<>();
+
+        Course c1 = new Course("Beginner Arts", CourseName.HUA.toString(), 101, 3.0f, "description");
+
+        Course c2 = new Course("Intermediate Accounting", CourseName.BTA.toString(), 111, 3.0f, "description");
+
+        Course c3 = new Course("Introduction to Philosophy", CourseName.HUP.toString(), 101, 3.0f, "description");
+
+        Course c4 = new Course("Public Speaking", CourseName.HUC.toString(), 106, 3.0f, "description");
+
+        Course c5 = new Course("Physics 1", CourseName.SCP.toString(), 231, 4.0f, "description");
+
+        courses.addAll(Arrays.asList(c1, c2, c3, c4, c5));
+
+        return courses;
     }
 }

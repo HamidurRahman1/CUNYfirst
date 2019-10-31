@@ -8,32 +8,36 @@
 </head>
 <body>
 
-    <div><%@include file="AdminName.jsp" %></div>
+    <%@include file="AdminName.jsp" %>
 
-    <form:form action="/admin/services/pCourse" method="post" modelAttribute="newCourse">
-        * Course Name:
-        <form:select path="courseName">
-            <form:options items="${courseNames}"/>
-        </form:select><br><br>
+    <div>
+        <form:form action="/admin/services/pCourse" method="post" modelAttribute="newCourse">
+            * Course Name:
+            <form:select path="courseName">
+                <form:options items="${courseNames}"/>
+            </form:select><br><br>
 
-        <form:select path="courseLevel">
-            <%--<form:options items="${}"/>--%>
-        </form:select><br><br>
+            <form:select path="courseLevel">
+                <%--<form:options items="${}"/>--%>
+            </form:select><br><br>
 
-        * Course Title:<br><br>
-        <form:textarea path="courseTitle" rows="5" cols="30"/><br><br>
+            * Course Title:<br><br>
+            <form:textarea path="courseTitle" rows="5" cols="30"/><br><br>
 
-        * Course Unit(s):
-        <form:input path="courseCredits"/><br><br>
+            * Course Unit(s):
+            <form:input path="courseCredits"/><br><br>
 
-        * Course Description:<br><br>
-        <form:textarea path="description" rows="10" cols="30"/><br><br>
+            * Course Description:<br><br>
+            <form:textarea path="description" rows="10" cols="30"/><br><br>
 
-        <%@include file="RequiredField.jsp" %>
-        <br><br>
+            <%@include file="RequiredField.jsp" %>
+            <br><br>
 
-        <input type="submit" value="Submit"><br><br>
-    </form:form>
+            <input type="submit" value="Submit"><br><br>
+        </form:form>
+    </div>
+
+    <%@include file="BackToService.jsp" %>
 
 </body>
 </html>
