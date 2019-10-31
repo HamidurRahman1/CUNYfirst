@@ -2,9 +2,12 @@ package com.hamidur.cunyfirst.viewTier.controllers;
 
 import com.hamidur.cunyfirst.viewTier.ViewRelatedTester;
 import com.hamidur.cunyfirst.viewTier.models.Admin;
+import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Login;
+import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
 import com.hamidur.cunyfirst.viewTier.models.Student;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,11 +17,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/admin")
 public class AdminController
 {
+    @Autowired
+    private PropertyFileReader propertyFileReader;
+
     @GetMapping("/login")
     public String studentLogin(Model model)
     {
@@ -44,6 +52,21 @@ public class AdminController
     public String insertStudent(Model model)
     {
         model.addAttribute("newStudent", new Student());
+        try
+        {
+            model.addAttribute("genders", propertyFileReader.getGenders());
+            model.addAttribute("states", propertyFileReader.getStates());
+            model.addAttribute("countries", propertyFileReader.getCountries());
+        }
+        catch (FileNotFoundException ex)
+        {
+            // redirect
+            System.out.println(ex.getMessage());
+        }
+        catch (IOException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
         return "admin/InsertStudent";
     }
 
@@ -51,10 +74,7 @@ public class AdminController
     public String processNewStudent(@ModelAttribute("newStudent") Student student, Model model)
     {
         // insert into db then redirect if success else error
-        System.out.println(student);
-        System.out.println(student.getAddress());
-        System.out.println(student.getContact());
-        System.out.println(student.getHighSchoolInfo());
+        System.out.println(student.getGender());
         student.setStudentId(10000001);
         student.setLogin(new Login("username.edu", "", false));
         model.addAttribute("newStudent", student);
@@ -78,6 +98,15 @@ public class AdminController
     public String insertInstructor(Model model)
     {
         model.addAttribute("newInstructor", new Instructor());
+        try
+        {
+            model.addAttribute("genders", propertyFileReader.getGenders());
+        }
+        catch (IOException ex)
+        {
+            // redirect
+            System.out.println(ex.getMessage());
+        }
         return "admin/InsertInstructor";
     }
 
@@ -87,5 +116,30 @@ public class AdminController
         // insert into db then redirect if success else error
         model.addAttribute("newInstructor", instructor);
         return "admin/InstructorAdded";
+    }
+
+    @GetMapping("/services/insertCourse")
+    public String insertCourse(Model model)
+    {
+        model.addAttribute("newCourse", new Course());
+        try
+        {
+            System.out.println();
+            model.addAttribute("courseNames", propertyFileReader.getCourseNames());
+//            model.addAttribute("courseLevels", propertyFileReader.getCourseLevels());
+        }
+        catch (IOException ex)
+        {
+            // redirect
+            System.out.println(ex.getMessage());
+        }
+        return "admin/InsertCourse";
+    }
+
+    @PostMapping("/services/pCourse")
+    public String processCourse(@ModelAttribute("newCourse")Course course, Model model)
+    {
+        model.addAttribute("newCourse", course);
+        return "admin/CourseAdded";
     }
 }

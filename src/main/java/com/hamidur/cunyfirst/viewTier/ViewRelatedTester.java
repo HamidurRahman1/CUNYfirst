@@ -6,17 +6,27 @@ import com.hamidur.cunyfirst.viewTier.models.Contact;
 import com.hamidur.cunyfirst.viewTier.models.Gender;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Login;
+import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import com.hamidur.cunyfirst.viewTier.models.Term;
 import com.hamidur.cunyfirst.viewTier.models.TransferInfo;
 
+import java.io.File;
 import java.time.LocalDate;
 
 public class ViewRelatedTester
 {
     public static void main(java.lang.String[] args)
     {
-        testStudent();
+        try
+        {
+            PropertyFileReader p = new PropertyFileReader();
+            System.out.println(p.getCourseNames() +" n");
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
     }
     
     public static Student testStudent()

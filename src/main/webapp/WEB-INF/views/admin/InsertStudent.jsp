@@ -23,7 +23,7 @@
             <br><br>
             <label for="dateOfBirth">* Date of Birth: </label><form:input type="date" path="dateOfBirth"/>
             <br><br>
-            <label for="gender">* Gender: </label><form:select path="gender"/>
+            <label for="gender">* Gender: </label><form:radiobuttons path="gender" items="${genders}"/>
             <br><br><br>
 
             <strong>Address:</strong><br><br>
@@ -33,8 +33,10 @@
             <form:input type="text" path="address.crossStreet"/><br><br>
             <label for="address.city">* City: </label>
             <form:input type="text" path="address.city"/><br><br>
-            <label for="highSchoolInfo.country">* State: </label>
-            <form:input type="text" path="address.state"/><br><br>
+            <label for="address.state">* State: </label>
+            <form:select path="address.state">
+                <form:options items="${states}"/>
+            </form:select><br><br>
             <label for="address.zipCode">* ZipCode: </label>
             <form:input type="number" path="address.zipCode"/>
             <br><br><br>
@@ -54,8 +56,10 @@
             <form:input type="number" path="highSchoolInfo.year"/><br><br>
             <label for="highSchoolInfo.city">* City: </label>
             <form:input type="text" path="highSchoolInfo.city"/><br><br>
-            <label for="highSchoolInfo.country">* Country: </label>
-            <form:input type="text" path="highSchoolInfo.country"/>
+            <label for="highSchoolInfo.country">* Country</label>
+            <form:select path="highSchoolInfo.country">
+                <form:options items="${countries}"/>
+            </form:select>
             <br><br><br>
 
             <strong style="color: red">* marked field(s) are required</strong><br><br>

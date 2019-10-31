@@ -17,6 +17,7 @@ import com.hamidur.cunyfirst.daoTier.models.StudentCourse;
 import com.hamidur.cunyfirst.daoTier.models.StudentSecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -26,13 +27,13 @@ import java.util.Properties;
 
 public class HibernateUtility
 {
-    private static final HibernateUtility ourInstance = new HibernateUtility();
+    private static final HibernateUtility singleton = new HibernateUtility();
 
     private static final SessionFactory sessionFactory = buildSessionFactory();
 
     public static HibernateUtility getInstance()
     {
-        return ourInstance;
+        return singleton;
     }
 
     private HibernateUtility() {}

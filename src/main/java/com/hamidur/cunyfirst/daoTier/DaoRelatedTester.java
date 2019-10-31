@@ -5,33 +5,25 @@ import com.hamidur.cunyfirst.daoTier.models.Admin;
 import com.hamidur.cunyfirst.daoTier.models.Contact;
 import com.hamidur.cunyfirst.daoTier.models.Course;
 import com.hamidur.cunyfirst.daoTier.models.CourseName;
-import com.hamidur.cunyfirst.daoTier.models.CourseStatus;
 import com.hamidur.cunyfirst.daoTier.models.FAFSA;
 import com.hamidur.cunyfirst.daoTier.models.Gender;
 import com.hamidur.cunyfirst.daoTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.daoTier.models.Instructor;
-import com.hamidur.cunyfirst.daoTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.daoTier.models.Login;
 import com.hamidur.cunyfirst.daoTier.models.SecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Student;
-import com.hamidur.cunyfirst.daoTier.models.StudentCourse;
 import com.hamidur.cunyfirst.daoTier.models.StudentSecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
 
-import com.hamidur.cunyfirst.daoTier.util.HibernateUtil;
-
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
+import com.hamidur.cunyfirst.daoTier.util.Utility;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import java.time.LocalDate;
 import java.util.Arrays;
-import java.util.Comparator;
-import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 public class DaoRelatedTester
 {
@@ -40,15 +32,9 @@ public class DaoRelatedTester
         Student student = null;
         Session session = HibernateUtility.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
-        
+
         student = session.get(Student.class, 10000002);
-        Contact contact = student.getContact();
-        String e = contact.getCollegeEmail();
-        contact.setCollegeEmail(contact.getEmail());
-        contact.setEmail(e);
-        
-        session.update(contact);
-        session.getTransaction().commit();
+        System.out.println(student);
         session.close();
         HibernateUtility.getInstance().closeSessionFactory();
     }

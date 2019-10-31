@@ -20,7 +20,7 @@
         <br><br>
         <label for="dateOfBirth">* Date of Birth: </label><form:input type="date" path="dateOfBirth"/>
         <br><br>
-        <label for="gender">* Gender: </label><form:select path="gender"/>
+        <label for="gender">* Gender: </label><form:radiobuttons path="gender" items="${genders}"/>
         <br><br><br>
 
         <input value="Submit" type="submit">

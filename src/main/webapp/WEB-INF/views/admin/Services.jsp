@@ -30,7 +30,7 @@
         <div id="adminCourseServices">
             <h3>Course Services</h3>
             <ul>
-                <li>Insert a Course</li>
+                <li><a href="/admin/services/insertCourse">Insert a Course</a></li>
                 <li>Get Courses</li>
             </ul>
         </div>

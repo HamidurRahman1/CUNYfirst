@@ -3,7 +3,6 @@ package com.hamidur.cunyfirst.daoTier.util;
 import com.hamidur.cunyfirst.daoTier.models.Address;
 import com.hamidur.cunyfirst.daoTier.models.Contact;
 import com.hamidur.cunyfirst.daoTier.models.Course;
-import com.hamidur.cunyfirst.daoTier.models.CourseName;
 import com.hamidur.cunyfirst.daoTier.models.Gender;
 import com.hamidur.cunyfirst.daoTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.daoTier.models.Instructor;
@@ -59,11 +58,7 @@ public class Utility
 
     public static String toViewGender(String gender)
     {
-        if(gender.equals("M"))
-            return "Male";
-        else if(gender.equals("F"))
-            return "Female";
-        else return "Other";
+        return Gender.valueOf(gender.toUpperCase()).getValue();
     }
 
     public static Address toDaoAddress(com.hamidur.cunyfirst.viewTier.models.Address address)

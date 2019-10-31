@@ -16,6 +16,7 @@ import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.Person;
+import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
 import com.hamidur.cunyfirst.viewTier.models.SecurityQuestion;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
@@ -35,11 +36,19 @@ import java.util.Map;
 import java.util.Set;
 
 @Configuration
-@ComponentScan(basePackages = {"com.hamidur.cunyfirst.viewTier.models", "com.hamidur.cunyfirst.daoTier.models",
+@ComponentScan(basePackages =
+        {"com.hamidur.cunyfirst.viewTier.models", "com.hamidur.cunyfirst.daoTier.models",
         "com.hamidur.cunyfirst.daoTier.util", "com.hamidur.cunyfirst.daoTier.daoServices"})
 @Lazy
 public class BeanConfiguration
 {
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public PropertyFileReader propertyFileReader()
+    {
+        return new PropertyFileReader();
+    }
+
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Student student()
@@ -211,6 +220,4 @@ public class BeanConfiguration
     {
         return new InstructorService(hibernateUtility());
     }
-
-
 }
