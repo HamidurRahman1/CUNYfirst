@@ -1,34 +1,38 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
+
 <html>
 <head>
     <title>Title</title>
 </head>
 <body>
 
-    <form:form action="/admin/services/pCourse" method="post" modelAttribute="newCourse">
+    <div><%@include file="AdminName.jsp" %></div>
 
-        <label for="courseName">Course Name: </label>
+    <form:form action="/admin/services/pCourse" method="post" modelAttribute="newCourse">
+        * Course Name:
         <form:select path="courseName">
             <form:options items="${courseNames}"/>
-        </form:select>
+        </form:select><br><br>
 
-        <%--<label for="courseLevel">Course Level: </label>--%>
-        <%--<form:select path="courseLevel">--%>
+        <form:select path="courseLevel">
             <%--<form:options items="${}"/>--%>
-        <%--</form:select>--%>
+        </form:select><br><br>
 
-        <label for="courseTitle">Course Title: </label>
-        <form:textarea path="courseTitle" rows="5" cols="10"/>
+        * Course Title:<br><br>
+        <form:textarea path="courseTitle" rows="5" cols="30"/><br><br>
 
-        <label for="courseCredits">Course Units: </label>
-        <form:input path="courseCredits"/>
+        * Course Unit(s):
+        <form:input path="courseCredits"/><br><br>
 
-        <label for="description">Course Description: </label>
-        <form:textarea path="description" rows="10" cols="10"/>
+        * Course Description:<br><br>
+        <form:textarea path="description" rows="10" cols="30"/><br><br>
 
-        <input type="submit" value="Submit">
+        <%@include file="RequiredField.jsp" %>
+        <br><br>
+
+        <input type="submit" value="Submit"><br><br>
     </form:form>
 
 </body>

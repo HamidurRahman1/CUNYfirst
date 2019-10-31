@@ -8,9 +8,7 @@
 </head>
 <body>
 
-    <div class="name-section">
-        <h4>Admin: ${sessionScope.get("admin").getFirstName()} ${sessionScope.get("admin").getLastName()} </h4>
-    </div>
+    <strong style="color: red">* marked field(s) are required</strong><br><br>
 
 </body>
 </html>

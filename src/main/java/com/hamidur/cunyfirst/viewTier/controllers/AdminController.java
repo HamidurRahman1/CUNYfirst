@@ -124,7 +124,7 @@ public class AdminController
         model.addAttribute("newCourse", new Course());
         try
         {
-            System.out.println();
+            System.out.println(propertyFileReader.getCourseNames());
             model.addAttribute("courseNames", propertyFileReader.getCourseNames());
 //            model.addAttribute("courseLevels", propertyFileReader.getCourseLevels());
         }
@@ -139,6 +139,8 @@ public class AdminController
     @PostMapping("/services/pCourse")
     public String processCourse(@ModelAttribute("newCourse")Course course, Model model)
     {
+        System.out.println(course);
+        course.setCourseId(101);
         model.addAttribute("newCourse", course);
         return "admin/CourseAdded";
     }

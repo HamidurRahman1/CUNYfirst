@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 
 <html>
 <head>
@@ -22,6 +23,9 @@
         <br><br>
         <label for="gender">* Gender: </label><form:radiobuttons path="gender" items="${genders}"/>
         <br><br><br>
+
+        <%@include file="RequiredField.jsp" %>
+        <br><br>
 
         <input value="Submit" type="submit">
     </form:form>

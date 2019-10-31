@@ -62,8 +62,8 @@
             </form:select>
             <br><br><br>
 
-            <strong style="color: red">* marked field(s) are required</strong><br><br>
-
+            <%@include file="RequiredField.jsp" %>
+            <br><br>
             <input value="Submit" type="submit">
         </form:form>
     </div>
