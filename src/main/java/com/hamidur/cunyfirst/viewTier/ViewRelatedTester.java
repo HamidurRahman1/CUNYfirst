@@ -14,14 +14,14 @@ import java.time.LocalDate;
 
 public class ViewRelatedTester
 {
-    public static void main(String[] args)
+    public static void main(java.lang.String[] args)
     {
         testStudent();
     }
     
     public static Student testStudent()
     {
-        Student student = new Student("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.MALE);
+        Student student = new Student("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.M.toString());
         student.setStudentId(100000001);
         student.setAddress(testAddress());
         student.setContact(testContact());
@@ -33,7 +33,7 @@ public class ViewRelatedTester
 
     public static Admin testAdmin()
     {
-        return new Admin("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.MALE);
+        return new Admin("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.F.toString());
     }
     
     public static Address testAddress()

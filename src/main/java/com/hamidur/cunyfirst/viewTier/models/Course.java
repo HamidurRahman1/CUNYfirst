@@ -12,10 +12,11 @@ public class Course implements Serializable
     private String courseTitle;
     
     @Size(max = 3)
-    private CourseName courseName;
+    private String courseName;
     
     @Size(max = 3)
-    private CourseLevel courseLevel;
+    private Integer courseLevel;
+
     private Float courseCredits;
     
     @Size(min = 10, max = 100)
@@ -23,7 +24,7 @@ public class Course implements Serializable
     
     public Course() {}
     
-    public Course(String courseTitle, CourseName courseName, CourseLevel courseLevel, Float courseCredits, String description)
+    public Course(String courseTitle, String courseName, Integer courseLevel, Float courseCredits, String description)
     {
         this.courseTitle = courseTitle;
         this.courseName = courseName;
@@ -52,22 +53,22 @@ public class Course implements Serializable
         this.courseTitle = courseTitle;
     }
     
-    public CourseName getCourseName()
+    public String getCourseName()
     {
         return courseName;
     }
     
-    public void setCourseName(CourseName courseName)
+    public void setCourseName(String courseName)
     {
         this.courseName = courseName;
     }
     
-    public CourseLevel getCourseLevel()
+    public Integer getCourseLevel()
     {
         return courseLevel;
     }
     
-    public void setCourseLevel(CourseLevel courseLevel)
+    public void setCourseLevel(Integer courseLevel)
     {
         this.courseLevel = courseLevel;
     }
@@ -100,7 +101,7 @@ public class Course implements Serializable
         Course course = (Course) o;
         return Objects.equals(getCourseId(), course.getCourseId())
                 && Objects.equals(getCourseTitle(), course.getCourseTitle())
-                && getCourseName() == course.getCourseName()
+                && getCourseName().equals(course.getCourseName())
                 && Objects.equals(getCourseLevel(), course.getCourseLevel())
                 && Objects.equals(getCourseCredits(), course.getCourseCredits())
                 && Objects.equals(getDescription(), course.getDescription());
@@ -116,7 +117,7 @@ public class Course implements Serializable
     public String toString()
     {
         return "Course{" + "courseId=" + courseId + ", courseTitle='" + courseTitle + '\'' + ", courseName="
-                + courseName + ", courseLevel=" + courseLevel.getValue() + ", courseCredits="
+                + courseName + ", courseLevel=" + courseLevel + ", courseCredits="
                 + courseCredits + ", description='" + description + '\'' + '}';
     }
 }

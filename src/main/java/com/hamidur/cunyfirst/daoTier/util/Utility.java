@@ -21,15 +21,14 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.Course toViewCourse(Course course)
     {
-        return new com.hamidur.cunyfirst.viewTier.models.Course(course.getCourseTitle(),
-                com.hamidur.cunyfirst.viewTier.models.CourseName.valueOf(course.getCourseName().getValue()),
-                toViewCourseLevel(course.getCourseLevel()), course.getCourseCredits(), course.getDescription());
+        return new com.hamidur.cunyfirst.viewTier.models.Course(course.getCourseTitle(), course.getCourseName(),
+                course.getCourseLevel(), course.getCourseCredits(), course.getDescription());
     }
 
     public static Course toDaoCourse(com.hamidur.cunyfirst.viewTier.models.Course course)
     {
-        return new Course(course.getCourseTitle(), CourseName.valueOf(course.getCourseName().getValue()),
-                course.getCourseLevel().getValue(), course.getCourseCredits(), course.getDescription());
+        return new Course(course.getCourseTitle(), course.getCourseName(),
+                course.getCourseLevel(), course.getCourseCredits(), course.getDescription());
     }
 
     public static Integer toDaoCourseLevel(com.hamidur.cunyfirst.viewTier.models.CourseLevel courseLevel)
@@ -45,7 +44,7 @@ public class Utility
     public static Instructor toDaoInstructor(com.hamidur.cunyfirst.viewTier.models.Instructor instructor)
     {
         return new Instructor(instructor.getFirstName(), instructor.getLastName(), instructor.getSsn(),
-                instructor.getDateOfBirth(), Utility.toDaoGender(instructor.getGender()));
+                instructor.getDateOfBirth(), instructor.getGender());
     }
 
     public static LocalDate toLocalDate(Date sqlDate)
@@ -58,18 +57,13 @@ public class Utility
         return Date.valueOf(localDate);
     }
 
-    public static Gender toDaoGender(com.hamidur.cunyfirst.viewTier.models.Gender gender)
+    public static String toViewGender(String gender)
     {
-        return Gender.valueOf(gender.getValue());
-    }
-
-    public static com.hamidur.cunyfirst.viewTier.models.Gender toViewGender(Gender gender)
-    {
-        if(gender.name().equals(com.hamidur.cunyfirst.viewTier.models.Gender.MALE.getValue()))
-            return com.hamidur.cunyfirst.viewTier.models.Gender.MALE;
-        else if(gender.name().equals(com.hamidur.cunyfirst.viewTier.models.Gender.FEMALE.getValue()))
-            return com.hamidur.cunyfirst.viewTier.models.Gender.FEMALE;
-        else return com.hamidur.cunyfirst.viewTier.models.Gender.OTHER;
+        if(gender.equals("M"))
+            return "Male";
+        else if(gender.equals("F"))
+            return "Female";
+        else return "Other";
     }
 
     public static Address toDaoAddress(com.hamidur.cunyfirst.viewTier.models.Address address)
@@ -111,7 +105,7 @@ public class Utility
         person.setLastName(student.getLastName());
         person.setSsn(student.getSsn());
         person.setDateOfBirth(student.getDateOfBirth());
-        person.setGender(Utility.toDaoGender(student.getGender()));
+        person.setGender(student.getGender());
 
         daoStudent.setPerson(person);
         daoStudent.addAddress(Utility.toDaoAddress(student.getAddress()));

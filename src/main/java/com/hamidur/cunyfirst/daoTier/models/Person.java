@@ -21,14 +21,13 @@ public class Person
     
     @Column(name = "dob", nullable = false)
     private LocalDate dateOfBirth;
-    
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "gender", nullable = false, length = 1)
-    private Gender gender;
+    private String gender;
     
     public Person() {}
     
-    public Person(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Person(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -77,12 +76,12 @@ public class Person
         this.dateOfBirth = dateOfBirth;
     }
     
-    public Gender getGender()
+    public String getGender()
     {
         return gender;
     }
     
-    public void setGender(Gender gender)
+    public void setGender(String gender)
     {
         this.gender = gender;
     }
@@ -97,7 +96,7 @@ public class Person
                 && Objects.equals(getLastName(), person.getLastName())
                 && Objects.equals(getSsn(), person.getSsn())
                 && Objects.equals(getDateOfBirth(), person.getDateOfBirth())
-                && getGender() == person.getGender();
+                && getGender().equals(person.getGender());
     }
     
     @Override

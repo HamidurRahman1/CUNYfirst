@@ -85,7 +85,7 @@ public class DaoRelatedTester
     
     private static void insertAdmin(Session session)
     {
-        Admin admin = new Admin("demo_first", "demo_last", "090808670", LocalDate.now(), Gender.M);
+        Admin admin = new Admin("demo_first", "demo_last", "090808670", LocalDate.now(), Gender.M.toString());
         session.save(admin);
     }
     
@@ -216,9 +216,10 @@ public class DaoRelatedTester
 //        student.setLastName("Rahman");
 //        student.setSsn("111000111");
 //        student.setDateOfBirth(LocalDate.of(1999, 5, 4));
-//        student.setGender(Gender.M);
+//        student.setGender(String.M);
         
-        Student student2 = new Student("demo first", "demo last", "657030316", LocalDate.of(1986, 2, 25), Gender.F);
+        Student student2 = new Student("demo first", "demo last", "657030316",
+                LocalDate.of(1986, 2, 25), Gender.F.toString());
         
 //        students.add(student);
         students.add(student2);
@@ -300,15 +301,15 @@ public class DaoRelatedTester
     {
         List<Course> courses = new LinkedList <>();
         
-        Course c1 = new Course("Beginner Arts", CourseName.HUA, 101, 3.0f, "description");
+        Course c1 = new Course("Beginner Arts", CourseName.HUA.toString(), 101, 3.0f, "description");
         
-        Course c2 = new Course("Intermediate Accounting", CourseName.BTA, 111, 3.0f, "description");
+        Course c2 = new Course("Intermediate Accounting", CourseName.BTA.toString(), 111, 3.0f, "description");
         
-        Course c3 = new Course("Introduction to Philosophy", CourseName.HUP, 101, 3.0f, "description");
+        Course c3 = new Course("Introduction to Philosophy", CourseName.HUP.toString(), 101, 3.0f, "description");
         
-        Course c4 = new Course("Public Speaking", CourseName.HUC, 106, 3.0f, "description");
+        Course c4 = new Course("Public Speaking", CourseName.HUC.toString(), 106, 3.0f, "description");
         
-        Course c5 = new Course("Physics 1", CourseName.SCP, 231, 4.0f, "description");
+        Course c5 = new Course("Physics 1", CourseName.SCP.toString(), 231, 4.0f, "description");
         
         courses.addAll(Arrays.asList(c1, c2, c3, c4, c5));
         
@@ -366,6 +367,6 @@ public class DaoRelatedTester
     
     private static Instructor demoInstructor()
     {
-        return new Instructor("demo", "demo", "532354352", LocalDate.of(1981, 10, 26), Gender.M);
+        return new Instructor("demo", "demo", "532354352", LocalDate.of(1981, 10, 26), Gender.M.toString());
     }
 }

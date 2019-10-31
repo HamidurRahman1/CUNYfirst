@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-            ${"id"}
+    <div class="student-display">
+
+    </div>
 </body>
 </html>

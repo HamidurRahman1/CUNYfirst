@@ -70,7 +70,7 @@ public class Student implements Serializable
         this.person = new Person();
     }
     
-    public Student(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Student(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
     {
         this.person = new Person(firstName, lastName, ssn, dateOfBirth, gender);
     }

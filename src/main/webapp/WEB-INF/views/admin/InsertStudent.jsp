@@ -9,8 +9,10 @@
 </head>
 <body>
 
+    <div><%@include file="AdminName.jsp" %></div>
+
     <div id="add-student">
-        <form:form modelAttribute="newStudent" method="post" action="/student/process">
+        <form:form modelAttribute="newStudent" method="post" action="/admin/services/process">
 
             <strong>Student Personal Information</strong><br><br>
             <label for="firstName">* First Name: </label><form:input type="text" path="firstName"/>
@@ -31,7 +33,7 @@
             <form:input type="text" path="address.crossStreet"/><br><br>
             <label for="address.city">* City: </label>
             <form:input type="text" path="address.city"/><br><br>
-            <label for="highSchoolInfo.country">* Country: </label>
+            <label for="highSchoolInfo.country">* State: </label>
             <form:input type="text" path="address.state"/><br><br>
             <label for="address.zipCode">* ZipCode: </label>
             <form:input type="number" path="address.zipCode"/>
@@ -41,7 +43,7 @@
             <strong>Contact:</strong><br><br>
             <label for="contact.phone">Phone: <form:input type="number" path="contact.phone"/></label><br><br>
             <label for="contact.email">* Email: <form:input path="contact.email"/></label><br><br>
-            <label for="contact.collegeEmail">College Email: <form:input path="contact.collegeEmail"/>
+            <label for="contact.collegeEmail">College Email: <form:input path="contact.collegeEmail" disabled="true"/>
             </label><br><br><br>
 
 
@@ -49,7 +51,7 @@
             <label for="highSchoolInfo.highSchoolName">* High School Name: </label>
             <form:input type="text" path="highSchoolInfo.highSchoolName"/><br><br>
             <label for="highSchoolInfo.year">* Year: </label>
-            <form:input type="text" path="highSchoolInfo.year"/><br><br>
+            <form:input type="number" path="highSchoolInfo.year"/><br><br>
             <label for="highSchoolInfo.city">* City: </label>
             <form:input type="text" path="highSchoolInfo.city"/><br><br>
             <label for="highSchoolInfo.country">* Country: </label>

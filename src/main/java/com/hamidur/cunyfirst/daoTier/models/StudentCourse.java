@@ -32,10 +32,9 @@ public class StudentCourse implements Serializable
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "courseId")
     private Course course;
-    
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "courseStatus")
-    private CourseStatus courseStatus;
+    private String courseStatus;
     
     @Column(name = "grade")
     private String grade;
@@ -46,7 +45,7 @@ public class StudentCourse implements Serializable
     
     public StudentCourse() {}
     
-    public StudentCourse(Student student, Course course, CourseStatus courseStatus, Term term)
+    public StudentCourse(Student student, Course course, String courseStatus, Term term)
     {
         this.student = student;
         this.course = course;
@@ -54,7 +53,7 @@ public class StudentCourse implements Serializable
         this.term = term;
     }
     
-    public StudentCourse(Student student, Course course, CourseStatus courseStatus, String grade, Term term)
+    public StudentCourse(Student student, Course course, String courseStatus, String grade, Term term)
     {
         this.student = student;
         this.course = course;
@@ -99,11 +98,11 @@ public class StudentCourse implements Serializable
         this.course = course;
     }
     
-    public CourseStatus getCourseStatus() {
+    public String getCourseStatus() {
         return courseStatus;
     }
     
-    public void setCourseStatus(CourseStatus courseStatus) {
+    public void setCourseStatus(String courseStatus) {
         this.courseStatus = courseStatus;
     }
     
@@ -121,10 +120,12 @@ public class StudentCourse implements Serializable
         if(this == o) return true;
         if(! (o instanceof StudentCourse)) return false;
         StudentCourse that = (StudentCourse) o;
-        return Objects.equals(getStudentCourseId(), that.getStudentCourseId()) && Objects.equals(getStudent(),
-                that.getStudent()) && Objects.equals(getCourse(), that.getCourse())
-                && getCourseStatus() == that.getCourseStatus() && Objects.equals(getGrade(),
-                that.getGrade()) && Objects.equals(getTerm(), that.getTerm());
+        return Objects.equals(getStudentCourseId(), that.getStudentCourseId())
+                && Objects.equals(getStudent(), that.getStudent())
+                && Objects.equals(getCourse(), that.getCourse())
+                && getCourseStatus().equals(that.getCourseStatus())
+                && Objects.equals(getGrade(), that.getGrade())
+                && Objects.equals(getTerm(), that.getTerm());
     }
     
     @Override

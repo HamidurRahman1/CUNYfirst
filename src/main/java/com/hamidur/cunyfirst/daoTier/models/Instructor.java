@@ -47,7 +47,7 @@ public class Instructor implements Serializable
         this.person = new Person();
     }
     
-    public Instructor(String firstName, String lastName, String ssn, LocalDate dob, Gender gender)
+    public Instructor(String firstName, String lastName, String ssn, LocalDate dob, String gender)
     {
         this.person = new Person(firstName, lastName, ssn, dob, gender);
     }

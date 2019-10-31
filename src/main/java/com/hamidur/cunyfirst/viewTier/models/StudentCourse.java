@@ -6,13 +6,13 @@ public class StudentCourse
 {
     private Student student;
     private Course course;
-    private CourseStatus courseStatus;
-    private Grade grade;
+    private String courseStatus;
+    private String grade;
     private Term term;
     
     public StudentCourse() {}
     
-    public StudentCourse(Student student, Course course, CourseStatus courseStatus, Grade grade, Term term)
+    public StudentCourse(Student student, Course course, String courseStatus, String grade, Term term)
     {
         this.student = student;
         this.course = course;
@@ -41,22 +41,22 @@ public class StudentCourse
         this.course = course;
     }
     
-    public CourseStatus getCourseStatus()
+    public String getCourseStatus()
     {
         return courseStatus;
     }
     
-    public void setCourseStatus(CourseStatus courseStatus)
+    public void setCourseStatus(String courseStatus)
     {
         this.courseStatus = courseStatus;
     }
     
-    public Grade getGrade()
+    public String getGrade()
     {
         return grade;
     }
     
-    public void setGrade(Grade grade)
+    public void setGrade(String grade)
     {
         this.grade = grade;
     }
@@ -79,7 +79,7 @@ public class StudentCourse
         StudentCourse that = (StudentCourse) o;
         return Objects.equals(getStudent(), that.getStudent())
                 && Objects.equals(getCourse(), that.getCourse())
-                && getCourseStatus() == that.getCourseStatus()
+                && getCourseStatus().equals(that.getCourseStatus())
                 && Objects.equals(getGrade(), that.getGrade())
                 && Objects.equals(getTerm(), that.getTerm());
     }

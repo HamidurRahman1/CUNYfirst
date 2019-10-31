@@ -36,7 +36,7 @@ public class Admin
         this.person = new Person();
     }
     
-    public Admin(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Admin(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
     {
         this.person = new Person(firstName, lastName, ssn, dateOfBirth, gender);
     }

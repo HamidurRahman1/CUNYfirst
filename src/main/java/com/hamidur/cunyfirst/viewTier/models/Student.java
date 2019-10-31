@@ -24,7 +24,7 @@ public class Student extends Person implements Serializable
         super();
     }
     
-    public Student(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Student(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
     {
         super(firstName, lastName, ssn, dateOfBirth, gender);
     }
@@ -138,7 +138,7 @@ public class Student extends Person implements Serializable
     {
         studentCourses.remove(studentCourse);
     }
-    
+
     @Override
     public String toString()
     {

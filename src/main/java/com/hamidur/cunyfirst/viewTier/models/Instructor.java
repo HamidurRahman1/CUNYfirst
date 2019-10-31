@@ -16,9 +16,9 @@ public class Instructor extends Person implements Serializable
         super();
     }
     
-    public Instructor(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Instructor(java.lang.String firstName, java.lang.String lastName, java.lang.String ssn, LocalDate dateOfBirth, String string)
     {
-        super(firstName, lastName, ssn, dateOfBirth, gender);
+        super(firstName, lastName, ssn, dateOfBirth, string);
     }
     
     public Integer getInstructorId()
@@ -68,7 +68,7 @@ public class Instructor extends Person implements Serializable
     }
     
     @Override
-    public String toString()
+    public java.lang.String toString()
     {
         return "Instructor{" + "instructorId=" + instructorId + ", instructorCourses=" + instructorCourses + '}';
     }

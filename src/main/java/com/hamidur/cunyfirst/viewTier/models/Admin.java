@@ -13,9 +13,9 @@ public class Admin extends Person implements Serializable
         super();
     }
     
-    public Admin(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Admin(java.lang.String firstName, java.lang.String lastName, java.lang.String ssn, LocalDate dateOfBirth, String string)
     {
-        super(firstName, lastName, ssn, dateOfBirth, gender);
+        super(firstName, lastName, ssn, dateOfBirth, string);
     }
     
     public Integer getAdminId()
@@ -44,7 +44,7 @@ public class Admin extends Person implements Serializable
     }
     
     @Override
-    public String toString()
+    public java.lang.String toString()
     {
         return "Admin{" + "adminId=" + adminId + " " + super.toString() +'}';
     }

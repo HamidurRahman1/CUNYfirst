@@ -26,10 +26,9 @@ public class Course implements Serializable
     
     @Column(name = "courseTitle", nullable = false, length = 100)
     private String courseTitle;
-    
-    @Enumerated(EnumType.STRING)
+
     @Column(name = "courseName", nullable = false, length = 3)
-    private CourseName courseName;
+    private String courseName;
     
     @Column(name = "courseLevel", nullable = false)
     private Integer courseLevel;
@@ -48,7 +47,7 @@ public class Course implements Serializable
     
     public Course() {}
     
-    public Course(String courseTitle, CourseName courseName, Integer courseLevel, Float courseCredits, String description)
+    public Course(String courseTitle, String courseName, Integer courseLevel, Float courseCredits, String description)
     {
         this.courseTitle = courseTitle;
         this.courseName = courseName;
@@ -73,11 +72,11 @@ public class Course implements Serializable
         this.courseTitle = courseTitle;
     }
     
-    public CourseName getCourseName() {
+    public String getCourseName() {
         return courseName;
     }
     
-    public void setCourseName(CourseName courseName) {
+    public void setCourseName(String courseName) {
         this.courseName = courseName;
     }
     

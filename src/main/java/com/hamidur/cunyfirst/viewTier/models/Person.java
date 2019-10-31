@@ -23,13 +23,13 @@ public class Person implements Serializable
     @PastOrPresent
     private LocalDate dateOfBirth;
     
-    @NotNull(message = "Gender must be provided")
+    @NotNull(message = "String must be provided")
     @Size(min = 1, max = 1)
-    private Gender gender;
+    private String gender;
     
     public Person() {}
     
-    public Person(String firstName, String lastName, String ssn, LocalDate dateOfBirth, Gender gender)
+    public Person(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,20 +78,24 @@ public class Person implements Serializable
         this.dateOfBirth = dateOfBirth;
     }
     
-    public Gender getGender()
+    public String getGender()
     {
         return gender;
     }
     
-    public void setGender(Gender gender)
+    public void setGender(String gender)
     {
         this.gender = gender;
     }
-    
+
     @Override
-    public String toString()
-    {
-        return "Person{" + "firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' + ", ssn='" +
-                ssn + '\'' + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender + '}';
+    public java.lang.String toString() {
+        return "Student{" +
+                "firstName=" + firstName +
+                ", lastName=" + lastName +
+                ", ssn=" + ssn +
+                ", dateOfBirth=" + dateOfBirth +
+                ", gender=" + gender +
+                '}';
     }
 }
