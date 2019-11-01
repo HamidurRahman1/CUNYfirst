@@ -11,6 +11,14 @@ public class StudentCourse
     private Term term;
     
     public StudentCourse() {}
+
+    public StudentCourse(Course course, String courseStatus, String grade, Term term)
+    {
+        this.course = course;
+        this.courseStatus = courseStatus;
+        this.grade = grade;
+        this.term = term;
+    }
     
     public StudentCourse(Student student, Course course, String courseStatus, String grade, Term term)
     {

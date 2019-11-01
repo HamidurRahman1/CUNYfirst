@@ -5,19 +5,25 @@ import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Contact;
 import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.CourseName;
+import com.hamidur.cunyfirst.viewTier.models.CourseStatus;
+import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.Gender;
+import com.hamidur.cunyfirst.viewTier.models.Grade;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
 import com.hamidur.cunyfirst.viewTier.models.Student;
+import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
 import com.hamidur.cunyfirst.viewTier.models.Term;
 import com.hamidur.cunyfirst.viewTier.models.TransferInfo;
 
 import java.io.File;
 import java.time.LocalDate;
 import java.util.Arrays;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class ViewRelatedTester
 {
@@ -25,8 +31,16 @@ public class ViewRelatedTester
     {
         try
         {
-            PropertyFileReader p = new PropertyFileReader();
-            System.out.println(p.getCourseNames() +" n");
+            Student student = testStudent();
+
+            System.out.println(student);
+            System.out.println(student.getAddress());
+            System.out.println(student.getContact());
+            System.out.println(student.getHighSchoolInfo());
+            System.out.println(student.getTransferInfo());
+            System.out.println(student.getLogin());
+            System.out.println(student.getStudentCourses());
+            System.out.println(student.getFafsas());
         }
         catch (Exception ex)
         {
@@ -37,13 +51,23 @@ public class ViewRelatedTester
     public static Student testStudent()
     {
         Student student = new Student("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.M.toString());
-        student.setStudentId(100000001);
+        student.setStudentId(20021001);
         student.setAddress(testAddress());
         student.setContact(testContact());
         student.setHighSchoolInfo(testHighSchoolInfo());
         student.setTransferInfo(testTransferInfo());
         student.setLogin(testLogin());
+        student.setStudentCourses(studentCourses());
+        student.setFafsas(fafsas());
         return student;
+    }
+
+    public static Set<FAFSA> fafsas()
+    {
+        Set<FAFSA> fafsas = new LinkedHashSet<>();
+        fafsas.add(new FAFSA(testTerm().get(0), 1890.50));
+        fafsas.add(new FAFSA(testTerm().get(1), 2100.00));
+        return fafsas;
     }
 
     public static Admin testAdmin()
@@ -68,12 +92,12 @@ public class ViewRelatedTester
     
     public static TransferInfo testTransferInfo()
     {
-        return new TransferInfo("schoolName", testTerm());
+        return new TransferInfo("schoolName", testTerm().get(0));
     }
     
-    public static Term testTerm()
+    public static List<Term> testTerm()
     {
-        return new Term("Spring", 2016);
+        return new LinkedList<>(Arrays.asList(new Term("Spring", 2016), new Term("Fall", 2016)));
     }
     
     public static Login testLogin()
@@ -89,14 +113,18 @@ public class ViewRelatedTester
 
         Course c2 = new Course("Intermediate Accounting", CourseName.BTA.toString(), 111, 3.0f, "description");
 
-        Course c3 = new Course("Introduction to Philosophy", CourseName.HUP.toString(), 101, 3.0f, "description");
-
-        Course c4 = new Course("Public Speaking", CourseName.HUC.toString(), 106, 3.0f, "description");
-
-        Course c5 = new Course("Physics 1", CourseName.SCP.toString(), 231, 4.0f, "description");
-
-        courses.addAll(Arrays.asList(c1, c2, c3, c4, c5));
+        courses.addAll(Arrays.asList(c1, c2));
 
         return courses;
+    }
+
+    public static Set<StudentCourse> studentCourses()
+    {
+        Set<StudentCourse> studentCourses = new LinkedHashSet<>();
+        studentCourses.add(new StudentCourse(demoCourses().get(0), CourseStatus.TAKEN.getValue(),
+                Grade.A_MINUS.getValue(), testTerm().get(0)));
+        studentCourses.add(new StudentCourse(demoCourses().get(1), CourseStatus.TAKEN.getValue(),
+                Grade.A.getValue(), testTerm().get(1)));
+        return studentCourses;
     }
 }

@@ -91,6 +91,8 @@ public class AdminController
     @GetMapping("/services/displayStudent")
     public String displayStudent(@RequestParam("studentId") Integer studentId, Model model)
     {
+        Student student = ViewRelatedTester.testStudent();
+        model.addAttribute("student", student);
         // retrieve student from db assign it to a model
         return "admin/DisplayStudent";
     }
