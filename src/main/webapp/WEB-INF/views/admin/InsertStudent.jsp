@@ -5,14 +5,14 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Adding a Student</title>
 </head>
 <body>
 
     <%@include file="AdminName.jsp" %>
 
     <div id="add-student">
-        <form:form modelAttribute="newStudent" method="post" action="/admin/services/process">
+        <form:form modelAttribute="newStudent" method="post" action="/admin/services/insert/processed/student">
 
             <strong>Student Personal Information</strong><br><br>
             <label for="firstName">* First Name: </label><form:input type="text" path="firstName"/>

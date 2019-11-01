@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>All Courses</title>
 </head>
 <body>
 

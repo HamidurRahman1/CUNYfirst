@@ -4,14 +4,14 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Adding a Instructor</title>
 </head>
 <body>
 
     <%@include file="AdminName.jsp"%>
 
     <div>
-        <form:form modelAttribute="newInstructor" action="/admin/services/pInstructor" method="post">
+        <form:form modelAttribute="newInstructor" action="/admin/services/insert/processed/instructor" method="post">
 
             <strong>Instructor Personal Information</strong><br><br>
             <label for="firstName">* First Name: </label><form:input type="text" path="firstName"/>

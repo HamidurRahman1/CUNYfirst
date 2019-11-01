@@ -5,9 +5,10 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Student's Information</title>
 </head>
 <body>
+
     <%@include file="AdminName.jsp" %>
 
     <div class="student-display">

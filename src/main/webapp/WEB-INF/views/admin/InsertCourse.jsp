@@ -4,14 +4,14 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Adding a Course</title>
 </head>
 <body>
 
     <%@include file="AdminName.jsp" %>
 
     <div>
-        <form:form action="/admin/services/pCourse" method="post" modelAttribute="newCourse">
+        <form:form action="/admin/services/insert/processed/course" method="post" modelAttribute="newCourse">
             * Course Name:
             <form:select path="courseName">
                 <form:options items="${courseNames}"/>

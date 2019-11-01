@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Student has been added</title>
 </head>
 <body>
             <%@include file="AdminName.jsp" %>

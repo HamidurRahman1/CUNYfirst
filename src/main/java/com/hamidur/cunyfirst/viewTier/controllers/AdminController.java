@@ -7,6 +7,7 @@ import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
 import com.hamidur.cunyfirst.viewTier.models.Student;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -49,7 +50,30 @@ public class AdminController
         return "admin/Services";
     }
 
-    @GetMapping("/services/insertStudent")
+    @GetMapping("/services/get/getStudent")
+    public String getStudent()
+    {
+        return "admin/GetStudent";
+    }
+
+    @GetMapping("/services/get/getCourses")
+    public String getCourses(Model model)
+    {
+        List<Course> courses = ViewRelatedTester.demoCourses();
+        model.addAttribute("courses", courses);
+        return "admin/GetCourses";
+    }
+
+    @GetMapping("/services/display/student")
+    public String displayStudent(@RequestParam("studentId") Integer studentId, Model model)
+    {
+        Student student = ViewRelatedTester.testStudent();
+        model.addAttribute("student", student);
+        // retrieve student from db assign it to a model
+        return "admin/DisplayStudent";
+    }
+
+    @GetMapping("/services/insert/student")
     public String insertStudent(Model model)
     {
         model.addAttribute("newStudent", new Student());
@@ -71,7 +95,7 @@ public class AdminController
         return "admin/InsertStudent";
     }
 
-    @PostMapping("/services/process")
+    @PostMapping("/services/insert/processed/student")
     public String processNewStudent(@ModelAttribute("newStudent") Student student, Model model)
     {
         // insert into db then redirect if success else error
@@ -82,22 +106,17 @@ public class AdminController
         return "admin/StudentAdded";
     }
 
-    @GetMapping("/services/getStudent")
-    public String getStudent()
+    @GetMapping("/services/update/getStudent")
+    public String updateStudent() { return "admin/UpdateGetStudent"; }
+
+    @GetMapping("/services/update/updateable/student")
+    public String updateableStudent(@RequestParam("studentId") Integer studentId, Model model)
     {
-        return "admin/GetStudent";
+        //
+        return "admin/UpdateableStudent";
     }
 
-    @GetMapping("/services/displayStudent")
-    public String displayStudent(@RequestParam("studentId") Integer studentId, Model model)
-    {
-        Student student = ViewRelatedTester.testStudent();
-        model.addAttribute("student", student);
-        // retrieve student from db assign it to a model
-        return "admin/DisplayStudent";
-    }
-
-    @GetMapping("/services/insertInstructor")
+    @GetMapping("/services/insert/instructor")
     public String insertInstructor(Model model)
     {
         model.addAttribute("newInstructor", new Instructor());
@@ -113,7 +132,7 @@ public class AdminController
         return "admin/InsertInstructor";
     }
 
-    @PostMapping("/services/pInstructor")
+    @PostMapping("/services/insert/processed/instructor")
     public String processNewInstructor(@ModelAttribute("newInstructor") Instructor instructor, Model model)
     {
         // insert into db then redirect if success else error
@@ -121,7 +140,7 @@ public class AdminController
         return "admin/InstructorAdded";
     }
 
-    @GetMapping("/services/insertCourse")
+    @GetMapping("/services/insert/course")
     public String insertCourse(Model model)
     {
         model.addAttribute("newCourse", new Course());
@@ -139,20 +158,12 @@ public class AdminController
         return "admin/InsertCourse";
     }
 
-    @PostMapping("/services/pCourse")
+    @PostMapping("/services/insert/processed/course")
     public String processCourse(@ModelAttribute("newCourse")Course course, Model model)
     {
         System.out.println(course);
         course.setCourseId(101);
         model.addAttribute("newCourse", course);
         return "admin/CourseAdded";
-    }
-
-    @GetMapping("/services/getCourses")
-    public String getCourses(Model model)
-    {
-        List<Course> courses = ViewRelatedTester.demoCourses();
-        model.addAttribute("courses", courses);
-        return "admin/GetCourses";
     }
 }
