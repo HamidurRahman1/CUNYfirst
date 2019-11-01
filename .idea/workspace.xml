@@ -14,16 +14,9 @@
       <change beforePath="$PROJECT_DIR$/../NLP" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/CourseAdded.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/CourseAdded.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/DisplayStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/DisplayStudent.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/GetCourses.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/GetCourses.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/GetStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/GetStudent.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/courseCredits.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/courseCredits.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertInstructor.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertInstructor.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertStudent.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertStudent.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InstructorAdded.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InstructorAdded.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/Services.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/Services.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/StudentAdded.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/StudentAdded.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projects" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -104,43 +97,44 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="83" />
-          <entry key="jsp" value="154" />
-          <entry key="properties" value="18" />
+          <entry key="java" value="85" />
+          <entry key="jsp" value="155" />
+          <entry key="properties" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="83" />
-          <entry key="JSP" value="154" />
-          <entry key="Properties" value="16" />
+          <entry key="JAVA" value="85" />
+          <entry key="JSP" value="155" />
+          <entry key="Properties" value="18" />
           <entry key="TML" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="3848" />
-          <entry key="jsp" value="2916" />
-          <entry key="properties" value="312" />
+          <entry key="java" value="4617" />
+          <entry key="jsp" value="2976" />
+          <entry key="properties" value="401" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="3848" />
-          <entry key="JSP" value="2916" />
-          <entry key="Properties" value="312" />
+          <entry key="JAVA" value="4617" />
+          <entry key="JSP" value="2976" />
+          <entry key="Properties" value="401" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="207">
+              <caret line="150" column="72" selection-start-line="150" selection-start-column="72" selection-end-line="150" selection-end-column="72" />
               <folding>
+                <element signature="imports" expanded="true" />
                 <element signature="method#studentLogin#0;class#AdminController#0" />
                 <element signature="method#processLogin#0;class#AdminController#0" />
                 <element signature="method#getCourses#0;class#AdminController#0" />
@@ -150,18 +144,38 @@
                 <element signature="method#updateableStudent#0;class#AdminController#0" />
                 <element signature="method#insertInstructor#0;class#AdminController#0" />
                 <element signature="method#processNewInstructor#0;class#AdminController#0" />
-                <element signature="method#insertCourse#0;class#AdminController#0" />
                 <element signature="method#processCourse#0;class#AdminController#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/UpdateableStudent.jsp">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="357">
+              <caret line="143" column="9" lean-forward="true" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#generalProperties#0;class#PropertyFileReader#0" />
+                <element signature="method#getGenders#0;class#PropertyFileReader#0" />
+                <element signature="method#getCountries#0;class#PropertyFileReader#0" />
+                <element signature="method#getStates#0;class#PropertyFileReader#0" />
+                <element signature="method#getCourseNames#0;class#PropertyFileReader#0" />
+                <element signature="method#getCourseLevels#0;class#PropertyFileReader#0" />
+                <element signature="method#getCourseCredits#0;class#PropertyFileReader#0" />
+                <element signature="method#getQuestions#0;class#PropertyFileReader#0" />
+                <element signature="method#getCourseStatus#0;class#PropertyFileReader#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="381">
+              <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -234,8 +248,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/states.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/countries.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/courseLevels.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/courseCredits.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/courseNames.properties" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/RequiredField.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/BackToService.jsp" />
@@ -246,7 +258,6 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/Services.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/DisplayStudent.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/CourseAdded.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertInstructor.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertStudent.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/GetStudent.jsp" />
@@ -255,7 +266,10 @@
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InstructorAdded.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/UpdateGetStudent.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/UpdateableStudent.jsp" />
+        <option value="$PROJECT_DIR$/src/main/resources/courseCredits.properties" />
         <option value="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java" />
       </list>
     </option>
   </component>
@@ -349,6 +363,13 @@
               <item name="Project--CUNYfirst" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Project--CUNYfirst" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Project--CUNYfirst" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -367,16 +388,6 @@
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
               <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Project--CUNYfirst" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Project--CUNYfirst" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="webapp" type="462c0819:PsiDirectoryNode" />
-              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="admin" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -721,7 +732,7 @@
       <workItem from="1572476296766" duration="6994000" />
       <workItem from="1572486932953" duration="2801000" />
       <workItem from="1572490075181" duration="105000" />
-      <workItem from="1572530947060" duration="17835000" />
+      <workItem from="1572530947060" duration="20917000" />
     </task>
     <servers />
   </component>
@@ -737,13 +748,13 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="94577000" />
+    <option name="totallyTimeSpent" value="97659000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.23321123" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.23321123" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -752,7 +763,7 @@
       <window_info id="Persistence" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32959184" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.31530613" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.31530613" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -953,20 +964,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/courseLevels.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/courseCredits.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="1" column="3" selection-start-line="1" selection-start-column="3" selection-end-line="1" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/Course.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="248">
@@ -981,18 +978,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="176">
           <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#generalProperties#0;class#PropertyFileReader#0" />
-            <element signature="method#getStates#0;class#PropertyFileReader#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1120,13 +1105,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/GetCourses.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -1218,11 +1196,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/courseLevels.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret lean-forward="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/courseCredits.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/AdminController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+        <state relative-caret-position="207">
+          <caret line="150" column="72" selection-start-line="150" selection-start-column="72" selection-end-line="150" selection-end-column="72" />
           <folding>
+            <element signature="imports" expanded="true" />
             <element signature="method#studentLogin#0;class#AdminController#0" />
             <element signature="method#processLogin#0;class#AdminController#0" />
             <element signature="method#getCourses#0;class#AdminController#0" />
@@ -1232,8 +1225,33 @@
             <element signature="method#updateableStudent#0;class#AdminController#0" />
             <element signature="method#insertInstructor#0;class#AdminController#0" />
             <element signature="method#processNewInstructor#0;class#AdminController#0" />
-            <element signature="method#insertCourse#0;class#AdminController#0" />
             <element signature="method#processCourse#0;class#AdminController#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/InsertCourse.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="30" column="34" lean-forward="true" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/models/PropertyFileReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="143" column="9" lean-forward="true" selection-start-line="143" selection-start-column="9" selection-end-line="143" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#generalProperties#0;class#PropertyFileReader#0" />
+            <element signature="method#getGenders#0;class#PropertyFileReader#0" />
+            <element signature="method#getCountries#0;class#PropertyFileReader#0" />
+            <element signature="method#getStates#0;class#PropertyFileReader#0" />
+            <element signature="method#getCourseNames#0;class#PropertyFileReader#0" />
+            <element signature="method#getCourseLevels#0;class#PropertyFileReader#0" />
+            <element signature="method#getCourseCredits#0;class#PropertyFileReader#0" />
+            <element signature="method#getQuestions#0;class#PropertyFileReader#0" />
+            <element signature="method#getCourseStatus#0;class#PropertyFileReader#0" />
           </folding>
         </state>
       </provider>

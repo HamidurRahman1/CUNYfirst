@@ -146,9 +146,9 @@ public class AdminController
         model.addAttribute("newCourse", new Course());
         try
         {
-            System.out.println(propertyFileReader.getCourseNames());
             model.addAttribute("courseNames", propertyFileReader.getCourseNames());
-//            model.addAttribute("courseLevels", propertyFileReader.getCourseLevels());
+            model.addAttribute("courseLevels", propertyFileReader.getCourseLevels());
+            model.addAttribute("courseCredits", propertyFileReader.getCourseCredits());
         }
         catch (IOException ex)
         {

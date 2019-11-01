@@ -10,22 +10,25 @@
 
     <%@include file="AdminName.jsp" %>
 
-    <div>
+    <div class="insert">
         <form:form action="/admin/services/insert/processed/course" method="post" modelAttribute="newCourse">
             * Course Name:
-            <form:select path="courseName">
+            <form:select path="courseName" multiple="false">
                 <form:options items="${courseNames}"/>
             </form:select><br><br>
 
-            <form:select path="courseLevel">
-                <%--<form:options items="${}"/>--%>
+            * Course Level:
+            <form:select path="courseLevel" multiple="false">
+                <form:options items="${courseLevels}"/>
             </form:select><br><br>
 
             * Course Title:<br><br>
             <form:textarea path="courseTitle" rows="5" cols="30"/><br><br>
 
             * Course Unit(s):
-            <form:input path="courseCredits"/><br><br>
+            <form:select path="courseCredits" multiple="false">
+                <form:options items="${courseCredits}"/>
+            </form:select><br><br>
 
             * Course Description:<br><br>
             <form:textarea path="description" rows="10" cols="30"/><br><br>

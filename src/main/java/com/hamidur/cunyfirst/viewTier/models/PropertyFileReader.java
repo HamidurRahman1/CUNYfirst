@@ -9,14 +9,25 @@ import java.util.Properties;
 
 public class PropertyFileReader
 {
-    private static Map<String, String> genders = null;
-    private static Map<String, String> states = null;
-    private static Map<String, String> countries = null;
-    private static Map<String, String> courseNames = null;
-    private static Map<String, String> courseLevels = null;
-    private static Map<String, String> grades = null;
-    private static Map<String, String> questions = null;
-    private static Map<String, String> courseStates = null;
+    private static final String GENDERS_FILE = "genders.properties";
+    private static final String COURSE_LEVELS_FILE = "courseLevels.properties";
+    private static final String COUNTRIES_FILE = "countries.properties";
+    private static final String STATES_FILE = "states.properties";
+    private static final String COURSE_NAMES_FILE = "courseNames.properties";
+    private static final String COURSE_CREDITS_FILE = "courseCredits.properties";
+    private static final String GRADES_FILE = "grades.properties";
+    private static final String QUESTIONS_FILE = "securityQuestions.properties";
+    private static final String COURSE_STATUS_FILE = "courseStatus.properties";
+
+    private static Map<String, String> GENDER_MAP = null;
+    private static Map<String, String> STATES_MAP = null;
+    private static Map<String, String> COUNTRIES_MAP = null;
+    private static Map<String, String> COURSE_NAMES_MAP = null;
+    private static Map<String, String> GRADES_MAP = null;
+    private static Map<String, String> QUESTIONS_MAP = null;
+    private static Map<String, String> COURSE_STATUS_MAP = null;
+    private static Map<Integer, Integer> COURSE_LEVELS_MAP = null;
+    private static Map<Float, Float> COURSE_CREDITS_MAP = null;
 
     private Map<String, String> generalProperties(final String fileName) throws FileNotFoundException, IOException
     {
@@ -40,56 +51,119 @@ public class PropertyFileReader
 
     public Map<String, String> getGenders() throws FileNotFoundException, IOException
     {
-        if(genders == null)
+        if(GENDER_MAP == null)
         {
-            final String gender = "genders.properties";
-            genders =  generalProperties(gender);
-            return genders;
+            GENDER_MAP =  generalProperties(GENDERS_FILE);
+            return GENDER_MAP;
         }
-        else return genders;
+        else return GENDER_MAP;
     }
 
     public Map<String, String> getCountries() throws FileNotFoundException, IOException
     {
-        if(countries == null)
+        if(COUNTRIES_MAP == null)
         {
-            final String country = "countries.properties";
-            countries = generalProperties(country);
-            return countries;
+            COUNTRIES_MAP = generalProperties(COUNTRIES_FILE);
+            return COUNTRIES_MAP;
         }
-        else return countries;
+        else return COUNTRIES_MAP;
     }
 
     public Map<String, String> getStates() throws FileNotFoundException, IOException
     {
-        if(states == null)
+        if(STATES_MAP == null)
         {
-            final String country = "states.properties";
-            states = generalProperties(country);
-            return states;
+            STATES_MAP = generalProperties(STATES_FILE);
+            return STATES_MAP;
         }
-        else return states;
+        else return STATES_MAP;
     }
 
     public Map<String, String> getCourseNames() throws FileNotFoundException, IOException
     {
-        if(courseNames == null)
+        if(COURSE_NAMES_MAP == null)
         {
-            final String courseName = "courseNames.properties";
-            courseNames = generalProperties(courseName);
-            return courseNames;
+            COURSE_NAMES_MAP = generalProperties(COURSE_NAMES_FILE);
+            return COURSE_NAMES_MAP;
         }
-        else return courseNames;
+        else return COURSE_NAMES_MAP;
     }
 
-    public Map<String, String> getCourseLevels() throws FileNotFoundException, IOException
+    public Map<Integer, Integer> getCourseLevels() throws FileNotFoundException, IOException
     {
-        if(courseLevels == null)
+       if(COURSE_LEVELS_MAP == null)
+       {
+           Map<Integer, Integer> map = new LinkedHashMap<>();
+           Properties properties = new Properties();
+           InputStream inputStream = getClass().getClassLoader().getResourceAsStream(COURSE_LEVELS_FILE);
+           if (inputStream != null) {
+               properties.load(inputStream);
+           } else {
+               throw new FileNotFoundException("property file '" + COURSE_LEVELS_FILE + "' not found in the classpath");
+           }
+
+           for (final String name : properties.stringPropertyNames())
+               map.put(Integer.parseInt(name), Integer.parseInt(properties.getProperty(name)));
+           COURSE_LEVELS_MAP = map;
+           return COURSE_LEVELS_MAP;
+       }
+       else return COURSE_LEVELS_MAP;
+    }
+
+    public Map<Float, Float> getCourseCredits() throws FileNotFoundException, IOException
+    {
+
+
+        if(COURSE_LEVELS_MAP == null)
         {
-            final String courseLevel = "courseLevels.properties";
-            courseLevels = generalProperties(courseLevel);
-            return courseLevels;
+            Map<Float, Float> map = new LinkedHashMap<>();
+            Properties properties = new Properties();
+            InputStream inputStream = getClass().getClassLoader().getResourceAsStream(COURSE_CREDITS_FILE);
+            if(inputStream != null)
+            {
+                properties.load(inputStream);
+            }
+            else
+            {
+                throw new FileNotFoundException("property file '" + COURSE_CREDITS_FILE + "' not found in the classpath");
+            }
+
+            for (final String name : properties.stringPropertyNames())
+                map.put(Float.parseFloat(name), Float.parseFloat(properties.getProperty(name)));
+            System.out.println("loaded credits");
+            COURSE_CREDITS_MAP = map;
+            return COURSE_CREDITS_MAP;
         }
-        else return courseLevels;
+        else return COURSE_CREDITS_MAP;
+    }
+
+    public Map<String, String> getGrades() throws FileNotFoundException, IOException
+    {
+        if(GRADES_MAP == null)
+        {
+            GRADES_MAP =  generalProperties(GRADES_FILE);
+            return GRADES_MAP;
+        }
+        else return GRADES_MAP;
+    }
+
+    public Map<String, String> getQuestions() throws FileNotFoundException, IOException
+    {
+        if(QUESTIONS_MAP == null)
+        {
+            QUESTIONS_MAP =  generalProperties(QUESTIONS_FILE);
+            return QUESTIONS_MAP;
+        }
+        else return QUESTIONS_MAP;
+    }
+
+    public Map<String, String> getCourseStatus() throws FileNotFoundException, IOException
+    {
+        if(COURSE_STATUS_MAP == null)
+        {
+            COURSE_STATUS_MAP =  generalProperties(COURSE_STATUS_FILE);
+            return COURSE_STATUS_MAP;
+        }
+        else return COURSE_STATUS_MAP;
     }
 }
