@@ -5,7 +5,7 @@ import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Login;
-import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
+import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +27,7 @@ import java.util.List;
 public class AdminController
 {
     @Autowired
-    private PropertyFileReader propertyFileReader;
+    private PropertyHandler propertyHandler;
 
     @GetMapping("/login")
     public String studentLogin(Model model)
@@ -51,9 +51,30 @@ public class AdminController
     }
 
     @GetMapping("/services/get/getStudent")
-    public String getStudent()
+    public String getStudent(Model model)
     {
+        model.addAttribute("url", "/admin/services/display/student");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
+        model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
+        model.addAttribute("max", 8);
+        model.addAttribute("min", 8);
+        model.addAttribute("submitText", propertyHandler.SUB_GET_STUDENT);
+
         return "admin/GetStudent";
+    }
+
+    @GetMapping("/services/get/getInstructor")
+    public String getInstructor(Model model)
+    {
+        model.addAttribute("url", "/admin/services/update/updateable/instructor");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("inputId", propertyHandler.INP_INSTRUCTOR_ID);
+        model.addAttribute("displayWho", propertyHandler.DIS_INSTRUCTOR_ID);
+        model.addAttribute("max", 3);
+        model.addAttribute("min", 3);
+        model.addAttribute("submitText", propertyHandler.SUB_GET_INSTRUCTOR);
+        return "admin/GetInstructor";
     }
 
     @GetMapping("/services/get/getCourses")
@@ -79,9 +100,9 @@ public class AdminController
         model.addAttribute("newStudent", new Student());
         try
         {
-            model.addAttribute("genders", propertyFileReader.getGenders());
-            model.addAttribute("states", propertyFileReader.getStates());
-            model.addAttribute("countries", propertyFileReader.getCountries());
+            model.addAttribute("genders", propertyHandler.getGenders());
+            model.addAttribute("states", propertyHandler.getStates());
+            model.addAttribute("countries", propertyHandler.getCountries());
         }
         catch (FileNotFoundException ex)
         {
@@ -107,7 +128,17 @@ public class AdminController
     }
 
     @GetMapping("/services/update/getStudent")
-    public String updateStudent() { return "admin/UpdateGetStudent"; }
+    public String updateStudent(Model model)
+    {
+        model.addAttribute("url", "/admin/services/update/updateable/student");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
+        model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
+        model.addAttribute("max", 8);
+        model.addAttribute("min", 8);
+        model.addAttribute("submitText", propertyHandler.SUB_GET_STUDENT);
+        return "admin/GetStudent";
+    }
 
     @GetMapping("/services/update/updateable/student")
     public String updateableStudent(@RequestParam("studentId") Integer studentId, Model model)
@@ -132,7 +163,7 @@ public class AdminController
         model.addAttribute("newInstructor", new Instructor());
         try
         {
-            model.addAttribute("genders", propertyFileReader.getGenders());
+            model.addAttribute("genders", propertyHandler.getGenders());
         }
         catch (IOException ex)
         {
@@ -156,9 +187,9 @@ public class AdminController
         model.addAttribute("newCourse", new Course());
         try
         {
-            model.addAttribute("courseNames", propertyFileReader.getCourseNames());
-            model.addAttribute("courseLevels", propertyFileReader.getCourseLevels());
-            model.addAttribute("courseCredits", propertyFileReader.getCourseCredits());
+            model.addAttribute("courseNames", propertyHandler.getCourseNames());
+            model.addAttribute("courseLevels", propertyHandler.getCourseLevels());
+            model.addAttribute("courseCredits", propertyHandler.getCourseCredits());
         }
         catch (IOException ex)
         {

@@ -7,7 +7,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Properties;
 
-public class PropertyFileReader
+public class PropertyHandler
 {
     private static final String GENDERS_FILE = "genders.properties";
     private static final String COURSE_LEVELS_FILE = "courseLevels.properties";
@@ -164,4 +164,23 @@ public class PropertyFileReader
         }
         else return COURSE_STATUS_MAP;
     }
+
+    public final String url = "url";
+    public final String methodType = "method";
+    public final String displayWho = "displayWho";
+    public final String INPUT_ID = "inputId";
+    public final String submitText = "submitText";
+    public final String MAX = "max";
+    public final String MIN = "min";
+
+    public final String POST = "post";
+    public final String GET = "get";
+
+    public final String SUB_GET_INSTRUCTOR = "Get Instructor";
+    public final String SUB_GET_STUDENT = "Get Student";
+    public final String INP_INSTRUCTOR_ID = "instructorId";
+    public final String INP_STUDENT_ID = "studentId";
+    public final String DIS_INSTRUCTOR_ID = "Instructor ID:";
+    public final String DIS_STUDENT_ID = "Student ID:";
+
 }

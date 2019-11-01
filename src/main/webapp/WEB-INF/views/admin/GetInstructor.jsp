@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Get Student ID</title>
+    <title>Title</title>
 </head>
 <body>
 
@@ -21,5 +21,6 @@
     </jsp:include>
 
     <%@include file="BackToService.jsp"%>
+
 </body>
 </html>

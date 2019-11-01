@@ -16,7 +16,7 @@ import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.Person;
-import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
+import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
 import com.hamidur.cunyfirst.viewTier.models.SecurityQuestion;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
@@ -44,9 +44,9 @@ public class BeanConfiguration
 {
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-    public PropertyFileReader propertyFileReader()
+    public PropertyHandler propertyHandler()
     {
-        return new PropertyFileReader();
+        return new PropertyHandler();
     }
 
     @Bean

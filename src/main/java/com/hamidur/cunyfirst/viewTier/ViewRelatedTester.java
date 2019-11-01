@@ -11,13 +11,11 @@ import com.hamidur.cunyfirst.viewTier.models.Gender;
 import com.hamidur.cunyfirst.viewTier.models.Grade;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Login;
-import com.hamidur.cunyfirst.viewTier.models.PropertyFileReader;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
 import com.hamidur.cunyfirst.viewTier.models.Term;
 import com.hamidur.cunyfirst.viewTier.models.TransferInfo;
 
-import java.io.File;
 import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.LinkedHashSet;
