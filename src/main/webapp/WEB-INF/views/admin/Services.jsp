@@ -16,7 +16,7 @@
                 <li><a href="/admin/services/get/getStudent">Get a Student</a></li>
                 <li><a href="/admin/services/insert/student">Insert a Student</a></li>
                 <li><a href="/admin/services/update/getStudent">Update a Student</a></li>
-                <li><a href="/admin/services/deleteStudent">Delete a Student</a></li>
+                <li><a href="/admin/services/delete/getStudent">Delete a Student</a></li>
             </ul>
         </div>
 

@@ -116,6 +116,16 @@ public class AdminController
         return "admin/UpdateableStudent";
     }
 
+    @GetMapping("/services/delete/getStudent")
+    public String deleteStudent() { return "admin/DeleteGetStudent"; }
+
+    @GetMapping("/services/delete/deletable/student")
+    public String deletableStudent(@RequestParam("studentId") Integer studentId, Model model)
+    {
+        //
+        return "admin/DeletableStudent";
+    }
+
     @GetMapping("/services/insert/instructor")
     public String insertInstructor(Model model)
     {

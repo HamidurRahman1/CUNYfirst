@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Update Student</title>
+    <title>Delete Student</title>
 </head>
 <body>
 

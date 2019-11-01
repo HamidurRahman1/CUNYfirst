@@ -112,9 +112,7 @@ public class PropertyFileReader
 
     public Map<Float, Float> getCourseCredits() throws FileNotFoundException, IOException
     {
-
-
-        if(COURSE_LEVELS_MAP == null)
+        if(COURSE_CREDITS_MAP == null)
         {
             Map<Float, Float> map = new LinkedHashMap<>();
             Properties properties = new Properties();
