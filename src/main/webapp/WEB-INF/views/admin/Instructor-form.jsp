@@ -9,11 +9,10 @@
 <body>
 
     <%@include file="AdminName.jsp"%>
+    <%@include file="../gen/RequiredField.jsp"%>
 
-    <div>
+    <div class="add">
         <strong>Instructor's Personal Information</strong><br><br>
-        <%@include file="../gen/RequiredField.jsp"%>
-
         <form:form modelAttribute="instructor" action="${url}" method="${methodType}">
             <label for="firstName">* First Name: </label><form:input type="text" path="firstName"/>
             <br><br>

@@ -10,10 +10,10 @@
 <body>
 
     <%@include file="AdminName.jsp" %>
+    <%@include file="../gen/RequiredField.jsp" %>
 
-    <div id="add-student">
-        <form:form modelAttribute="newStudent" method="post" action="/admin/services/insert/processed/student">
-
+    <div class="add">
+        <form:form modelAttribute="student" method="${methodType}" action="${url}">
             <strong>Student Personal Information</strong><br><br>
             <label for="firstName">* First Name: </label><form:input type="text" path="firstName"/>
             <br><br>
@@ -61,9 +61,6 @@
                 <form:options items="${countries}"/>
             </form:select>
             <br><br><br>
-
-            <%@include file="../gen/RequiredField.jsp" %>
-            <br><br>
             <input value="Submit" type="submit">
         </form:form>
     </div>

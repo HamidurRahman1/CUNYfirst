@@ -9,32 +9,30 @@
 <body>
 
     <%@include file="AdminName.jsp" %>
+    <%@include file="../gen/RequiredField.jsp" %>
 
-    <div class="insert">
-        <form:form action="/admin/services/insert/processed/course" method="post" modelAttribute="newCourse">
-            * Course Name:
+    <div class="add">
+        <form:form action="${url}" method="${methodType}" modelAttribute="course">
+            <label>* Course Name:</label>
             <form:select path="courseName" multiple="false">
                 <form:options items="${courseNames}"/>
             </form:select><br><br>
 
-            * Course Level:
+            <label>* Course Level:</label>
             <form:select path="courseLevel" multiple="false">
                 <form:options items="${courseLevels}"/>
             </form:select><br><br>
 
-            * Course Title:<br><br>
+            <label>* Course Title:</label><br><br>
             <form:textarea path="courseTitle" rows="5" cols="30"/><br><br>
 
-            * Course Unit(s):
+            <label>* Course Unit(s):</label>
             <form:select path="courseCredits" multiple="false">
                 <form:options items="${courseCredits}"/>
             </form:select><br><br>
 
-            * Course Description:<br><br>
+            <label>* Course Description:</label><br><br>
             <form:textarea path="description" rows="10" cols="30"/><br><br>
-
-            <%@include file="../gen/RequiredField.jsp" %>
-            <br><br>
 
             <input type="submit" value="Submit"><br><br>
         </form:form>

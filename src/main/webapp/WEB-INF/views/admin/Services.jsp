@@ -23,7 +23,7 @@
         <div id="adminInstructorServices">
             <h3>Instructor Services</h3>
             <ul>
-                <li><a href="/admin/services/insert/instructor">Insert Instructor</a></li>
+                <li><a href="/admin/services/insert/instructor">Insert an Instructor</a></li>
                 <li><a href="/admin/services/update/getInstructor">Update an Instructor</a></li>
             </ul>
         </div>

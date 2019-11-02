@@ -87,7 +87,7 @@ public class Person implements Serializable
 
     @Override
     public java.lang.String toString() {
-        return "Student{" +
+        return "Person{" +
                 "firstName=" + firstName +
                 ", lastName=" + lastName +
                 ", ssn=" + ssn +

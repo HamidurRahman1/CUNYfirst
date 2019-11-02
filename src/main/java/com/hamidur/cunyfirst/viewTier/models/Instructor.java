@@ -79,6 +79,6 @@ public class Instructor extends Person implements Serializable
     @Override
     public String toString()
     {
-        return "Instructor{" + "instructorId=" + instructorId + ", instructorCourses=" + instructorCourses + '}';
+        return super.toString()+"Instructor{" + "instructorId=" + instructorId + ", instructorCourses=" + instructorCourses + '}';
     }
 }

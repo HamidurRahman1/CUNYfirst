@@ -11,12 +11,11 @@
     <%@include file="AdminName.jsp" %>
 
     <div class="successful">
-        Course's Title: ${newCourse.courseCredits} <br><br>
-        Course's Name: ${newCourse.courseName} <br><br>
-        Course's Level: ${newCourse.courseLevel} <br><br>
-        Course's Units: ${newCourse.courseCredits} <br><br>
-        Course's Description: ${newCourse.description} <br><br>
-        <br>
+        <label>Course's Title:</label> ${course.courseTitle} <br><br>
+        <label>Course's Name:</label> ${course.courseName} <br><br>
+        <label>Course's Level:</label> ${course.courseLevel} <br><br>
+        <label>Course's Units:</label> ${course.courseCredits} <br><br>
+        <label>Course's Description:</label> ${course.description} <br><br>
     </div>
 
     <%@include file="BackToService.jsp" %>

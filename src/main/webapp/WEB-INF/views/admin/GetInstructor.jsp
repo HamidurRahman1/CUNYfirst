@@ -4,7 +4,7 @@
 
 <html>
 <head>
-    <title>Title</title>
+    <title>Get Instructor</title>
 </head>
 <body>
 
@@ -17,7 +17,6 @@
         <jsp:param name="inputId" value="${inputId}"/>
         <jsp:param name="max" value="${max}"/>
         <jsp:param name="min" value="${min}"/>
-        <jsp:param name="submitText" value="${submitText}"/>
     </jsp:include>
 
     <%@include file="BackToService.jsp"%>

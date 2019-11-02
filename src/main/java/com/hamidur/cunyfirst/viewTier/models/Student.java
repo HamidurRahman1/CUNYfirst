@@ -14,7 +14,7 @@ public class Student extends Person implements Serializable
     private Contact contact = new Contact();
     private HighSchoolInfo highSchoolInfo = new HighSchoolInfo();
     private TransferInfo transferInfo = new TransferInfo();
-    private Login login;
+    private Login login = new Login();
     private Map<SecurityQuestion, String> questionsAns = new LinkedHashMap <>(3);
     private Set<FAFSA> fafsas = new LinkedHashSet <>();
     private Set<StudentCourse> studentCourses = new LinkedHashSet <>();

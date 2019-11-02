@@ -12,7 +12,7 @@
         <form action="${param.url}" method="${param.methodType}">
             <label>${param.displayWho}</label>
             <input name="${param.inputId}" type="text" maxlength="${param.max}" minlength="${param.min}">
-            <input type="submit" value="${param.submitText}">
+            <input type="submit" value="Submit">
         </form>
     </div>
 
