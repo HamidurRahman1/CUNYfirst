@@ -24,6 +24,6 @@
         </c:otherwise>
     </c:choose>
 
-    <%@include file="BackToService.jsp" %>
+    <%@include file="ServiceCenter.jsp" %>
 </body>
 </html>

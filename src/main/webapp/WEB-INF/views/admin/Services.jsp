@@ -4,11 +4,11 @@
 
 <html>
 <head>
-    <title>Admin Services</title>
+    <title>Admin Service Center</title>
 </head>
 <body>
 
-        <%@include file="AdminName.jsp" %>
+        <%@include file="AdminName.jsp"%>
 
         <div id="adminStudentServices">
             <h3>Student Services</h3>

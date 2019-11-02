@@ -18,7 +18,7 @@
         <label>Course's Description:</label> ${course.description} <br><br>
     </div>
 
-    <%@include file="BackToService.jsp" %>
+    <%@include file="ServiceCenter.jsp" %>
 
 </body>
 </html>

@@ -11,6 +11,6 @@
     <div class="message">
         <h3>${message}</h3>
     </div>
-    <%@include file="../admin/BackToService.jsp"%>
+    <%@include file="../admin/ServiceCenter.jsp"%>
 </body>
 </html>

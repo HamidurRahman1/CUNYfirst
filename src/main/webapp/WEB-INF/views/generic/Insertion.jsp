@@ -21,7 +21,7 @@
         <label>${username}</label><br><br>
     </div>
 
-    <%@include file="../admin/BackToService.jsp"%>
+    <%@include file="../admin/ServiceCenter.jsp"%>
 
 </body>
 </html>

@@ -9,7 +9,7 @@
 <body>
 
     <%@include file="AdminName.jsp" %>
-    <%@include file="../gen/RequiredField.jsp" %>
+    <%@include file="../generic/RequiredField.jsp" %>
 
     <div class="add">
         <form:form action="${url}" method="${methodType}" modelAttribute="course">
@@ -38,7 +38,7 @@
         </form:form>
     </div>
 
-    <%@include file="BackToService.jsp" %>
+    <%@include file="ServiceCenter.jsp" %>
 
 </body>
 </html>

@@ -93,7 +93,8 @@ public class ViewRelatedTester
     
     public static List<Term> testTerm()
     {
-        return new LinkedList<>(Arrays.asList(new Term("Spring", 2016), new Term("Fall", 2016)));
+        return new LinkedList<>(Arrays.asList(new Term("Spring", 2016),
+                new Term("Fall", 2016)));
     }
     
     public static Login testLogin()
@@ -109,7 +110,13 @@ public class ViewRelatedTester
 
         Course c2 = new Course("Intermediate Accounting", CourseName.BTA.toString(), 111, 3.0f, "description");
 
-        courses.addAll(Arrays.asList(c1, c2));
+        Course c3 = new Course("Sub 3", CourseName.MAC.toString(), 101, 3.0f, "description");
+
+        Course c4 = new Course("Sub 4 Accounting", CourseName.ENG.toString(), 270, 3.0f, "description");
+
+        Course c5 = new Course("Sub 5 Accounting", CourseName.SCP.toString(), 231, 4.0f, "description");
+
+        courses.addAll(Arrays.asList(c1, c2, c3, c4, c5));
 
         return courses;
     }
@@ -118,9 +125,13 @@ public class ViewRelatedTester
     {
         Set<StudentCourse> studentCourses = new LinkedHashSet<>();
         studentCourses.add(new StudentCourse(demoCourses().get(0), CourseStatus.TAKEN.getValue(),
-                Grade.A_MINUS.getValue(), testTerm().get(0)));
-        studentCourses.add(new StudentCourse(demoCourses().get(1), CourseStatus.TAKEN.getValue(),
+                Grade.A.getValue(), testTerm().get(0)));
+        studentCourses.add(new StudentCourse(demoCourses().get(2), CourseStatus.TAKEN.getValue(),
+                Grade.C_PLUS.getValue(), testTerm().get(0)));
+        studentCourses.add(new StudentCourse(demoCourses().get(3), CourseStatus.TAKEN.getValue(),
                 Grade.A.getValue(), testTerm().get(1)));
+        studentCourses.add(new StudentCourse(demoCourses().get(4), CourseStatus.TAKEN.getValue(),
+                Grade.F.getValue(), testTerm().get(1)));
         return studentCourses;
     }
 }

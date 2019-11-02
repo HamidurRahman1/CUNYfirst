@@ -166,6 +166,6 @@
         </div>
     </div>
 
-    <%@include file="BackToService.jsp" %>
+    <%@include file="ServiceCenter.jsp" %>
 </body>
 </html>
