@@ -1,10 +1,8 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
-import java.time.LocalDate;
 
 public class Person implements Serializable
 {
@@ -20,8 +18,7 @@ public class Person implements Serializable
     private String ssn;
     
     @NotNull(message = "Date of birth cannot be empty")
-    @PastOrPresent
-    private LocalDate dateOfBirth;
+    private String dateOfBirth;
     
     @NotNull(message = "String must be provided")
     @Size(min = 1, max = 1)
@@ -29,7 +26,7 @@ public class Person implements Serializable
     
     public Person() {}
     
-    public Person(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
+    public Person(String firstName, String lastName, String ssn, String dateOfBirth, String gender)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -68,12 +65,12 @@ public class Person implements Serializable
         this.ssn = ssn;
     }
     
-    public LocalDate getDateOfBirth()
+    public String getDateOfBirth()
     {
         return dateOfBirth;
     }
     
-    public void setDateOfBirth(LocalDate dateOfBirth)
+    public void setDateOfBirth(String dateOfBirth)
     {
         this.dateOfBirth = dateOfBirth;
     }

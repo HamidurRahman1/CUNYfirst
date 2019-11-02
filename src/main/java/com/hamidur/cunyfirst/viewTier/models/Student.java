@@ -24,7 +24,7 @@ public class Student extends Person implements Serializable
         super();
     }
     
-    public Student(String firstName, String lastName, String ssn, LocalDate dateOfBirth, String gender)
+    public Student(String firstName, String lastName, String ssn, String dateOfBirth, String gender)
     {
         super(firstName, lastName, ssn, dateOfBirth, gender);
     }

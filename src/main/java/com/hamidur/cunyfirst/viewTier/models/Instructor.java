@@ -10,13 +10,14 @@ public class Instructor extends Person implements Serializable
 {
     private Integer instructorId;
     private Set<InstructorCourse> instructorCourses = new LinkedHashSet <>();
+    private Login login = new Login();
     
     public Instructor()
     {
         super();
     }
     
-    public Instructor(java.lang.String firstName, java.lang.String lastName, java.lang.String ssn, LocalDate dateOfBirth, String string)
+    public Instructor(String firstName, String lastName, String ssn, String dateOfBirth, String string)
     {
         super(firstName, lastName, ssn, dateOfBirth, string);
     }
@@ -50,7 +51,15 @@ public class Instructor extends Person implements Serializable
     {
         instructorCourses.remove(instructorCourse);
     }
-    
+
+    public Login getLogin() {
+        return login;
+    }
+
+    public void setLogin(Login login) {
+        this.login = login;
+    }
+
     @Override
     public boolean equals(Object o)
     {
@@ -68,7 +77,7 @@ public class Instructor extends Person implements Serializable
     }
     
     @Override
-    public java.lang.String toString()
+    public String toString()
     {
         return "Instructor{" + "instructorId=" + instructorId + ", instructorCourses=" + instructorCourses + '}';
     }

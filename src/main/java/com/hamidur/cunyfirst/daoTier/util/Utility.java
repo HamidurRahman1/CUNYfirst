@@ -43,7 +43,7 @@ public class Utility
     public static Instructor toDaoInstructor(com.hamidur.cunyfirst.viewTier.models.Instructor instructor)
     {
         return new Instructor(instructor.getFirstName(), instructor.getLastName(), instructor.getSsn(),
-                instructor.getDateOfBirth(), instructor.getGender());
+                LocalDate.parse(instructor.getDateOfBirth()), instructor.getGender());
     }
 
     public static LocalDate toLocalDate(Date sqlDate)
@@ -80,7 +80,7 @@ public class Utility
         viewStudent.setFirstName(student.getPerson().getFirstName());
         viewStudent.setLastName(student.getPerson().getLastName());
         viewStudent.setSsn(student.getPerson().getSsn());
-        viewStudent.setDateOfBirth(student.getPerson().getDateOfBirth());
+        viewStudent.setDateOfBirth(student.getPerson().getDateOfBirth().toString());
         viewStudent.setGender(toViewGender(student.getPerson().getGender()));
 
         viewStudent.setAddress(toViewAddress(student.getAddresses().iterator().next()));
@@ -99,7 +99,7 @@ public class Utility
         person.setFirstName(student.getFirstName());
         person.setLastName(student.getLastName());
         person.setSsn(student.getSsn());
-        person.setDateOfBirth(student.getDateOfBirth());
+        person.setDateOfBirth(LocalDate.parse(student.getDateOfBirth()));
         person.setGender(student.getGender());
 
         daoStudent.setPerson(person);

@@ -10,6 +10,7 @@ import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.Gender;
 import com.hamidur.cunyfirst.viewTier.models.Grade;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
+import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
@@ -29,16 +30,8 @@ public class ViewRelatedTester
     {
         try
         {
-            Student student = testStudent();
-
-            System.out.println(student);
-            System.out.println(student.getAddress());
-            System.out.println(student.getContact());
-            System.out.println(student.getHighSchoolInfo());
-            System.out.println(student.getTransferInfo());
-            System.out.println(student.getLogin());
-            System.out.println(student.getStudentCourses());
-            System.out.println(student.getFafsas());
+            String p[] = "10/5/2015".split("/");
+            System.out.println(p[0] + " " + p[1] + " " + p[2]);
         }
         catch (Exception ex)
         {
@@ -48,7 +41,7 @@ public class ViewRelatedTester
     
     public static Student testStudent()
     {
-        Student student = new Student("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.M.toString());
+        Student student = new Student("Hamidur", "Rahman", "ssn", "10/05/1997", Gender.M.toString());
         student.setStudentId(20021001);
         student.setAddress(testAddress());
         student.setContact(testContact());
@@ -58,6 +51,11 @@ public class ViewRelatedTester
         student.setStudentCourses(studentCourses());
         student.setFafsas(fafsas());
         return student;
+    }
+
+    public static Instructor testInstructor()
+    {
+        return new Instructor("Hamidur", "Rahman", "123456789", "11/21/1998", Gender.M.toString());
     }
 
     public static Set<FAFSA> fafsas()
@@ -70,7 +68,7 @@ public class ViewRelatedTester
 
     public static Admin testAdmin()
     {
-        return new Admin("Hamidur", "Rahman", "ssn", LocalDate.now(), Gender.F.toString());
+        return new Admin("Hamidur", "Rahman", "ssn", "12/12/1998", Gender.F.toString());
     }
     
     public static Address testAddress()

@@ -13,7 +13,7 @@ public class Admin extends Person implements Serializable
         super();
     }
     
-    public Admin(java.lang.String firstName, java.lang.String lastName, java.lang.String ssn, LocalDate dateOfBirth, String string)
+    public Admin(java.lang.String firstName, java.lang.String lastName, java.lang.String ssn, String dateOfBirth, String string)
     {
         super(firstName, lastName, ssn, dateOfBirth, string);
     }

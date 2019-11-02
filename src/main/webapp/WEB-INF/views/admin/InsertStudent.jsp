@@ -62,7 +62,7 @@
             </form:select>
             <br><br><br>
 
-            <%@include file="RequiredField.jsp" %>
+            <%@include file="../gen/RequiredField.jsp" %>
             <br><br>
             <input value="Submit" type="submit">
         </form:form>

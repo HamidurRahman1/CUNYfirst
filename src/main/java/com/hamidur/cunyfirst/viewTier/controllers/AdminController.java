@@ -9,6 +9,7 @@ import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.List;
 
@@ -64,19 +64,6 @@ public class AdminController
         return "admin/GetStudent";
     }
 
-    @GetMapping("/services/get/getInstructor")
-    public String getInstructor(Model model)
-    {
-        model.addAttribute("url", "/admin/services/update/updateable/instructor");
-        model.addAttribute("methodType", propertyHandler.GET);
-        model.addAttribute("inputId", propertyHandler.INP_INSTRUCTOR_ID);
-        model.addAttribute("displayWho", propertyHandler.DIS_INSTRUCTOR_ID);
-        model.addAttribute("max", 3);
-        model.addAttribute("min", 3);
-        model.addAttribute("submitText", propertyHandler.SUB_GET_INSTRUCTOR);
-        return "admin/GetInstructor";
-    }
-
     @GetMapping("/services/get/getCourses")
     public String getCourses(Model model)
     {
@@ -103,11 +90,6 @@ public class AdminController
             model.addAttribute("genders", propertyHandler.getGenders());
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
-        }
-        catch (FileNotFoundException ex)
-        {
-            // redirect
-            System.out.println(ex.getMessage());
         }
         catch (IOException ex)
         {
@@ -160,7 +142,9 @@ public class AdminController
     @GetMapping("/services/insert/instructor")
     public String insertInstructor(Model model)
     {
-        model.addAttribute("newInstructor", new Instructor());
+        model.addAttribute("instructor", new Instructor());
+        model.addAttribute("url", "/admin/services/insert/processed/instructor");
+        model.addAttribute("methodType", propertyHandler.POST);
         try
         {
             model.addAttribute("genders", propertyHandler.getGenders());
@@ -170,15 +154,60 @@ public class AdminController
             // redirect
             System.out.println(ex.getMessage());
         }
-        return "admin/InsertInstructor";
+        return "admin/Instructor-form";
     }
 
     @PostMapping("/services/insert/processed/instructor")
-    public String processNewInstructor(@ModelAttribute("newInstructor") Instructor instructor, Model model)
+    public String processNewInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
     {
-        // insert into db then redirect if success else error
-        model.addAttribute("newInstructor", instructor);
-        return "admin/InstructorAdded";
+        instructor.setInstructorId(1001);
+        instructor.setLogin(new Login("username.edu", "pass"));
+        model.addAttribute("who", "Instructor");
+        model.addAttribute("firstName", instructor.getFirstName());
+        model.addAttribute("lastName", instructor.getLastName());
+        model.addAttribute("username", instructor.getLogin().getUsername());
+        model.addAttribute("id", instructor.getInstructorId());
+        return "gen/Insertion";
+    }
+
+    @GetMapping("/services/update/getInstructor")
+    public String getInstructor(Model model)
+    {
+        model.addAttribute("url", "/admin/services/update/updateable/instructor");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("inputId", propertyHandler.INP_INSTRUCTOR_ID);
+        model.addAttribute("displayWho", propertyHandler.DIS_INSTRUCTOR_ID);
+        model.addAttribute("max", 3);
+        model.addAttribute("min", 3);
+        model.addAttribute("submitText", propertyHandler.SUB_GET_INSTRUCTOR);
+        return "admin/GetInstructor";
+    }
+
+    @GetMapping("/services/update/updateable/instructor")
+    public String updateableInstructor(@RequestParam("instructorId") Integer instructorId, Model model)
+    {
+        model.addAttribute("url", "/admin/services/update/updated/instructor");
+        model.addAttribute("methodType", propertyHandler.POST);
+        model.addAttribute("instructor", ViewRelatedTester.testInstructor());
+        try
+        {
+            model.addAttribute("genders", propertyHandler.getGenders());
+        }
+        catch (IOException ex)
+        {
+            // redirect
+            System.out.println(ex.getMessage());
+        }
+        return "admin/Instructor-form";
+    }
+
+    @PostMapping("/admin/services/update/updated/instructor")
+    public String updatedInstructor(Model model)
+    {
+//        System.out.println(instructor);
+        model.addAttribute("title", "Instructor Updated");
+        model.addAttribute("message", "Instructor has been successfully updated.");
+        return "gen/Message";
     }
 
     @GetMapping("/services/insert/course")

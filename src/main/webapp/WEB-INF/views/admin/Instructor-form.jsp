@@ -11,23 +11,20 @@
     <%@include file="AdminName.jsp"%>
 
     <div>
-        <form:form modelAttribute="newInstructor" action="/admin/services/insert/processed/instructor" method="post">
+        <strong>Instructor's Personal Information</strong><br><br>
+        <%@include file="../gen/RequiredField.jsp"%>
 
-            <strong>Instructor Personal Information</strong><br><br>
+        <form:form modelAttribute="instructor" action="${url}" method="${methodType}">
             <label for="firstName">* First Name: </label><form:input type="text" path="firstName"/>
             <br><br>
             <label for="lastName">* Last Name: </label><form:input type="text" path="lastName"/>
             <br><br>
             <label for="ssn">* SSN: </label><form:input type="number" path="ssn"/>
             <br><br>
-            <label for="dateOfBirth">* Date of Birth: </label><form:input type="date" path="dateOfBirth"/>
+            <label for="dateOfBirth">* Date of Birth: </label><form:input type="text" path="dateOfBirth"/>
             <br><br>
             <label for="gender">* Gender: </label><form:radiobuttons path="gender" items="${genders}"/>
             <br><br><br>
-
-            <%@include file="RequiredField.jsp" %>
-            <br><br>
-
             <input value="Submit" type="submit">
         </form:form>
     </div>

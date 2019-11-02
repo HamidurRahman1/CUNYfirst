@@ -33,7 +33,7 @@
             * Course Description:<br><br>
             <form:textarea path="description" rows="10" cols="30"/><br><br>
 
-            <%@include file="RequiredField.jsp" %>
+            <%@include file="../gen/RequiredField.jsp" %>
             <br><br>
 
             <input type="submit" value="Submit"><br><br>
