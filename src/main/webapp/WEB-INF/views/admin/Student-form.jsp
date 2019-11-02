@@ -21,7 +21,7 @@
             <br><br>
             <label for="ssn">* SSN: </label><form:input type="number" path="ssn"/>
             <br><br>
-            <label for="dateOfBirth">* Date of Birth: </label><form:input type="date" path="dateOfBirth"/>
+            <label for="dateOfBirth">* Date of Birth: </label><form:input type="text" path="dateOfBirth"/>
             <br><br>
             <label for="gender">* Gender: </label><form:radiobuttons path="gender" items="${genders}"/>
             <br><br><br>

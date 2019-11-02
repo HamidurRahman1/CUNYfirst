@@ -21,6 +21,12 @@ public class Instructor extends Person implements Serializable
     {
         super(firstName, lastName, ssn, dateOfBirth, string);
     }
+
+    public Instructor(Integer instructorId, String firstName, String lastName, String ssn, String dateOfBirth, String string)
+    {
+        super(firstName, lastName, ssn, dateOfBirth, string);
+        setInstructorId(instructorId);
+    }
     
     public Integer getInstructorId()
     {

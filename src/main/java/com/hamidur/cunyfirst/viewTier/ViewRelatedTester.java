@@ -41,7 +41,7 @@ public class ViewRelatedTester
     
     public static Student testStudent()
     {
-        Student student = new Student("Hamidur", "Rahman", "ssn", "10/05/1997", Gender.M.toString());
+        Student student = new Student("Hamidur", "Rahman", "090212999", "10/05/1997", Gender.M.toString());
         student.setStudentId(20021001);
         student.setAddress(testAddress());
         student.setContact(testContact());
@@ -55,7 +55,7 @@ public class ViewRelatedTester
 
     public static Instructor testInstructor()
     {
-        return new Instructor("Hamidur", "Rahman", "123456789", "11/21/1998", Gender.M.toString());
+        return new Instructor(101,"Hamidur", "Rahman", "123456789", "11/21/1998", Gender.M.toString());
     }
 
     public static Set<FAFSA> fafsas()
@@ -68,12 +68,12 @@ public class ViewRelatedTester
 
     public static Admin testAdmin()
     {
-        return new Admin("Hamidur", "Rahman", "ssn", "12/12/1998", Gender.F.toString());
+        return new Admin("Hamidur", "Rahman", "212990121", "12/12/1998", Gender.F.toString());
     }
     
     public static Address testAddress()
     {
-        return new Address("st", "crst", "city", "street", "zipcode");
+        return new Address("47th", "5040", "woodside", "NY", "00123");
     }
     
     public static Contact testContact()

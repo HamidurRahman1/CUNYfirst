@@ -5,10 +5,10 @@
 
 <html>
 <head>
-    <title>Student Login</title>
+    <title>${title} Login</title>
 </head>
 <body>
-    <form:form action="processLogin" method="post" modelAttribute="login">
+    <form:form action="${url}" method="${methodType}" modelAttribute="login">
         <label for="username">Username</label><form:input path="username"/>
         <br><br>
         <label for="password">Password</label><form:password path="password"/>

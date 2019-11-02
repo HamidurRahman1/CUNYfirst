@@ -9,7 +9,7 @@
 <body>
     <%@include file="../admin/AdminName.jsp"%>
     <div class="message">
-        <h3>${message}<h3>
+        <h3>${message}</h3>
     </div>
     <%@include file="../admin/BackToService.jsp"%>
 </body>

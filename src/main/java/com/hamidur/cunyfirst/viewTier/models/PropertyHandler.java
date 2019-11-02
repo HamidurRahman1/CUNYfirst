@@ -165,16 +165,19 @@ public class PropertyHandler
         else return COURSE_STATUS_MAP;
     }
 
-    public final String url = "url";
-    public final String methodType = "method";
-    public final String displayWho = "displayWho";
-    public final String INPUT_ID = "inputId";
-    public final String submitText = "submitText";
-    public final String MAX = "max";
-    public final String MIN = "min";
+//    public final String url = "url";
+//    public final String methodType = "method";
+//    public final String displayWho = "displayWho";
+//    public final String INPUT_ID = "inputId";
+//    public final String submitText = "submitText";
+//    public final String MAX = "max";
+//    public final String MIN = "min";
 
     public final String POST = "post";
     public final String GET = "get";
+
+    public final String INSTRUCTOR = "Instructor";
+    public final String STUDENT = "Student";
 
     public final String SUB_GET_INSTRUCTOR = "Get Instructor";
     public final String SUB_GET_STUDENT = "Get Student";

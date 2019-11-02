@@ -4,6 +4,7 @@ import com.hamidur.cunyfirst.serviceTier.ApiService;
 import com.hamidur.cunyfirst.viewTier.ViewRelatedTester;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 
+import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -22,19 +23,25 @@ public class StudentController
 {
     private final ApplicationContext applicationContext;
     private final ApiService apiService;
+    private final PropertyHandler propertyHandler;
 
-
-    public StudentController(final ApplicationContext applicationContext, final ApiService apiService)
+    public StudentController(@Autowired final ApplicationContext applicationContext,
+                             @Autowired final ApiService apiService,
+                             @Autowired final PropertyHandler propertyHandler)
     {
         this.applicationContext = applicationContext;
         this.apiService = apiService;
+        this.propertyHandler = propertyHandler;
     }
 
     @GetMapping("/login")
     public String studentLogin(Model model)
     {
         model.addAttribute("login", applicationContext.getBean(Login.class));
-        return "student/login";
+        model.addAttribute("title", "Student");
+        model.addAttribute("url", "/student/processStudentLogin");
+        model.addAttribute("methodType", propertyHandler.POST);
+        return "generic/login";
     }
 
     /*
@@ -42,10 +49,10 @@ public class StudentController
     * be accessible in Services.jsp if this method takes Login object from/as @ModelAttribute, which will then be
     * available to access in Services.jsp
     * */
-    @PostMapping("/processLogin")
+    @PostMapping("/processStudentLogin")
     public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
     {
-//        session.setAttribute("login", login);
+        session.setAttribute("login", login);
         Student student = ViewRelatedTester.testStudent();
         session.setAttribute("student", student);
         return "redirect:/student/display";

@@ -32,7 +32,10 @@ public class AdminController
     public String studentLogin(Model model)
     {
         model.addAttribute("login", new Login());
-        return "admin/Login";
+        model.addAttribute("title", "Admin");
+        model.addAttribute("url", "/admin/processAdminLogin");
+        model.addAttribute("methodType", propertyHandler.POST);
+        return "generic/Login";
     }
 
     @PostMapping("/processAdminLogin")
@@ -59,14 +62,6 @@ public class AdminController
         model.addAttribute("max", 8);
         model.addAttribute("min", 8);
         return "admin/GetStudent";
-    }
-
-    @GetMapping("/services/get/getCourses")
-    public String getCourses(Model model)
-    {
-        List<Course> courses = ViewRelatedTester.demoCourses();
-        model.addAttribute("courses", courses);
-        return "admin/GetCourses";
     }
 
     @GetMapping("/services/display/student")
@@ -106,7 +101,7 @@ public class AdminController
         model.addAttribute("lastName", student.getLastName());
         model.addAttribute("username", student.getLogin().getUsername());
         model.addAttribute("id", student.getStudentId());
-        return "gen/Insertion";
+        return "generic/Insertion";
     }
 
     @GetMapping("/services/update/getStudent")
@@ -144,8 +139,9 @@ public class AdminController
     public String updatesStudent(@ModelAttribute("student") Student student, Model model)
     {
         model.addAttribute("title", "Student Updated");
-        model.addAttribute("message", "Student has been successfully updated.");
-        return "gen/Message";
+        model.addAttribute("message", "Student with ID: "+student.getStudentId()
+                +" has been successfully updated.");
+        return "generic/Message";
     }
 
     @GetMapping("/services/delete/getStudent")
@@ -163,28 +159,21 @@ public class AdminController
     @GetMapping("/services/delete/deletable/student")
     public String deletableStudent(@RequestParam("studentId") Integer studentId, Model model)
     {
-        try
-        {
-            model.addAttribute("studentId", studentId);
-            model.addAttribute("url", "/admin/services/delete/deleted/student");
-            model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("student", ViewRelatedTester.testStudent());
-            model.addAttribute("genders", propertyHandler.getGenders());
-        }
-        catch (IOException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
-        return "admin/DeletableStudent";
+        model.addAttribute("who", propertyHandler.STUDENT.toLowerCase());
+        model.addAttribute("id", ViewRelatedTester.testStudent().getStudentId());
+        model.addAttribute("url", "/admin/services/delete/deleted/student");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("object", ViewRelatedTester.testStudent());
+        return "admin/Deletable";
     }
 
     @GetMapping("/services/delete/deleted/student")
-    public String studentDeleted(@RequestParam("studentId") Integer studentId, Model model)
+    public String studentDeleted(@RequestParam("id") Integer studentId, Model model)
     {
-        System.out.println(studentId);
         model.addAttribute("title", "Student deleted");
-        model.addAttribute("message", "Student has been successfully deleted.");
-        return "gen/Message";
+        model.addAttribute("message", "Student with ID: " + studentId
+                + " has been successfully deleted.");
+        return "generic/Message";
     }
 
     @GetMapping("/services/insert/instructor")
@@ -215,7 +204,7 @@ public class AdminController
         model.addAttribute("lastName", instructor.getLastName());
         model.addAttribute("username", instructor.getLogin().getUsername());
         model.addAttribute("id", instructor.getInstructorId());
-        return "gen/Insertion";
+        return "generic/Insertion";
     }
 
     @GetMapping("/services/update/getInstructor")
@@ -251,8 +240,49 @@ public class AdminController
     public String updatedInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
     {
         model.addAttribute("title", "Instructor Updated");
-        model.addAttribute("message", "Instructor has been successfully updated.");
-        return "gen/Message";
+        model.addAttribute("message", "Instructor with ID: " + instructor.getInstructorId() +
+                " has been successfully updated.");
+        return "generic/Message";
+    }
+
+    @GetMapping("/services/delete/getInstructor")
+    public String deleteInstructor(Model model)
+    {
+        model.addAttribute("url", "/admin/services/delete/deletable/instructor");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("inputId", propertyHandler.INP_INSTRUCTOR_ID);
+        model.addAttribute("displayWho", propertyHandler.DIS_INSTRUCTOR_ID);
+        model.addAttribute("max", 3);
+        model.addAttribute("min", 3);
+        return "admin/GetInstructor";
+    }
+
+    @GetMapping("/services/delete/deletable/instructor")
+    public String deletableInstructor(@RequestParam("instructorId") Integer instructorId, Model model)
+    {
+        model.addAttribute("who", propertyHandler.INSTRUCTOR.toLowerCase());
+        model.addAttribute("object", ViewRelatedTester.testInstructor());
+        model.addAttribute("id", ViewRelatedTester.testInstructor().getInstructorId());
+        model.addAttribute("url", "/admin/services/delete/deleted/instructor");
+        model.addAttribute("methodType", propertyHandler.GET);
+        return "admin/Deletable";
+    }
+
+    @GetMapping("/services/delete/deleted/instructor")
+    public String instructorDeleted(@RequestParam("id") Integer instructorId, Model model)
+    {
+        model.addAttribute("title", "Instructor deleted");
+        model.addAttribute("message", "Instructor with ID: " +instructorId
+                + " has been successfully deleted.");
+        return "generic/Message";
+    }
+
+    @GetMapping("/services/get/getCourses")
+    public String getCourses(Model model)
+    {
+        List<Course> courses = ViewRelatedTester.demoCourses();
+        model.addAttribute("courses", courses);
+        return "admin/GetCourses";
     }
 
     @GetMapping("/services/insert/course")

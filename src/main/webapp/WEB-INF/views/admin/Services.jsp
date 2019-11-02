@@ -25,6 +25,7 @@
             <ul>
                 <li><a href="/admin/services/insert/instructor">Insert an Instructor</a></li>
                 <li><a href="/admin/services/update/getInstructor">Update an Instructor</a></li>
+                <li><a href="/admin/services/delete/getInstructor">Delete an Instructor</a></li>
             </ul>
         </div>
 
