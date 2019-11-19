@@ -12,9 +12,7 @@
         <div id="studentContainer">
 
             <div class="courses">
-                <form action="/student/get/getAllCourses">
-                    <input type="submit" value="Offered Courses">
-                </form>
+                <a href="/student/get/getCourses">Get All Offered Courses</a>
             </div>
 
             <div class="fafsas">

@@ -82,4 +82,11 @@ public class StudentController
         model.addAttribute("studentCourse", set);
         return "student/CourseHistory";
     }
+
+    @GetMapping("/get/getCourses")
+    public String getCourses(Model model)
+    {
+        model.addAttribute("courses", ViewRelatedTester.demoCourses());
+        return "student/GetCourses";
+    }
 }
