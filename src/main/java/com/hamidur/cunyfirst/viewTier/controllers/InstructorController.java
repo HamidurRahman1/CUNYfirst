@@ -56,4 +56,11 @@ public class InstructorController
         model.addAttribute("insCourses", ViewRelatedTester.instructorCourses());
         return "instructor/InstructorCourses";
     }
+
+    @GetMapping("/logout")
+    public String logoutInstructor(HttpSession session)
+    {
+        session.removeAttribute("instructor");
+        return "redirect:/instructor/login";
+    }
 }

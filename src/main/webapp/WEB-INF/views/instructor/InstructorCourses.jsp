@@ -9,9 +9,9 @@
 </head>
 <body>
 
-    <div>
-        <%@include file="InstructorName.jsp"%>
-    </div>
+    <div><%@include file="InstructorName.jsp"%></div>
+
+    <div><%@include file="Logout.jsp"%></div>
 
     <div>
         <table border="1" cellpadding="5">
@@ -29,6 +29,8 @@
             </c:forEach>
         </table>
     </div>
+
+    <div></div>
 
 </body>
 </html>
