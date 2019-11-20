@@ -11,6 +11,7 @@ import com.hamidur.cunyfirst.viewTier.models.Gender;
 import com.hamidur.cunyfirst.viewTier.models.Grade;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
+import com.hamidur.cunyfirst.viewTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
@@ -133,5 +134,18 @@ public class ViewRelatedTester
         studentCourses.add(new StudentCourse(demoCourses().get(4), CourseStatus.TAKEN.getValue(),
                 Grade.F.getValue(), testTerm().get(1)));
         return studentCourses;
+    }
+
+    public static List<InstructorCourse> instructorCourses()
+    {
+        List<InstructorCourse> instructorCourses = new LinkedList<>();
+
+        InstructorCourse ic1 = new InstructorCourse(); ic1.setCourse(demoCourses().get(0)); ic1.setTerm(testTerm().get(0));
+        InstructorCourse ic2 = new InstructorCourse(); ic2.setCourse(demoCourses().get(1)); ic2.setTerm(testTerm().get(1));
+
+        instructorCourses.add(ic1);
+        instructorCourses.add(ic2);
+
+        return instructorCourses;
     }
 }
