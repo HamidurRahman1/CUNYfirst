@@ -19,7 +19,9 @@
                     <th>Course Units</th>
                     <th>Course Description</th>
                 </tr>
+                <
                 <c:forEach var="course" items="${param.courses}">
+
                     <tr>
                         <td>${course.courseName}</td>
                         <td>${course.courseLevel}</td>

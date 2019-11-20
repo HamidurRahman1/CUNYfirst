@@ -113,11 +113,17 @@ public class Course implements Serializable
         return Objects.hash(getCourseId(), getCourseTitle(), getCourseName(), getCourseLevel(), getCourseCredits(), getDescription());
     }
     
+//    @Override
+//    public String toString()
+//    {
+//        return "Course{" + "courseId=" + courseId + ", courseTitle='" + courseTitle + '\'' + ", courseName="
+//                + courseName + ", courseLevel=" + courseLevel + ", courseCredits="
+//                + courseCredits + ", description='" + description + '\'' + '}';
+//    }
+
+
     @Override
-    public String toString()
-    {
-        return "Course{" + "courseId=" + courseId + ", courseTitle='" + courseTitle + '\'' + ", courseName="
-                + courseName + ", courseLevel=" + courseLevel + ", courseCredits="
-                + courseCredits + ", description='" + description + '\'' + '}';
+    public String toString() {
+        return courseTitle;
     }
 }

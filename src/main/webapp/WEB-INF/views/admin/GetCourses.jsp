@@ -11,7 +11,7 @@
 
         <%@include file="AdminName.jsp" %>
 
-        <jsp:include page="../generic/Courses.jsp" >
+        <jsp:include page="../generic/Courses.jsp">
             <jsp:param name="courses" value="${courses}"/>
         </jsp:include>
 
