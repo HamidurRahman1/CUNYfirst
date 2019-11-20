@@ -7,14 +7,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c9fb1478-4bf2-49e3-9b58-583610bd5335" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/instructor/InstructorName.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../CSCI-370-Final-Project-Demo" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Coding-Problems" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Data-Structure" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Database" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../NLP" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/InstructorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hamidur/cunyfirst/viewTier/controllers/InstructorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projects" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
@@ -145,8 +142,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/instructor/InstructorCenter.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+            <state relative-caret-position="440">
+              <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -707,7 +704,7 @@
       <workItem from="1572712184853" duration="8822000" />
       <workItem from="1574125939119" duration="222000" />
       <workItem from="1574220250308" duration="2194000" />
-      <workItem from="1574266085589" duration="1551000" />
+      <workItem from="1574266085589" duration="1672000" />
     </task>
     <servers />
   </component>
@@ -723,13 +720,12 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134017000" />
+    <option name="totallyTimeSpent" value="134138000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25030527" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25030527" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
@@ -738,7 +734,7 @@
       <window_info id="Persistence" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32959184" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40714285" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.40714285" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -746,7 +742,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Spring" order="9" weight="0.32857144" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.28163266" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.33367348" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.34489796" />
       <window_info anchor="bottom" id="Application Servers" order="13" weight="0.46375144" />
@@ -1164,8 +1160,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/instructor/InstructorCenter.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="57" lean-forward="true" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
+        <state relative-caret-position="440">
+          <caret line="20" column="14" lean-forward="true" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
         </state>
       </provider>
     </entry>
