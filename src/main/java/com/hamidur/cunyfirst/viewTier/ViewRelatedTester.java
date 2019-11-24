@@ -136,6 +136,25 @@ public class ViewRelatedTester
         return studentCourses;
     }
 
+    public static Set<StudentCourse> allStudentCourses()
+    {
+        Set<StudentCourse> studentCourses = new LinkedHashSet<>();
+
+        Student s1 = new Student("first name", "last name", "", "", "");
+        s1.setStudentId(10000021);
+
+        studentCourses.add(new StudentCourse(s1, demoCourses().get(0), CourseStatus.IN_PROGRESS.getValue(),
+                Grade.A.getValue(), testTerm().get(0)));
+        studentCourses.add(new StudentCourse(s1, demoCourses().get(0), CourseStatus.IN_PROGRESS.getValue(),
+                Grade.C_PLUS.getValue(), testTerm().get(0)));
+        studentCourses.add(new StudentCourse(s1, demoCourses().get(0), CourseStatus.IN_PROGRESS.getValue(),
+                Grade.A_MINUS.getValue(), testTerm().get(0)));
+        studentCourses.add(new StudentCourse(s1, demoCourses().get(0), CourseStatus.IN_PROGRESS.getValue(),
+                Grade.B.getValue(), testTerm().get(0)));
+
+        return studentCourses;
+    }
+
     public static List<InstructorCourse> instructorCourses()
     {
         List<InstructorCourse> instructorCourses = new LinkedList<>();

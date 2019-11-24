@@ -128,7 +128,6 @@ public class PropertyHandler
 
             for (final String name : properties.stringPropertyNames())
                 map.put(Float.parseFloat(name), Float.parseFloat(properties.getProperty(name)));
-            System.out.println("loaded credits");
             COURSE_CREDITS_MAP = map;
             return COURSE_CREDITS_MAP;
         }

@@ -63,4 +63,20 @@ public class InstructorController
         session.removeAttribute("instructor");
         return "redirect:/instructor/login";
     }
+
+    @GetMapping("/update/updateGrades")
+    public String updateGrades(Model model)
+    {
+        try
+        {
+            // get students grades
+            model.addAttribute("students", ViewRelatedTester.allStudentCourses());
+            model.addAttribute("grades", propertyHandler.getGrades());
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return "instructor/UpdateableGrades";
+    }
 }
