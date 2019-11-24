@@ -10,7 +10,7 @@
 </head>
 <body>
 
-    <form:form>
+    <form:form method="post" action="/instructor/postGrades" modelAttribute="students">
         <table>
             <caption>Updateable Grades</caption>
             <tr>
@@ -29,11 +29,16 @@
                     <td>${studentCourse.student.studentId}</td>
                     <td>${studentCourse.student.firstName}</td>
                     <td>${studentCourse.student.lastName}</td>
-                    <td><input type="text" value="${studentCourse.grade}"></td>
+                    <%--<td><input type="text" value="${studentCourse.grade}"></td>--%>
+                    <td><form:select path="${studentCourse.grade}">
+                        <form:options items="${grades}"/>
+                    </form:select></td>
                 </tr>
             </c:forEach>
 
         </table>
+
+        <input type="submit" value="Submit">
     </form:form>
 
 </body>

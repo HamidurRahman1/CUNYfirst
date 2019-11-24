@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Array;
@@ -64,13 +65,25 @@ public class InstructorController
         return "redirect:/instructor/login";
     }
 
-    @GetMapping("/update/updateGrades")
+    @GetMapping("/get/getStudent")
+    public String getStudent(Model model)
+    {
+        model.addAttribute("url", "/instructor/update/grades");
+        model.addAttribute("methodType", propertyHandler.GET);
+        model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
+        model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
+        model.addAttribute("max", 8);
+        model.addAttribute("min", 8);
+
+        return "instructor/GetStudent";
+    }
+
+    @GetMapping("/update/grades")
     public String updateGrades(Model model)
     {
         try
         {
-            // get students grades
-            model.addAttribute("students", ViewRelatedTester.allStudentCourses());
+            model.addAttribute("student", ViewRelatedTester.allStudentCourses());
             model.addAttribute("grades", propertyHandler.getGrades());
         }
         catch (Exception ex)

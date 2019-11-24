@@ -11,13 +11,14 @@
     <div>
 
         <div><%@include file="InstructorName.jsp"%></div>
+        <%@include file="Logout.jsp"%>
 
         <div>
             <a href="/instructor/get/getCourses">Courses</a>
         </div>
 
         <div>
-            <a href="/instructor/update/updateGrades">Update grades</a>
+            <a href="/instructor/get/getStudent">Get Student</a>
         </div>
 
     </div>
