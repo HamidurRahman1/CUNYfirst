@@ -11,13 +11,11 @@
     <%@include file="InstructorName.jsp"%>
     <%@include file="Logout.jsp"%>
 
-    <jsp:include page="../generic/GetById.jsp" >
-        <jsp:param name="url" value="${url}"/>
-        <jsp:param name="methodType" value="${methodType}"/>
-        <jsp:param name="displayWho" value="${displayWho}"/>
-        <jsp:param name="inputId" value="${inputId}"/>
-        <jsp:param name="max" value="${max}"/>
-        <jsp:param name="min" value="${min}"/>
-    </jsp:include>
+    <form action="/instructor/get/getStudentCourse" method="get">
+        <label>Student ID:</label>
+        <input name="studentId" type="text" maxlength="8" minlength="1">
+        <input type="submit" value="Submit">
+    </form>
+
 </body>
 </html>

@@ -6,6 +6,7 @@ import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
+import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -65,31 +66,46 @@ public class InstructorController
         return "redirect:/instructor/login";
     }
 
-    @GetMapping("/get/getStudent")
-    public String getStudent(Model model)
+    @GetMapping("/get/getStudentForm")
+    public String getStudent()
     {
-        model.addAttribute("url", "/instructor/update/grades");
-        model.addAttribute("methodType", propertyHandler.GET);
-        model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
-        model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
-        model.addAttribute("max", 8);
-        model.addAttribute("min", 8);
-
         return "instructor/GetStudent";
     }
 
-    @GetMapping("/update/grades")
-    public String updateGrades(Model model)
+    @GetMapping("/get/getStudentCourse")
+    public String getStudent(Model model)
     {
         try
         {
-            model.addAttribute("student", ViewRelatedTester.allStudentCourses());
+            StudentCourse studentCourse = ViewRelatedTester.allStudentCourses().iterator().next();
+            model.addAttribute("studentCourse", studentCourse);
             model.addAttribute("grades", propertyHandler.getGrades());
         }
         catch (Exception ex)
         {
             System.out.println(ex.getMessage());
         }
-        return "instructor/UpdateableGrades";
+        return "instructor/StudentCourseGrade";
+    }
+
+    @PostMapping("/update/grades")
+    public String updateGrades(@ModelAttribute StudentCourse studentCourse, Model model)
+    {
+        try
+        {
+            // service - update student grade
+            System.out.println(studentCourse.getStudent());
+            System.out.println(studentCourse.getGrade());
+            System.out.println(studentCourse.getCourse());
+
+            model.addAttribute("title", "Student Updated");
+            model.addAttribute("message", "Student with ID: "+101
+                    +" has been successfully updated.");
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        return "generic/Message";
     }
 }

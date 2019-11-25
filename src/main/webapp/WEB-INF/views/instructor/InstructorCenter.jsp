@@ -18,7 +18,7 @@
         </div>
 
         <div>
-            <a href="/instructor/get/getStudent">Get Student</a>
+            <a href="/instructor/get/getStudentForm">Get Student</a>
         </div>
 
     </div>
