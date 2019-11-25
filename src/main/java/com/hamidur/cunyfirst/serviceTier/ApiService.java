@@ -5,9 +5,11 @@ import com.hamidur.cunyfirst.daoTier.daoServices.CourseService;
 import com.hamidur.cunyfirst.daoTier.daoServices.InstructorService;
 import com.hamidur.cunyfirst.daoTier.daoServices.StudentService;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
+
 import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Student;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -39,7 +41,17 @@ public class ApiService
 
     public boolean insertCourse(Course course)
     {
+        if(course == null) throw new IllegalArgumentException("Course cannot be null");
+        else if(course.getCourseName() == null) throw new IllegalArgumentException("Course name cannot be null");
+        else if(course.getCourseName().isEmpty()) throw new IllegalArgumentException("Course name cannot be empty");
+        else if(course.getCourseLevel() == null) throw new IllegalArgumentException("Course level cannot be null");
+        else if(course.getCourseTitle() == null) throw new IllegalArgumentException("Course title cannot be null");
+        else if(course.getCourseTitle().isEmpty()) throw new IllegalArgumentException("Course title cannot be empty");
+        else if(course.getCourseCredits() == null) throw new IllegalArgumentException("Course units cannot be null");
+        else if(course.getDescription() == null) throw new IllegalArgumentException("Course description cannot be null");
+        else if(course.getDescription().isEmpty()) throw new IllegalArgumentException("Course description cannot be empty");
 
+        return courseService.insertCourse(Utility.toDaoCourse(course));
     }
 
     public Integer insertInstructor(Instructor instructor)

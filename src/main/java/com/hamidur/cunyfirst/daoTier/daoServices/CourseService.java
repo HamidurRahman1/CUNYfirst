@@ -3,6 +3,7 @@ package com.hamidur.cunyfirst.daoTier.daoServices;
 import com.hamidur.cunyfirst.daoTier.models.Course;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -18,15 +19,15 @@ public class CourseService
         this.sessionFactory = hibernateUtility.getSessionFactory();
     }
 
-    public void insertCourse(com.hamidur.cunyfirst.viewTier.models.Course course)
+    public boolean insertCourse(Course daoCourse)
     {
         Session session = sessionFactory.openSession();
-        Course daoCourse = Utility.toDaoCourse(course);
         session.save(daoCourse);
         session.flush();
         session.clear();
         session.getTransaction().commit();
         session.close();
+        return true;
     }
 
     public List<com.hamidur.cunyfirst.viewTier.models.Course> getCourses()
