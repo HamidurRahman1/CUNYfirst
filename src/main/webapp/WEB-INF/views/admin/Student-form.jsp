@@ -9,8 +9,11 @@
 </head>
 <body>
 
-    <%@include file="AdminName.jsp" %>
-    <%@include file="../generic/RequiredField.jsp" %>
+    <div><%@include file="AdminName.jsp"%></div><br><br>
+
+    <div><%@include file="Logout.jsp"%></div><br><br>
+
+    <div><%@include file="../generic/RequiredField.jsp" %></div>
 
     <div class="add">
         <form:form modelAttribute="student" method="${methodType}" action="${url}">
@@ -65,7 +68,7 @@
         </form:form>
     </div>
 
-    <%@include file="ServiceCenter.jsp" %>
+    <div><%@include file="ServiceCenter.jsp" %></div>
 
 </body>
 </html>

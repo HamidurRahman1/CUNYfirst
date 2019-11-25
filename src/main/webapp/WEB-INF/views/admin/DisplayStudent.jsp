@@ -9,7 +9,9 @@
 </head>
 <body>
 
-    <%@include file="AdminName.jsp" %>
+    <div><%@include file="AdminName.jsp"%></div><br><br>
+
+    <div><%@include file="Logout.jsp"%></div><br><br>
 
     <div align="center">
         <div class="student-display">
@@ -166,6 +168,6 @@
         </div>
     </div>
 
-    <%@include file="ServiceCenter.jsp" %>
+    <div><%@include file="ServiceCenter.jsp" %></div>
 </body>
 </html>

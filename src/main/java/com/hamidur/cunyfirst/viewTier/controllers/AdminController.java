@@ -38,6 +38,13 @@ public class AdminController
         return "generic/Login";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpSession session)
+    {
+        session.removeAttribute("admin");
+        return "redirect:/admin/login";
+    }
+
     @PostMapping("/processAdminLogin")
     public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
     {

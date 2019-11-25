@@ -8,7 +8,9 @@
 </head>
 <body>
 
-        <%@include file="AdminName.jsp"%>
+        <div><%@include file="AdminName.jsp"%></div>
+
+        <div><%@include file="Logout.jsp"%></div>
 
         <div id="adminStudentServices">
             <h3>Student Services</h3>
