@@ -56,6 +56,7 @@ public class ApiService
 
     public Integer insertInstructor(Instructor instructor)
     {
-        return instructorService.insertInstructor(instructor);
+        if(instructor == null) throw new IllegalArgumentException("Instructor cannot be null");
+        return instructorService.insertInstructor(Utility.toDaoInstructor(instructor));
     }
 }
