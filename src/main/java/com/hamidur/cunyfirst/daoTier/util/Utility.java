@@ -103,6 +103,7 @@ public class Utility
         person.setGender(student.getGender());
 
         daoStudent.setPerson(person);
+
         daoStudent.addAddress(Utility.toDaoAddress(student.getAddress()));
         daoStudent.setContact(Utility.toDaoContact(student.getContact()));
         daoStudent.setHighSchoolInfo(Utility.toDaoHighSchoolInfo(student.getHighSchoolInfo()));
@@ -119,6 +120,7 @@ public class Utility
 
     public static TransferInfo toDaoTransferInfo(com.hamidur.cunyfirst.viewTier.models.TransferInfo transferInfo)
     {
+        if(transferInfo == null) return new TransferInfo();
         return new TransferInfo(transferInfo.getTransferSchoolName(), toDaoTerm(transferInfo.getTerm()));
     }
 

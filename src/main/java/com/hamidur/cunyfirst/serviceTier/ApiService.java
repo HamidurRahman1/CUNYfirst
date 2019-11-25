@@ -4,6 +4,10 @@ import com.hamidur.cunyfirst.daoTier.daoServices.AdminService;
 import com.hamidur.cunyfirst.daoTier.daoServices.CourseService;
 import com.hamidur.cunyfirst.daoTier.daoServices.InstructorService;
 import com.hamidur.cunyfirst.daoTier.daoServices.StudentService;
+import com.hamidur.cunyfirst.daoTier.util.Utility;
+import com.hamidur.cunyfirst.viewTier.models.Course;
+import com.hamidur.cunyfirst.viewTier.models.Instructor;
+import com.hamidur.cunyfirst.viewTier.models.Student;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,5 +25,25 @@ public class ApiService
         this.instructorService = instructorService;
         this.courseService = courseService;
         this.adminService = adminService;
+    }
+
+    public Integer insertStudent(Student student)
+    {
+        if(student == null) throw new IllegalArgumentException("Student cannot be null");
+        else if(student.getAddress() == null) throw new IllegalArgumentException("Address cannot be null");
+        else if(student.getContact() == null) throw new IllegalArgumentException("Contact cannot be null");
+        else if(student.getHighSchoolInfo() == null) throw new IllegalArgumentException("High School Info must be provided");
+
+        return studentService.insertStudent(Utility.toDaoStudent(student));
+    }
+
+    public boolean insertCourse(Course course)
+    {
+
+    }
+
+    public Integer insertInstructor(Instructor instructor)
+    {
+        return instructorService.insertInstructor(instructor);
     }
 }

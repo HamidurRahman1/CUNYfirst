@@ -15,7 +15,7 @@ public class InstructorService
         this.sessionFactory = hibernateUtility.getSessionFactory();
     }
 
-    public void insertInstructor(com.hamidur.cunyfirst.viewTier.models.Instructor instructor)
+    public Integer insertInstructor(com.hamidur.cunyfirst.viewTier.models.Instructor instructor)
     {
         Session session = sessionFactory.openSession();
         Instructor daoInstructor = Utility.toDaoInstructor(instructor);
@@ -24,6 +24,7 @@ public class InstructorService
         session.clear();
         session.getTransaction().commit();
         session.close();
+        return daoInstructor.getInstructorId();
     }
 
     public void getInstructor(Integer instructorId)

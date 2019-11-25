@@ -1,14 +1,11 @@
 package com.hamidur.cunyfirst.daoTier.daoServices;
 
-import com.hamidur.cunyfirst.daoTier.models.Address;
-import com.hamidur.cunyfirst.daoTier.models.Contact;
-import com.hamidur.cunyfirst.daoTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.daoTier.models.Login;
 import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.models.Student;
-import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -26,31 +23,25 @@ public class StudentService
         this.sessionFactory = hibernateUtility.getSessionFactory();
     }
 
-    public Integer insertStudent(com.hamidur.cunyfirst.viewTier.models.Student student)
+    public Integer insertStudent(Student daoStudent)
     {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
-
-        Student daoStudent = Utility.toDaoStudent(student);
 
         daoStudent.getAddresses().iterator().next().setStudent(daoStudent);
         daoStudent.getContact().setStudent(daoStudent);
         daoStudent.getHighSchoolInfo().setStudent(daoStudent);
         daoStudent.getTransferInfo().setStudent(daoStudent);
 
-        // save student with property
         session.save(daoStudent);
 
-        // create login after persisting student
-        Login login = createLogin(session, daoStudent.getPerson(), daoStudent.getStudentId());
+        Login login = createLogin(daoStudent.getPerson(), daoStudent.getStudentId());
         daoStudent.setLogin(login);
         login.setStudent(daoStudent);
 
-        // save login
         session.save(login);
 
-        // create college email
-//        String collegeEmail = createEmail()
+        daoStudent.getContact().setCollegeEmail(login.getUserName());
 
         session.update(daoStudent);
 
@@ -113,11 +104,8 @@ public class StudentService
             (com.hamidur.cunyfirst.viewTier.models.Term term)
     {return new LinkedList<>();}
 
-    private Login createLogin(Session session, Person person, Integer studentId)
+    private Login createLogin(Person person, Integer studentId)
     {
-//        boolean flagged = false;
-//        List<Login> usernames = session.createQuery("from Login").list();
-//        usernames.forEach(e -> System.out.println(e));
         int i = 6;
         String username = person.getFirstName()+"."+person.getLastName()+String.valueOf(studentId).substring(i);
         Login login = new Login();
