@@ -7,10 +7,8 @@
     <title>${title}</title>
 </head>
 <body>
-    <%@include file="../admin/AdminName.jsp"%>
-    <div class="message">
-        <h3>${message}</h3>
-    </div>
-    <%@include file="../admin/ServiceCenter.jsp"%>
+    <jsp:include page="${name}" flush="true" />
+    <div class="message"><h3>${message}</h3></div>
+    <jsp:include page="${serviceCenter}" flush="true"/>
 </body>
 </html>

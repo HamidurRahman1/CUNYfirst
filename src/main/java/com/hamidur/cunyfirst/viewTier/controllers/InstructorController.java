@@ -98,6 +98,9 @@ public class InstructorController
             System.out.println(studentCourse.getGrade());
             System.out.println(studentCourse.getCourse());
 
+            model.addAttribute("name", "../instructor/InstructorName.jsp");
+            model.addAttribute("serviceCenter", "../instructor/ServiceCenter.jsp");
+
             model.addAttribute("title", "Student Updated");
             model.addAttribute("message", "Student with ID: "+101
                     +" has been successfully updated.");

@@ -138,6 +138,9 @@ public class AdminController
     @PostMapping("/services/update/updated/student")
     public String updatesStudent(@ModelAttribute("student") Student student, Model model)
     {
+        model.addAttribute("name", "../admin/AdminName.jsp");
+        model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
+
         model.addAttribute("title", "Student Updated");
         model.addAttribute("message", "Student with ID: "+student.getStudentId()
                 +" has been successfully updated.");
@@ -170,6 +173,9 @@ public class AdminController
     @GetMapping("/services/delete/deleted/student")
     public String studentDeleted(@RequestParam("id") Integer studentId, Model model)
     {
+        model.addAttribute("name", "../admin/AdminName.jsp");
+        model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
+
         model.addAttribute("title", "Student deleted");
         model.addAttribute("message", "Student with ID: " + studentId
                 + " has been successfully deleted.");
@@ -239,6 +245,9 @@ public class AdminController
     @PostMapping("/services/update/updated/instructor")
     public String updatedInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
     {
+        model.addAttribute("name", "../admin/AdminName.jsp");
+        model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
+
         model.addAttribute("title", "Instructor Updated");
         model.addAttribute("message", "Instructor with ID: " + instructor.getInstructorId() +
                 " has been successfully updated.");
@@ -271,6 +280,9 @@ public class AdminController
     @GetMapping("/services/delete/deleted/instructor")
     public String instructorDeleted(@RequestParam("id") Integer instructorId, Model model)
     {
+        model.addAttribute("name", "../admin/AdminName.jsp");
+        model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
+
         model.addAttribute("title", "Instructor deleted");
         model.addAttribute("message", "Instructor with ID: " +instructorId
                 + " has been successfully deleted.");
