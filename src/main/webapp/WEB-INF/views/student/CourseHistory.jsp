@@ -9,30 +9,34 @@
 </head>
 <body>
 
-<%@include file="StudentNameID.jsp"%>
+    <div><%@include file="StudentNameID.jsp"%></div>
 
-<div class="courses">
-    <table>
-        <caption>All Courses</caption>
-        <tr>
-            <th>Subject</th>
-            <th>Term</th>
-            <th>Status</th>
-            <th>Grade</th>
-        </tr>
+    <br><br>
 
-        <c:forEach var="studentCourse" items="${studentCourse}">
+    <div class="courses">
+        <table>
+            <caption>All Courses</caption>
             <tr>
-                <td>${studentCourse.course.courseName} ${studentCourse.course.courseLevel}</td>
-                <td>${studentCourse.term.termName} ${studentCourse.term.termYear}</td>
-                <td>${studentCourse.courseStatus}</td>
-                <td>${studentCourse.grade}</td>
+                <th>Subject</th>
+                <th>Term</th>
+                <th>Status</th>
+                <th>Grade</th>
             </tr>
-        </c:forEach>
-    </table>
-</div>
 
-<%@include file="BackToStudentCenter.jsp"%>
+            <c:forEach var="studentCourse" items="${studentCourse}">
+                <tr>
+                    <td>${studentCourse.course.courseName} ${studentCourse.course.courseLevel}</td>
+                    <td>${studentCourse.term.termName} ${studentCourse.term.termYear}</td>
+                    <td>${studentCourse.courseStatus}</td>
+                    <td>${studentCourse.grade}</td>
+                </tr>
+            </c:forEach>
+        </table>
+    </div>
+
+    <br><br>
+
+    <div><%@include file="BackToStudentCenter.jsp"%></div>
 
 </body>
 </html>

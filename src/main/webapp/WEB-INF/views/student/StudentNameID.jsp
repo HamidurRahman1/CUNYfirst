@@ -9,7 +9,8 @@
 <body>
 
     <div class="name">
-        <label>Student ID: </label> ${sessionScope.get("student").getStudentId()}
+        <br><br>
+        <label>Student ID: </label> ${sessionScope.get("student").getStudentId()}<br>
         <label>Name: </label> ${sessionScope.get("student").getFirstName()} ${sessionScope.get("student").getLastName()}
     </div>
 

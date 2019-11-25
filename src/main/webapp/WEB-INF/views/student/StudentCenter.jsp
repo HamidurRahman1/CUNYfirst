@@ -7,21 +7,15 @@
     <title>Student Center</title>
 </head>
 <body>
-        <%@include file="StudentNameID.jsp"%>
+        <div><%@include file="StudentNameID.jsp"%></div>
 
         <div id="studentContainer">
 
-            <div class="courses">
-                <a href="/student/get/getCourses">Get All Offered Courses</a>
-            </div>
+            <div class="courses"><a href="/student/get/getCourses">Get All Offered Courses</a></div><br><br>
 
-            <div class="fafsas">
-                <a href="/student/get/getFAFSAs">Get FAFSA's</a>
-            </div>
+            <div class="fafsas"><a href="/student/get/getFAFSAs">Get FAFSA's</a></div><br><br>
 
-            <div class="courses">
-                <a href="/student/get/getCourseHistory">Course History</a>
-            </div>
+            <div class="courses"><a href="/student/get/getCourseHistory">Course History</a></div><br><br>
 
             <div class="personal">
                 <div class="address">
@@ -44,6 +38,8 @@
                     </table>
                 </div>
 
+                <br><br>
+
                 <div class="contact">
                     <table>
                         <caption>Contact</caption>
@@ -60,7 +56,6 @@
                     </table>
                 </div>
             </div>
-
         </div>
 </body>
 </html>

@@ -8,10 +8,10 @@
 </head>
 <body>
 
-    <%@include file="StudentNameID.jsp"%>
+    <div><%@include file="StudentNameID.jsp"%></div>
 
     <div class="fafsas">
-        <table border="1" cellpadding="5">
+        <table border="1" cellpadding="5" >
             <caption><h2>Student's FAFSA</h2></caption>
             <tr>
                 <th>Term</th>
@@ -27,6 +27,9 @@
         </table>
     </div>
 
-    <%@include file="BackToStudentCenter.jsp"%>
+    <br><br>
+
+    <div><%@include file="BackToStudentCenter.jsp"%></div>
+
 </body>
 </html>
