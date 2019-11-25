@@ -8,7 +8,9 @@
 </head>
 <body>
 
-    <div><%@include file="StudentNameID.jsp"%></div>
+    <div><%@include file="StudentNameID.jsp"%></div> <br><br>
+
+    <div><%@include file="Logout.jsp"%></div><br><br>
 
     <div class="fafsas">
         <table border="1" cellpadding="5" >

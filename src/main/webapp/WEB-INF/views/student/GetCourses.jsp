@@ -5,11 +5,13 @@
 
 <html>
 <head>
-    <title>All Courses</title>
+    <title>All Offered Courses</title>
 </head>
 <body>
 
-    <%@include file="StudentNameID.jsp"%>
+    <div><%@include file="StudentNameID.jsp"%></div><br><br>
+
+    <div><%@include file="Logout.jsp"%></div><br><br>
 
     <div align="center">
         <table border="1" cellpadding="5">
@@ -34,7 +36,9 @@
         </table>
     </div>
 
-    <%@include file="BackToStudentCenter.jsp"%>
+    <br><br>
+
+    <div><%@include file="BackToStudentCenter.jsp"%></div>
 
 </body>
 </html>

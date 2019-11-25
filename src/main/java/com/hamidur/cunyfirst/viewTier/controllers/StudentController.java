@@ -48,6 +48,13 @@ public class StudentController
         return "generic/Login";
     }
 
+    @GetMapping("/logout")
+    public String logoutInstructor(HttpSession session)
+    {
+        session.removeAttribute("student");
+        return "redirect:/student/login";
+    }
+
     @PostMapping("/processStudentLogin")
     public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
     {

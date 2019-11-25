@@ -9,7 +9,9 @@
 </head>
 <body>
 
-    <div><%@include file="StudentNameID.jsp"%></div>
+    <div><%@include file="StudentNameID.jsp"%></div> <br>
+
+    <div><%@include file="Logout.jsp"%></div><br><br>
 
     <br><br>
 
