@@ -30,7 +30,7 @@
         </table>
     </div>
 
-    <div></div>
+    <div><%@include file="ServiceCenter.jsp"%></div>
 
 </body>
 </html>

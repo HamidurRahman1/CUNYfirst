@@ -15,5 +15,7 @@
         <br><br>
         <input value="Submit" type="submit">
     </form:form>
+
+    <div><a href="/index.jsp">Home</a></div>
 </body>
 </html>

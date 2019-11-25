@@ -20,5 +20,7 @@
         </form:form>
     </div>
 
+    <div><%@include file="ServiceCenter.jsp"%></div>
+
 </body>
 </html>

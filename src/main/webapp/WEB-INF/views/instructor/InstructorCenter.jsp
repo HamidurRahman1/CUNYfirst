@@ -11,15 +11,12 @@
     <div>
 
         <div><%@include file="InstructorName.jsp"%></div>
-        <%@include file="Logout.jsp"%>
 
-        <div>
-            <a href="/instructor/get/getCourses">Courses</a>
-        </div>
+        <div><%@include file="Logout.jsp"%></div><br><br>
 
-        <div>
-            <a href="/instructor/get/getStudentForm">Get Student</a>
-        </div>
+        <div><a href="/instructor/get/getCourses">Courses</a></div><br><br>
+
+        <div><a href="/instructor/get/getStudentForm">Get Student</a></div><br><br>
 
     </div>
 
