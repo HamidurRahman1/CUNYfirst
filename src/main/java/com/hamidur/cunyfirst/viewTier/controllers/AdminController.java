@@ -1,5 +1,6 @@
 package com.hamidur.cunyfirst.viewTier.controllers;
 
+import com.hamidur.cunyfirst.serviceTier.ApiService;
 import com.hamidur.cunyfirst.viewTier.ViewRelatedTester;
 import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Course;
@@ -9,6 +10,7 @@ import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +27,18 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController
 {
-    @Autowired
-    private PropertyHandler propertyHandler;
+    private final ApplicationContext applicationContext;
+    private final ApiService apiService;
+    private final PropertyHandler propertyHandler;
+
+    public AdminController(@Autowired final ApplicationContext applicationContext,
+                           @Autowired final ApiService apiService,
+                           @Autowired final PropertyHandler propertyHandler)
+    {
+        this.applicationContext = applicationContext;
+        this.apiService = apiService;
+        this.propertyHandler = propertyHandler;
+    }
 
     @GetMapping("/login")
     public String studentLogin(Model model)
@@ -101,7 +113,14 @@ public class AdminController
     @PostMapping("/services/insert/processed/student")
     public String processNewStudent(@ModelAttribute("student") Student student, Model model)
     {
-        student.setStudentId(10000001);
+        try
+        {
+            student = apiService.insertStudent(student);
+        }
+        catch(IllegalArgumentException ex)
+        {
+            return "admin/Student-form";
+        }
         model.addAttribute("student", student);
         model.addAttribute("who", "Student");
         model.addAttribute("firstName", student.getFirstName());
@@ -210,13 +229,20 @@ public class AdminController
     @PostMapping("/services/insert/processed/instructor")
     public String processNewInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
     {
-        instructor.setInstructorId(1001);
-        instructor.setLogin(new Login("username.edu", "pass"));
+        Instructor instructor1 = null;
+        try
+        {
+            instructor1 = apiService.insertInstructor(instructor);
+        }
+        catch (IllegalArgumentException ex)
+        {
+            return "admin/Instructor-form";
+        }
         model.addAttribute("who", "Instructor");
-        model.addAttribute("firstName", instructor.getFirstName());
-        model.addAttribute("lastName", instructor.getLastName());
-        model.addAttribute("username", instructor.getLogin().getUsername());
-        model.addAttribute("id", instructor.getInstructorId());
+        model.addAttribute("firstName", instructor1.getFirstName());
+        model.addAttribute("lastName", instructor1.getLastName());
+        model.addAttribute("username", instructor1.getLogin().getUsername());
+        model.addAttribute("id", instructor1.getInstructorId());
         return "generic/Insertion";
     }
 

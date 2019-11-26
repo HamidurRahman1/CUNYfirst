@@ -23,7 +23,7 @@ public class StudentService
         this.sessionFactory = hibernateUtility.getSessionFactory();
     }
 
-    public Integer insertStudent(Student daoStudent)
+    public Student insertStudent(Student daoStudent)
     {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
@@ -33,22 +33,18 @@ public class StudentService
         daoStudent.getHighSchoolInfo().setStudent(daoStudent);
         daoStudent.getTransferInfo().setStudent(daoStudent);
 
-        session.save(daoStudent);
-
         Login login = createLogin(daoStudent.getPerson(), daoStudent.getStudentId());
         daoStudent.setLogin(login);
         login.setStudent(daoStudent);
-
-        session.save(login);
-
         daoStudent.getContact().setCollegeEmail(login.getUserName());
 
-        session.update(daoStudent);
+        session.save(login);
+        session.save(daoStudent);
 
         session.getTransaction().commit();
         session.close();
 
-        return daoStudent.getStudentId();
+        return daoStudent;
     }
 
     public com.hamidur.cunyfirst.viewTier.models.Student getStudentById(Integer studentId)

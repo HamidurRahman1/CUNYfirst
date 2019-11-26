@@ -6,13 +6,17 @@ import com.hamidur.cunyfirst.daoTier.models.Course;
 import com.hamidur.cunyfirst.daoTier.models.Gender;
 import com.hamidur.cunyfirst.daoTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.daoTier.models.Instructor;
+import com.hamidur.cunyfirst.daoTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.models.Student;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
+import com.hamidur.cunyfirst.viewTier.models.InstructorLogin;
 
 import java.sql.Date;
 import java.time.LocalDate;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 public class Utility
 {
@@ -44,6 +48,22 @@ public class Utility
     {
         return new Instructor(instructor.getFirstName(), instructor.getLastName(), instructor.getSsn(),
                 LocalDate.parse(instructor.getDateOfBirth()), instructor.getGender());
+    }
+
+    public static Set<InstructorCourse> toDaoInstructorCourses
+            (Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> instructorCourses)
+    {
+        Set<InstructorCourse> courses = new LinkedHashSet<>();
+
+        instructorCourses.forEach(e ->
+        {
+            InstructorCourse instructorCourse = new InstructorCourse();
+            instructorCourse.setCourse(Utility.toDaoCourse(e.getCourse()));
+            instructorCourse.setInstructor(Utility.toDaoInstructor(e.getInstructor()));
+            instructorCourse.setTerm(Utility.toDaoTerm(e.getTerm()));
+            courses.add(instructorCourse);
+        });
+        return courses;
     }
 
     public static LocalDate toLocalDate(Date sqlDate)
@@ -162,5 +182,46 @@ public class Utility
     public static Contact toDaoContact(com.hamidur.cunyfirst.viewTier.models.Contact contact)
     {
         return new Contact(contact.getCollegeEmail(), contact.getEmail(), contact.getPhone());
+    }
+
+    public static com.hamidur.cunyfirst.viewTier.models.Instructor toViewInstructor(Instructor daoInstructor)
+    {
+        com.hamidur.cunyfirst.viewTier.models.Instructor instructor =
+                new com.hamidur.cunyfirst.viewTier.models.Instructor();
+
+        instructor.setInstructorId(daoInstructor.getInstructorId());
+        instructor.setFirstName(daoInstructor.getPerson().getFirstName());
+        instructor.setLastName(daoInstructor.getPerson().getLastName());
+        instructor.setSsn(daoInstructor.getPerson().getSsn());
+        instructor.setDateOfBirth(daoInstructor.getPerson().getDateOfBirth().toString());
+        instructor.setGender(daoInstructor.getPerson().getGender());
+
+        instructor.setLogin(Utility.toViewInstructorLogin(daoInstructor.getLogin()));
+        instructor.setInstructorCourses(Utility.toViewInstructorCourses(daoInstructor.getInstructorCourses()));
+
+        return instructor;
+    }
+
+    private static Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> toViewInstructorCourses
+            (Set<InstructorCourse> daoInstructorCourses)
+    {
+        Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> courses = new LinkedHashSet<>();
+
+        daoInstructorCourses.forEach(e ->
+        {
+            com.hamidur.cunyfirst.viewTier.models.InstructorCourse instructorCourse =
+                    new com.hamidur.cunyfirst.viewTier.models.InstructorCourse();
+
+            instructorCourse.setCourse(Utility.toViewCourse(e.getCourse()));
+            instructorCourse.setInstructor(Utility.toViewInstructor(e.getInstructor()));
+            instructorCourse.setTerm(Utility.toViewTerm(e.getTerm()));
+            courses.add(instructorCourse);
+        });
+        return courses;
+    }
+
+    private static InstructorLogin toViewInstructorLogin(com.hamidur.cunyfirst.daoTier.models.InstructorLogin daoLogin)
+    {
+        return new InstructorLogin(daoLogin.getUserName(), daoLogin.getPassword());
     }
 }

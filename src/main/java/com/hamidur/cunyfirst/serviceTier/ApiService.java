@@ -29,14 +29,14 @@ public class ApiService
         this.adminService = adminService;
     }
 
-    public Integer insertStudent(Student student)
+    public Student insertStudent(Student student)
     {
         if(student == null) throw new IllegalArgumentException("Student cannot be null");
         else if(student.getAddress() == null) throw new IllegalArgumentException("Address cannot be null");
         else if(student.getContact() == null) throw new IllegalArgumentException("Contact cannot be null");
         else if(student.getHighSchoolInfo() == null) throw new IllegalArgumentException("High School Info must be provided");
 
-        return studentService.insertStudent(Utility.toDaoStudent(student));
+        return Utility.toViewStudent(studentService.insertStudent(Utility.toDaoStudent(student)));
     }
 
     public boolean insertCourse(Course course)
@@ -54,9 +54,9 @@ public class ApiService
         return courseService.insertCourse(Utility.toDaoCourse(course));
     }
 
-    public Integer insertInstructor(Instructor instructor)
+    public Instructor insertInstructor(Instructor instructor)
     {
         if(instructor == null) throw new IllegalArgumentException("Instructor cannot be null");
-        return instructorService.insertInstructor(Utility.toDaoInstructor(instructor));
+        return Utility.toViewInstructor(instructorService.insertInstructor(Utility.toDaoInstructor(instructor)));
     }
 }

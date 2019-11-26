@@ -15,15 +15,18 @@ public class InstructorService
         this.sessionFactory = hibernateUtility.getSessionFactory();
     }
 
-    public Integer insertInstructor(Instructor daoInstructor)
+    public Instructor insertInstructor(Instructor daoInstructor)
     {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
         session.save(daoInstructor);
         session.flush();
         session.clear();
         session.getTransaction().commit();
         session.close();
-        return daoInstructor.getInstructorId();
+
+        return daoInstructor;
     }
 
     public void getInstructor(Integer instructorId)

@@ -1,7 +1,6 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -10,21 +9,21 @@ public class Instructor extends Person implements Serializable
 {
     private Integer instructorId;
     private Set<InstructorCourse> instructorCourses = new LinkedHashSet <>();
-    private Login login = new Login();
+    private InstructorLogin login = new InstructorLogin();
     
     public Instructor()
     {
         super();
     }
     
-    public Instructor(String firstName, String lastName, String ssn, String dateOfBirth, String string)
+    public Instructor(String firstName, String lastName, String ssn, String dateOfBirth, String gender)
     {
-        super(firstName, lastName, ssn, dateOfBirth, string);
+        super(firstName, lastName, ssn, dateOfBirth, gender);
     }
 
-    public Instructor(Integer instructorId, String firstName, String lastName, String ssn, String dateOfBirth, String string)
+    public Instructor(Integer instructorId, String firstName, String lastName, String ssn, String dateOfBirth, String gender)
     {
-        super(firstName, lastName, ssn, dateOfBirth, string);
+        super(firstName, lastName, ssn, dateOfBirth, gender);
         setInstructorId(instructorId);
     }
     
@@ -58,11 +57,11 @@ public class Instructor extends Person implements Serializable
         instructorCourses.remove(instructorCourse);
     }
 
-    public Login getLogin() {
+    public InstructorLogin getLogin() {
         return login;
     }
 
-    public void setLogin(Login login) {
+    public void setLogin(InstructorLogin login) {
         this.login = login;
     }
 
