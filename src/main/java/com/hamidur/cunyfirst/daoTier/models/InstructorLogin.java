@@ -27,6 +27,12 @@ public class InstructorLogin
 
     public InstructorLogin() {}
 
+    public InstructorLogin(String userName, String password)
+    {
+        this.userName = userName;
+        this.password = password;
+    }
+
     public InstructorLogin(String userName, String password, Instructor instructor)
     {
         this.userName = userName;

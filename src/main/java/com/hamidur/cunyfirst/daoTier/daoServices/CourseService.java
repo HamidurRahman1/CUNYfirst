@@ -19,7 +19,7 @@ public class CourseService
         this.sessionFactory = hibernateUtility.getSessionFactory();
     }
 
-    public boolean insertCourse(Course daoCourse)
+    public Course insertCourse(Course daoCourse)
     {
         Session session = sessionFactory.openSession();
         session.save(daoCourse);
@@ -27,22 +27,22 @@ public class CourseService
         session.clear();
         session.getTransaction().commit();
         session.close();
-        return true;
+        return daoCourse;
     }
 
     public List<com.hamidur.cunyfirst.viewTier.models.Course> getCourses()
     {
         Session session = sessionFactory.openSession();
-        List<Course> daoCourses =
-                session.createQuery("from Course").list();
+//        List<Course> daoCourses =
+//                session.createQuery("from Course").list();
 
         List<com.hamidur.cunyfirst.viewTier.models.Course> viewCourses =
                 new LinkedList<>();
 
-        for(Course course: daoCourses)
-        {
-            viewCourses.add(Utility.toViewCourse(course));
-        }
+//        for(Course course: daoCourses)
+//        {
+//            viewCourses.add(Utility.toViewCourse(course));
+//        }
         return viewCourses;
     }
 }

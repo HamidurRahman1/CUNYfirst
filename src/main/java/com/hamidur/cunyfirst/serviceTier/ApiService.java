@@ -39,7 +39,7 @@ public class ApiService
         return Utility.toViewStudent(studentService.insertStudent(Utility.toDaoStudent(student)));
     }
 
-    public boolean insertCourse(Course course)
+    public Course insertCourse(Course course)
     {
         if(course == null) throw new IllegalArgumentException("Course cannot be null");
         else if(course.getCourseName() == null) throw new IllegalArgumentException("Course name cannot be null");
@@ -51,7 +51,7 @@ public class ApiService
         else if(course.getDescription() == null) throw new IllegalArgumentException("Course description cannot be null");
         else if(course.getDescription().isEmpty()) throw new IllegalArgumentException("Course description cannot be empty");
 
-        return courseService.insertCourse(Utility.toDaoCourse(course));
+        return Utility.toViewCourse(courseService.insertCourse(Utility.toDaoCourse(course)));
     }
 
     public Instructor insertInstructor(Instructor instructor)

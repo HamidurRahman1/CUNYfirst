@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <%@include file="AdminName.jsp" %>
+    <div><%@include file="AdminName.jsp" %></div>
 
     <div class="successful">
         <label>Course's Title:</label> ${course.courseTitle} <br><br>
@@ -18,7 +18,7 @@
         <label>Course's Description:</label> ${course.description} <br><br>
     </div>
 
-    <%@include file="ServiceCenter.jsp" %>
+    <div><%@include file="ServiceCenter.jsp" %></div>
 
 </body>
 </html>

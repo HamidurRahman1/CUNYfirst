@@ -115,19 +115,18 @@ public class AdminController
     {
         try
         {
-            student = apiService.insertStudent(student);
+            Student student1 = apiService.insertStudent(student);
+            model.addAttribute("student", student1);
+            model.addAttribute("who", "Student");
+            model.addAttribute("firstName", student1.getFirstName());
+            model.addAttribute("lastName", student1.getLastName());
+            model.addAttribute("username", student1.getLogin().getUsername());
+            model.addAttribute("id", student1.getStudentId());
+            return "generic/Insertion";
         }
-        catch(IllegalArgumentException ex)
-        {
+        catch(IllegalArgumentException ex) {
             return "admin/Student-form";
         }
-        model.addAttribute("student", student);
-        model.addAttribute("who", "Student");
-        model.addAttribute("firstName", student.getFirstName());
-        model.addAttribute("lastName", student.getLastName());
-        model.addAttribute("username", student.getLogin().getUsername());
-        model.addAttribute("id", student.getStudentId());
-        return "generic/Insertion";
     }
 
     @GetMapping("/services/update/getStudent")
@@ -229,21 +228,20 @@ public class AdminController
     @PostMapping("/services/insert/processed/instructor")
     public String processNewInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
     {
-        Instructor instructor1 = null;
         try
         {
-            instructor1 = apiService.insertInstructor(instructor);
+            Instructor instructor1 = apiService.insertInstructor(instructor);
+            model.addAttribute("who", "Instructor");
+            model.addAttribute("firstName", instructor1.getFirstName());
+            model.addAttribute("lastName", instructor1.getLastName());
+            model.addAttribute("username", instructor1.getLogin().getUsername());
+            model.addAttribute("id", instructor1.getInstructorId());
+            return "generic/Insertion";
         }
         catch (IllegalArgumentException ex)
         {
             return "admin/Instructor-form";
         }
-        model.addAttribute("who", "Instructor");
-        model.addAttribute("firstName", instructor1.getFirstName());
-        model.addAttribute("lastName", instructor1.getLastName());
-        model.addAttribute("username", instructor1.getLogin().getUsername());
-        model.addAttribute("id", instructor1.getInstructorId());
-        return "generic/Insertion";
     }
 
     @GetMapping("/services/update/getInstructor")
@@ -352,9 +350,15 @@ public class AdminController
     @PostMapping("/services/insert/processed/course")
     public String processCourse(@ModelAttribute("course")Course course, Model model)
     {
-        System.out.println(course);
-        course.setCourseId(101);
-        model.addAttribute("course", course);
-        return "admin/CourseAdded";
+        try
+        {
+            Course course1 = apiService.insertCourse(course);
+            model.addAttribute("course", course1);
+            return "admin/CourseAdded";
+        }
+        catch (IllegalArgumentException ex)
+        {
+            return "admin/Course-form";
+        }
     }
 }
