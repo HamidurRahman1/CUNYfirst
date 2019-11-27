@@ -1,11 +1,14 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.Serializable;
 import java.util.Objects;
 
 public class FAFSA implements Serializable
 {
     private Integer fafsaId;
+    @Autowired
     private Term term;
     private Double amount;
     

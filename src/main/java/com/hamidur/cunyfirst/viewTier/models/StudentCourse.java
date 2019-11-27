@@ -1,13 +1,18 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.util.Objects;
 
 public class StudentCourse
 {
+    @Autowired
     private Student student;
+    @Autowired
     private Course course;
     private String courseStatus;
     private String grade;
+    @Autowired
     private Term term;
     
     public StudentCourse() {}
@@ -101,7 +106,7 @@ public class StudentCourse
     @Override
     public String toString()
     {
-        return "StudentCourse{" + "student=" + student + ", course=" + course + ", courseStatus=" +
+        return "StudentCourse{" + "vStudent=" + student + ", course=" + course + ", courseStatus=" +
                 courseStatus + ", grade=" + grade + ", term=" + term + '}';
     }
 }

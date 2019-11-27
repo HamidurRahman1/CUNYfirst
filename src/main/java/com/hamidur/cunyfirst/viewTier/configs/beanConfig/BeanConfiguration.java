@@ -6,7 +6,9 @@ import com.hamidur.cunyfirst.daoTier.daoServices.CourseService;
 import com.hamidur.cunyfirst.daoTier.daoServices.InstructorService;
 import com.hamidur.cunyfirst.daoTier.daoServices.StudentService;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
+
 import com.hamidur.cunyfirst.serviceTier.ApiService;
+
 import com.hamidur.cunyfirst.viewTier.models.Address;
 import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Contact;
@@ -14,6 +16,8 @@ import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
+import com.hamidur.cunyfirst.viewTier.models.InstructorCourse;
+import com.hamidur.cunyfirst.viewTier.models.InstructorLogin;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.Person;
 import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
@@ -126,6 +130,13 @@ public class BeanConfiguration
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public Set<StudentCourse> studentCourses()
+    {
+        return new LinkedHashSet<>();
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public SecurityQuestion securityQuestion()
     {
         return new SecurityQuestion();
@@ -147,13 +158,6 @@ public class BeanConfiguration
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public Set<StudentCourse> studentCourses()
-    {
-        return new LinkedHashSet<>();
-    }
-
-    @Bean
-    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Admin admin()
     {
         return new Admin();
@@ -171,6 +175,20 @@ public class BeanConfiguration
     public Person person()
     {
         return new Person();
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public InstructorLogin instructorLogin()
+    {
+        return new InstructorLogin();
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public Set<InstructorCourse> instructorCourses()
+    {
+        return new LinkedHashSet<>();
     }
 
     @Bean

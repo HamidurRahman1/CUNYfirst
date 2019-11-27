@@ -119,6 +119,6 @@ public class HighSchoolInfo implements Serializable
     @Override
     public String toString()
     {
-        return "HighSchoolInfo{" + "highSchoolId=" + highSchoolId + ", highSchoolName='" + highSchoolName + '\'' + ", year=" + year + ", city='" + city + '\'' + ", country='" + country + '\'' + ", student=" + student.getStudentId() + '}';
+        return "HighSchoolInfo{" + "highSchoolId=" + highSchoolId + ", highSchoolName='" + highSchoolName + '\'' + ", year=" + year + ", city='" + city + '\'' + ", country='" + country + '\'' + ", vStudent=" + student.getStudentId() + '}';
     }
 }

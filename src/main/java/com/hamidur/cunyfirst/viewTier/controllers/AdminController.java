@@ -74,7 +74,7 @@ public class AdminController
     @GetMapping("/services/get/getStudent")
     public String getStudent(Model model)
     {
-        model.addAttribute("url", "/admin/services/display/student");
+        model.addAttribute("url", "/admin/services/display/vStudent");
         model.addAttribute("methodType", propertyHandler.GET);
         model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
         model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
@@ -96,7 +96,7 @@ public class AdminController
     {
         try
         {
-            model.addAttribute("url", "/admin/services/insert/processed/student");
+            model.addAttribute("url", "/admin/services/insert/processed/vStudent");
             model.addAttribute("methodType", propertyHandler.POST);
             model.addAttribute("student", new Student());
             model.addAttribute("genders", propertyHandler.getGenders());
@@ -132,7 +132,7 @@ public class AdminController
     @GetMapping("/services/update/getStudent")
     public String updateStudent(Model model)
     {
-        model.addAttribute("url", "/admin/services/update/updateable/student");
+        model.addAttribute("url", "/admin/services/update/updateable/vStudent");
         model.addAttribute("methodType", propertyHandler.GET);
         model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
         model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
@@ -146,7 +146,7 @@ public class AdminController
     {
         try
         {
-            model.addAttribute("url", "/admin/services/update/updated/student");
+            model.addAttribute("url", "/admin/services/update/updated/vStudent");
             model.addAttribute("methodType", propertyHandler.POST);
             model.addAttribute("student", ViewRelatedTester.testStudent());
             model.addAttribute("genders", propertyHandler.getGenders());
@@ -175,7 +175,7 @@ public class AdminController
     @GetMapping("/services/delete/getStudent")
     public String deleteStudent(Model model)
     {
-        model.addAttribute("url", "/admin/services/delete/deletable/student");
+        model.addAttribute("url", "/admin/services/delete/deletable/vStudent");
         model.addAttribute("methodType", propertyHandler.GET);
         model.addAttribute("inputId", propertyHandler.INP_STUDENT_ID);
         model.addAttribute("displayWho", propertyHandler.DIS_STUDENT_ID);
@@ -189,7 +189,7 @@ public class AdminController
     {
         model.addAttribute("who", propertyHandler.STUDENT.toLowerCase());
         model.addAttribute("id", ViewRelatedTester.testStudent().getStudentId());
-        model.addAttribute("url", "/admin/services/delete/deleted/student");
+        model.addAttribute("url", "/admin/services/delete/deleted/vStudent");
         model.addAttribute("methodType", propertyHandler.GET);
         model.addAttribute("object", ViewRelatedTester.testStudent());
         return "admin/Deletable";

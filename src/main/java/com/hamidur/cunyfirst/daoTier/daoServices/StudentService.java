@@ -33,13 +33,16 @@ public class StudentService
         daoStudent.getHighSchoolInfo().setStudent(daoStudent);
         daoStudent.getTransferInfo().setStudent(daoStudent);
 
+        session.save(daoStudent);
+
         Login login = createLogin(daoStudent.getPerson(), daoStudent.getStudentId());
         daoStudent.setLogin(login);
         login.setStudent(daoStudent);
+
         daoStudent.getContact().setCollegeEmail(login.getUserName());
 
         session.save(login);
-        session.save(daoStudent);
+        session.update(daoStudent);
 
         session.getTransaction().commit();
         session.close();

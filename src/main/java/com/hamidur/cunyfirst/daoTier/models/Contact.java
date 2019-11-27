@@ -123,6 +123,6 @@ public class Contact implements Serializable
     public String toString()
     {
         return "Contact{" + "contactId=" + contactId + ", collegeEmail='" + collegeEmail + '\'' + ", email='"
-                + email + '\'' + ", phone='" + phone + '\'' + ", student=" + student.getStudentId() + '}';
+                + email + '\'' + ", phone='" + phone + '\'' + ", vStudent=" + student.getStudentId() + '}';
     }
 }

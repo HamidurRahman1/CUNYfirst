@@ -1,5 +1,7 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.Serializable;
 import java.util.LinkedHashSet;
 import java.util.Objects;
@@ -8,8 +10,10 @@ import java.util.Set;
 public class Instructor extends Person implements Serializable
 {
     private Integer instructorId;
-    private Set<InstructorCourse> instructorCourses = new LinkedHashSet <>();
-    private InstructorLogin login = new InstructorLogin();
+    @Autowired
+    private Set<InstructorCourse> instructorCourses;
+    @Autowired
+    private InstructorLogin instructorLogin;
     
     public Instructor()
     {
@@ -58,11 +62,11 @@ public class Instructor extends Person implements Serializable
     }
 
     public InstructorLogin getLogin() {
-        return login;
+        return instructorLogin;
     }
 
     public void setLogin(InstructorLogin login) {
-        this.login = login;
+        this.instructorLogin = login;
     }
 
     @Override

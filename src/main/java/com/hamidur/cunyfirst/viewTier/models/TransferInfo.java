@@ -1,5 +1,7 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 
@@ -8,6 +10,7 @@ public class TransferInfo implements Serializable
     private Integer transferId;
     @Size(min = 10, max = 50)
     private String transferSchoolName;
+    @Autowired
     private Term term;
     
     public TransferInfo() {}

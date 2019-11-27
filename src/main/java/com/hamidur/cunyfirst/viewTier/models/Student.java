@@ -1,5 +1,7 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
@@ -10,14 +12,22 @@ import java.util.Set;
 public class Student extends Person implements Serializable
 {
     private Integer studentId;
-    private Address address = new Address();
-    private Contact contact = new Contact();
-    private HighSchoolInfo highSchoolInfo = new HighSchoolInfo();
-    private TransferInfo transferInfo = new TransferInfo();
-    private Login login = new Login();
-    private Map<SecurityQuestion, String> questionsAns = new LinkedHashMap <>(3);
-    private Set<FAFSA> fafsas = new LinkedHashSet <>();
-    private Set<StudentCourse> studentCourses = new LinkedHashSet <>();
+    @Autowired
+    private Address address;
+    @Autowired
+    private Contact contact;
+    @Autowired
+    private HighSchoolInfo highSchoolInfo;
+    @Autowired
+    private TransferInfo transferInfo;
+    @Autowired
+    private Login login;
+    @Autowired
+    private Map<SecurityQuestion, String> questionAnswers;
+    @Autowired
+    private Set<FAFSA> fafsas;
+    @Autowired
+    private Set<StudentCourse> studentCourses;
     
     public Student()
     {
@@ -81,12 +91,12 @@ public class Student extends Person implements Serializable
     
     public Map <SecurityQuestion, String> getQuestionsAns()
     {
-        return questionsAns;
+        return questionAnswers;
     }
     
-    public void setQuestionsAns(Map <SecurityQuestion, String> questionsAns)
+    public void setQuestionAnswers(Map <SecurityQuestion, String> questionsAns)
     {
-        this.questionsAns = questionsAns;
+        this.questionAnswers = questionsAns;
     }
     
     public Login getLogin()

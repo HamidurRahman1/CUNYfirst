@@ -29,14 +29,27 @@ public class ApiService
         this.adminService = adminService;
     }
 
-    public Student insertStudent(Student student)
+    public Student insertStudent(Student viewStudent)
     {
-        if(student == null) throw new IllegalArgumentException("Student cannot be null");
-        else if(student.getAddress() == null) throw new IllegalArgumentException("Address cannot be null");
-        else if(student.getContact() == null) throw new IllegalArgumentException("Contact cannot be null");
-        else if(student.getHighSchoolInfo() == null) throw new IllegalArgumentException("High School Info must be provided");
+        if(viewStudent == null) throw new IllegalArgumentException("Student cannot be null");
+        else if(viewStudent.getAddress() == null) throw new IllegalArgumentException("Address cannot be null");
+        else if(viewStudent.getContact() == null) throw new IllegalArgumentException("Contact cannot be null");
+        else if(viewStudent.getHighSchoolInfo() == null) throw new IllegalArgumentException("High School Info must be provided");
+        else if(viewStudent.getTransferInfo() == null) throw new IllegalArgumentException("Transfer Info cannot be null");
 
-        return Utility.toViewStudent(studentService.insertStudent(Utility.toDaoStudent(student)));
+        com.hamidur.cunyfirst.daoTier.models.Student daoStudent = Utility.toDaoStudent(viewStudent);
+
+        daoStudent.addAddress(Utility.toDaoAddress(viewStudent.getAddress()));
+        daoStudent.setContact(Utility.toDaoContact(viewStudent.getContact()));
+        daoStudent.setHighSchoolInfo(Utility.toDaoHighSchoolInfo(viewStudent.getHighSchoolInfo()));
+        daoStudent.setTransferInfo(Utility.toDaoTransferInfo(viewStudent.getTransferInfo()));
+
+        daoStudent = studentService.insertStudent(daoStudent);
+
+        viewStudent.setLogin(Utility.toViewStudentLogin(daoStudent.getLogin()));
+        viewStudent.setStudentId(daoStudent.getStudentId());
+
+        return viewStudent;
     }
 
     public Course insertCourse(Course course)

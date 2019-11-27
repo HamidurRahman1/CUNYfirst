@@ -22,6 +22,7 @@ public class CourseService
     public Course insertCourse(Course daoCourse)
     {
         Session session = sessionFactory.openSession();
+        session.beginTransaction();
         session.save(daoCourse);
         session.flush();
         session.clear();

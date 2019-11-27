@@ -39,29 +39,29 @@ public class Student implements Serializable
             @AttributeOverride(name = "gender", column = @Column(name = "gender"))})
     private Person person;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vStudent", cascade = CascadeType.ALL)
     private Set<Address> addresses = new LinkedHashSet <>();
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student",
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vStudent",
             cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST})
     private Set<FAFSA> fafsas = new LinkedHashSet <>();
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vStudent", cascade = CascadeType.ALL)
     private Set<StudentSecurityQuestion> questionAnswers = new LinkedHashSet <>();
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "vStudent")
     private Contact contact;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "vStudent")
     private Login login;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "vStudent")
     private HighSchoolInfo highSchoolInfo;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "vStudent")
     private TransferInfo transferInfo;
     
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "student",
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "vStudent",
             cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST})
     private Set<StudentCourse> studentCourses = new LinkedHashSet <>();
     

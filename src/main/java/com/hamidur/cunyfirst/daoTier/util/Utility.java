@@ -16,6 +16,8 @@ import com.hamidur.cunyfirst.daoTier.models.StudentCourse;
 import com.hamidur.cunyfirst.daoTier.models.StudentSecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
@@ -25,7 +27,8 @@ import java.util.Set;
 
 public class Utility
 {
-//    private ApplicationContext applicationContext;
+    @Autowired
+    private ApplicationContext applicationContext;
 
     public static com.hamidur.cunyfirst.viewTier.models.Course toViewCourse(Course daoCourse)
     {
@@ -167,7 +170,8 @@ public class Utility
         person.setFirstName(student.getFirstName());
         person.setLastName(student.getLastName());
         person.setSsn(student.getSsn());
-        person.setDateOfBirth(LocalDate.parse(student.getDateOfBirth()));
+        String[] parts = student.getDateOfBirth().split("/");
+        person.setDateOfBirth(LocalDate.of(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]), Integer.parseInt(parts[0])));
         person.setGender(student.getGender());
 
         daoStudent.setPerson(person);
@@ -179,6 +183,7 @@ public class Utility
     {
         com.hamidur.cunyfirst.viewTier.models.Student viewStudent = new com.hamidur.cunyfirst.viewTier.models.Student();
 
+        System.out.println(student.getStudentId());
         viewStudent.setStudentId(student.getStudentId());
         viewStudent.setFirstName(student.getPerson().getFirstName());
         viewStudent.setLastName(student.getPerson().getLastName());
