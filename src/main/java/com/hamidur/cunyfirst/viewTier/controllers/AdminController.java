@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -98,7 +99,7 @@ public class AdminController
         {
             model.addAttribute("url", "/admin/services/insert/processed/vStudent");
             model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("student", new Student());
+            model.addAttribute("student", applicationContext.getBean(Student.class));
             model.addAttribute("genders", propertyHandler.getGenders());
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
@@ -111,11 +112,11 @@ public class AdminController
     }
 
     @PostMapping("/services/insert/processed/student")
-    public String processNewStudent(@ModelAttribute("student") Student student, Model model)
+    public String processNewStudent(@ModelAttribute("student") Student student1, Model model)
     {
         try
         {
-            Student student1 = apiService.insertStudent(student);
+            student1 = apiService.insertStudent(student1);
             model.addAttribute("student", student1);
             model.addAttribute("who", "Student");
             model.addAttribute("firstName", student1.getFirstName());
@@ -348,12 +349,12 @@ public class AdminController
     }
 
     @PostMapping("/services/insert/processed/course")
-    public String processCourse(@ModelAttribute("course")Course course, Model model)
+    public String processCourse(@Valid @ModelAttribute("course")Course course, Model model)
     {
         try
         {
-            Course course1 = apiService.insertCourse(course);
-            model.addAttribute("course", course1);
+            course = apiService.insertCourse(course);
+            model.addAttribute("course", course);
             return "admin/CourseAdded";
         }
         catch (IllegalArgumentException ex)

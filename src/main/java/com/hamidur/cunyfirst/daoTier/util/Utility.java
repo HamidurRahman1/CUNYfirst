@@ -32,7 +32,8 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.Course toViewCourse(Course daoCourse)
     {
-        return new com.hamidur.cunyfirst.viewTier.models.Course(daoCourse.getCourseTitle(), daoCourse.getCourseName(),
+        return new com.hamidur.cunyfirst.viewTier.models.Course
+                (daoCourse.getCourseId(), daoCourse.getCourseTitle(), daoCourse.getCourseName(),
                 daoCourse.getCourseLevel(), daoCourse.getCourseCredits(), daoCourse.getDescription());
     }
 
@@ -183,7 +184,6 @@ public class Utility
     {
         com.hamidur.cunyfirst.viewTier.models.Student viewStudent = new com.hamidur.cunyfirst.viewTier.models.Student();
 
-        System.out.println(student.getStudentId());
         viewStudent.setStudentId(student.getStudentId());
         viewStudent.setFirstName(student.getPerson().getFirstName());
         viewStudent.setLastName(student.getPerson().getLastName());

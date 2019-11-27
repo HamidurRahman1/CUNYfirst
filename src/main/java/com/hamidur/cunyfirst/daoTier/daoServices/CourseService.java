@@ -23,11 +23,13 @@ public class CourseService
     {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
+
         session.save(daoCourse);
         session.flush();
         session.clear();
         session.getTransaction().commit();
         session.close();
+
         return daoCourse;
     }
 

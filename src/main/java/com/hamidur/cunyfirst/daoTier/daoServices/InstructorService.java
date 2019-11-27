@@ -18,6 +18,7 @@ public class InstructorService
     public Instructor insertInstructor(Instructor daoInstructor)
     {
         Session session = sessionFactory.openSession();
+
         session.beginTransaction();
         session.save(daoInstructor);
         session.flush();
