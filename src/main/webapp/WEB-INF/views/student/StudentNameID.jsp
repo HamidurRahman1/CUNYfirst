@@ -10,8 +10,8 @@
 
     <div class="name">
         <br><br>
-        <label>Student ID: </label> ${sessionScope.get("vStudent").getStudentId()}<br>
-        <label>Name: </label> ${sessionScope.get("vStudent").getFirstName()} ${sessionScope.get("vStudent").getLastName()}
+        <label>Student ID: </label> ${sessionScope.get("student").getStudentId()}<br>
+        <label>Name: </label> ${sessionScope.get("student").getFirstName()} ${sessionScope.get("student").getLastName()}
     </div>
 
 </body>

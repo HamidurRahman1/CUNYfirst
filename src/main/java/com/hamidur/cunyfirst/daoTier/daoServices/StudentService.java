@@ -54,8 +54,22 @@ public class StudentService
     {
         Session session = sessionFactory.openSession();
         Student student = session.get(Student.class, studentId);
+
+        com.hamidur.cunyfirst.viewTier.models.Student viewStudent = Utility.toViewStudent(student);
+
+        viewStudent.setAddress(Utility.toViewAddress(student.getAddresses().iterator().next()));
+        viewStudent.setContact(Utility.toViewContact(student.getContact()));
+        viewStudent.setLogin(Utility.toViewStudentLogin(student.getLogin()));
+        viewStudent.setHighSchoolInfo(Utility.toViewHighSchoolInfo(student.getHighSchoolInfo()));
+        viewStudent.setTransferInfo(Utility.toViewTransferInfo(student.getTransferInfo()));
+        viewStudent.setLogin(Utility.toViewStudentLogin(student.getLogin()));
+
+        viewStudent.setFafsas(Utility.toViewFafsas(student.getFafsas()));
+        viewStudent.setQuestionAnswers(Utility.toViewStudentSecurityQuestionsAns(student.getQuestionAnswers()));
+        viewStudent.setStudentCourses(Utility.toViewStudentCourses(student.getStudentCourses()));
+
         session.close();
-        return Utility.toViewStudent(student);
+        return viewStudent;
     }
 
     public void getStudentBySSN(String ssn)

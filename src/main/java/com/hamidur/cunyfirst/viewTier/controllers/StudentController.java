@@ -43,7 +43,7 @@ public class StudentController
     {
         model.addAttribute("login", applicationContext.getBean(Login.class));
         model.addAttribute("title", "Student");
-        model.addAttribute("url", "/vStudent/processStudentLogin");
+        model.addAttribute("url", "/student/processStudentLogin");
         model.addAttribute("methodType", propertyHandler.POST);
         return "generic/Login";
     }
@@ -51,7 +51,7 @@ public class StudentController
     @GetMapping("/logout")
     public String logoutInstructor(HttpSession session)
     {
-        session.removeAttribute("vStudent");
+        session.removeAttribute("student");
         return "redirect:/student/login";
     }
 
@@ -73,7 +73,7 @@ public class StudentController
     }
 
     @GetMapping("/get/getFAFSAs")
-    public String getFafsas(Model model, @SessionAttribute("vStudent")Student student)
+    public String getFafsas(Model model, @SessionAttribute("student")Student student)
     {
         Set<FAFSA> fafsas = ViewRelatedTester.fafsas();
         student.setFafsas(fafsas);
@@ -82,7 +82,7 @@ public class StudentController
     }
 
     @GetMapping("/get/getCourseHistory")
-    public String getThisStudentCourseHistory(Model model, @SessionAttribute("vStudent")Student student)
+    public String getThisStudentCourseHistory(Model model, @SessionAttribute("student")Student student)
     {
         Set<StudentCourse> set = ViewRelatedTester.studentCourses();
         student.setStudentCourses(set);

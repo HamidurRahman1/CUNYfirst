@@ -33,13 +33,20 @@ public class DaoRelatedTester
         Session session = HibernateUtility.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        student = demoStudents().get(0);
-        student.addAddress(demoAddresses().get(0));
-        student.setContact(demoContact());
+        student = session.get(Student.class, 10000001);
+
+        System.out.println("-> " + student);
+        System.out.println("-> " + student.getPerson());
+        System.out.println("-> " + student.getContact());
+        System.out.println("-> " + student.getAddresses().iterator().next());
+        System.out.println("-> " + student.getLogin());
+        System.out.println("-> " + student.getHighSchoolInfo());
+        System.out.println("-> " + student.getTransferInfo());
+        System.out.println("-> " + student.getFafsas());
+        System.out.println("-> " + student.getQuestionAnswers());
+        System.out.println("-> " + student.getStudentCourses());
 
 
-
-        System.out.println(student);
         session.close();
         HibernateUtility.getInstance().closeSessionFactory();
     }
@@ -121,12 +128,12 @@ public class DaoRelatedTester
     
 //    private static void insertFafsas(Session session, List<Student> students)
 //    {
-//        for(Student vStudent: students)
+//        for(Student student: students)
 //        {
 //            List<FAFSA> fafsas = demoFafsas(getTerms(session));
 //            for(FAFSA fafsa: fafsas)
 //            {
-//                vStudent.addFafsa(fafsa);
+//                student.addFafsa(fafsa);
 //                session.save(fafsa);
 //            }
 //
@@ -202,17 +209,17 @@ public class DaoRelatedTester
     private static List<Student> demoStudents()
     {
         List<Student> students = new LinkedList <>();
-//        Student vStudent = new Student();
-//        vStudent.setFirstName("Hamidur");
-//        vStudent.setLastName("Rahman");
-//        vStudent.setSsn("111000111");
-//        vStudent.setDateOfBirth(LocalDate.of(1999, 5, 4));
-//        vStudent.setGender(String.M);
+//        Student student = new Student();
+//        student.setFirstName("Hamidur");
+//        student.setLastName("Rahman");
+//        student.setSsn("111000111");
+//        student.setDateOfBirth(LocalDate.of(1999, 5, 4));
+//        student.setGender(String.M);
         
         Student student2 = new Student("demo first", "demo last", "657030316",
                 LocalDate.of(1986, 2, 25), Gender.F.toString());
         
-//        students.add(vStudent);
+//        students.add(student);
         students.add(student2);
         
         return students;
@@ -263,25 +270,25 @@ public class DaoRelatedTester
         return new LinkedList <>(Arrays.asList(t3, t4));
     }
     
-//    private static void insertStudentCourses(Session session, Student vStudent)
+//    private static void insertStudentCourses(Session session, Student student)
 //    {
 //        Set<StudentCourse> studentCourses = new LinkedHashSet <>();
 //        List<Term> terms = session.createQuery("from Term").list();
 //        List<Course> courses = session.createQuery("from Course").list();
 //        courses.sort(Comparator.comparing(Course::getCourseId));
 //
-//        StudentCourse s1 = new StudentCourse(vStudent, courses.get(3), CourseStatus.TKN, terms.get(0));
-//        s1.setStudent(vStudent);
-//        StudentCourse s2 = new StudentCourse(vStudent, courses.get(6), CourseStatus.TKN, terms.get(2));
-//        s2.setStudent(vStudent);
-//        StudentCourse s3 = new StudentCourse(vStudent, courses.get(7), CourseStatus.TKN, terms.get(3));
-//        s3.setStudent(vStudent);
-//        StudentCourse s4 = new StudentCourse(vStudent, courses.get(9), CourseStatus.TKN, terms.get(1));
-//        s4.setStudent(vStudent);
+//        StudentCourse s1 = new StudentCourse(student, courses.get(3), CourseStatus.TKN, terms.get(0));
+//        s1.setStudent(student);
+//        StudentCourse s2 = new StudentCourse(student, courses.get(6), CourseStatus.TKN, terms.get(2));
+//        s2.setStudent(student);
+//        StudentCourse s3 = new StudentCourse(student, courses.get(7), CourseStatus.TKN, terms.get(3));
+//        s3.setStudent(student);
+//        StudentCourse s4 = new StudentCourse(student, courses.get(9), CourseStatus.TKN, terms.get(1));
+//        s4.setStudent(student);
 //
 //        studentCourses.addAll(Arrays.asList(s1, s2, s3, s4));
 //
-//        vStudent.setStudentCourses(studentCourses);
+//        student.setStudentCourses(studentCourses);
 //        session.save(s1);
 //        session.save(s2);
 //        session.save(s3);

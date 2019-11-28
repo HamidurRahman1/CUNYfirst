@@ -62,6 +62,7 @@ public class BeanConfiguration
         student.setContact(contact());
         student.setHighSchoolInfo(highSchoolInfo());
         student.setTransferInfo(transferInfo());
+        student.setLogin(login());
         return student;
     }
 
@@ -90,7 +91,9 @@ public class BeanConfiguration
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public TransferInfo transferInfo()
     {
-        return new TransferInfo();
+        TransferInfo transferInfo = new TransferInfo();
+        transferInfo.setTerm(term());
+        return transferInfo;
     }
 
     @Bean
@@ -98,13 +101,6 @@ public class BeanConfiguration
     public Login login()
     {
         return new Login();
-    }
-
-    @Bean
-    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public FAFSA fafsa()
-    {
-        return new FAFSA();
     }
 
     @Bean
@@ -119,13 +115,6 @@ public class BeanConfiguration
     public Course course()
     {
         return new Course();
-    }
-
-    @Bean
-    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-    public StudentCourse studentCourse()
-    {
-        return new StudentCourse();
     }
 
     @Bean

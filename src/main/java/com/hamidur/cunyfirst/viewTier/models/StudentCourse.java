@@ -106,7 +106,7 @@ public class StudentCourse
     @Override
     public String toString()
     {
-        return "StudentCourse{" + "vStudent=" + student + ", course=" + course + ", courseStatus=" +
+        return "StudentCourse{" + "student=" + student + ", course=" + course + ", courseStatus=" +
                 courseStatus + ", grade=" + grade + ", term=" + term + '}';
     }
 }

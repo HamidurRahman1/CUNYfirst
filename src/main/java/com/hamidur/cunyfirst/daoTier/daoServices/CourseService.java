@@ -6,6 +6,7 @@ import com.hamidur.cunyfirst.daoTier.util.Utility;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedList;
 import java.util.List;

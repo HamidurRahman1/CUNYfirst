@@ -27,9 +27,6 @@ import java.util.Set;
 
 public class Utility
 {
-    @Autowired
-    private ApplicationContext applicationContext;
-
     public static com.hamidur.cunyfirst.viewTier.models.Course toViewCourse(Course daoCourse)
     {
         return new com.hamidur.cunyfirst.viewTier.models.Course
@@ -82,7 +79,7 @@ public class Utility
         return courses;
     }
 
-    private static Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> toViewInstructorCourses
+    public static Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> toViewInstructorCourses
             (Set<InstructorCourse> daoInstructorCourses)
     {
         Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> courses = new LinkedHashSet<>();
@@ -115,8 +112,13 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.Contact toViewContact(Contact daoContact)
     {
-        return new com.hamidur.cunyfirst.viewTier.models.Contact(daoContact.getPhone().getPhone(), daoContact.getEmail(),
-                daoContact.getCollegeEmail());
+        com.hamidur.cunyfirst.viewTier.models.Contact contact = new com.hamidur.cunyfirst.viewTier.models.Contact();
+
+        if(daoContact.getPhone() != null) contact.setPhone(daoContact.getPhone().getPhone());
+        contact.setCollegeEmail(daoContact.getCollegeEmail());
+        contact.setEmail(daoContact.getEmail());
+
+        return contact;
     }
 
     public static Contact toDaoContact(com.hamidur.cunyfirst.viewTier.models.Contact contact)
@@ -124,7 +126,7 @@ public class Utility
         return new Contact(contact.getCollegeEmail(), contact.getEmail(), contact.getPhone());
     }
 
-    private static Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> toViewStudentCourses(Set<StudentCourse> studentCourses)
+    public static Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> toViewStudentCourses(Set<StudentCourse> studentCourses)
     {
         Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> studentCourseSet = new LinkedHashSet<>();
 
@@ -136,7 +138,6 @@ public class Utility
             studentCourse.setCourse(toViewCourse(e.getCourse()));
             studentCourse.setCourseStatus(e.getCourseStatus());
             studentCourse.setGrade(e.getGrade());
-            studentCourse.setStudent(toViewStudent(e.getStudent()));
 
             studentCourseSet.add(studentCourse);
         });
@@ -144,7 +145,7 @@ public class Utility
         return studentCourseSet;
     }
 
-    private static Set<StudentCourse> toDaoStudentCourses(Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> studentCourses)
+    public static Set<StudentCourse> toDaoStudentCourses(Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> studentCourses)
     {
         Set<StudentCourse> studentCourseSet = new LinkedHashSet<>();
 
@@ -180,16 +181,17 @@ public class Utility
         return daoStudent;
     }
 
-    public static com.hamidur.cunyfirst.viewTier.models.Student toViewStudent(Student student)
+    public static com.hamidur.cunyfirst.viewTier.models.Student toViewStudent(Student daoStudent)
     {
-        com.hamidur.cunyfirst.viewTier.models.Student viewStudent = new com.hamidur.cunyfirst.viewTier.models.Student();
+        com.hamidur.cunyfirst.viewTier.models.Student viewStudent =
+                new com.hamidur.cunyfirst.viewTier.models.Student();
 
-        viewStudent.setStudentId(student.getStudentId());
-        viewStudent.setFirstName(student.getPerson().getFirstName());
-        viewStudent.setLastName(student.getPerson().getLastName());
-        viewStudent.setSsn(student.getPerson().getSsn());
-        viewStudent.setDateOfBirth(student.getPerson().getDateOfBirth().toString());
-        viewStudent.setGender(student.getPerson().getGender());
+        viewStudent.setStudentId(daoStudent.getStudentId());
+        viewStudent.setFirstName(daoStudent.getPerson().getFirstName());
+        viewStudent.setLastName(daoStudent.getPerson().getLastName());
+        viewStudent.setSsn(daoStudent.getPerson().getSsn());
+        viewStudent.setDateOfBirth(daoStudent.getPerson().getDateOfBirth().toString());
+        viewStudent.setGender(daoStudent.getPerson().getGender());
 
         return viewStudent;
     }
@@ -226,16 +228,14 @@ public class Utility
         Map<com.hamidur.cunyfirst.viewTier.models.SecurityQuestion, String> securityQuestions = new LinkedHashMap<>();
 
         studentSecurityQuestions.forEach(e ->
-        {
-            securityQuestions.put(toViewSecurityQuestion(e.getSecurityQuestion()), e.getAnswer());
-        });
+                securityQuestions.put(toViewSecurityQuestion(e.getSecurityQuestion()), e.getAnswer()));
 
         return securityQuestions;
     }
 
     public static com.hamidur.cunyfirst.viewTier.models.Login toViewStudentLogin(Login daoLogin)
     {
-        return new com.hamidur.cunyfirst.viewTier.models.Login(daoLogin.getUserName(), daoLogin.getPassword());
+        return new com.hamidur.cunyfirst.viewTier.models.Login(daoLogin.getUserName(), daoLogin.getPassword(), daoLogin.getActive());
     }
 
     public static Login toDaoInstructorLogin(com.hamidur.cunyfirst.viewTier.models.Login login)
@@ -270,6 +270,7 @@ public class Utility
         com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo view =
                 new com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo();
 
+        view.setHighSchoolId(schoolInfo.getHighSchoolId());
         view.setHighSchoolName(schoolInfo.getHighSchoolName());
         view.setCity(schoolInfo.getCity());
         view.setCountry(schoolInfo.getCountry());
@@ -308,18 +309,19 @@ public class Utility
         return fafsas1;
     }
 
-    public static Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> toViewFafsas
-            (Set<FAFSA> fafsas)
+    public static Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> toViewFafsas(Set<FAFSA> fafsas)
     {
-        Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsas1 = new LinkedHashSet<>();
+        Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsaSet = new LinkedHashSet<>();
 
         fafsas.forEach(e ->
         {
             com.hamidur.cunyfirst.viewTier.models.FAFSA fafsa = new com.hamidur.cunyfirst.viewTier.models.FAFSA();
             fafsa.setAmount(e.getAmount());
             fafsa.setTerm(toViewTerm(e.getTerm()));
+
+            fafsaSet.add(fafsa);
         });
 
-        return fafsas1;
+        return fafsaSet;
     }
 }

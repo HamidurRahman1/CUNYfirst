@@ -137,7 +137,7 @@ public class StudentCourse implements Serializable
     @Override
     public String toString()
     {
-        return "StudentCourse{" + "studentCourseId=" + studentCourseId + ", vStudent=" + student.getStudentId()
+        return "StudentCourse{" + "studentCourseId=" + studentCourseId + ", student=" + student.getStudentId()
                 + ", course=" + course.getCourseName() + " " + course.getCourseLevel()
                 + ", courseStatus=" + courseStatus + ", grade='" + grade
                 + ", term=" + term.getTermName() + " " + term.getTermYear() + '}';

@@ -10,6 +10,8 @@ import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -71,5 +73,10 @@ public class ApiService
     {
         if(instructor == null) throw new IllegalArgumentException("Instructor cannot be null");
         return Utility.toViewInstructor(instructorService.insertInstructor(Utility.toDaoInstructor(instructor)));
+    }
+
+    public Student getStudentById(Integer studentId)
+    {
+        return studentService.getStudentById(studentId);
     }
 }

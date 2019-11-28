@@ -105,7 +105,7 @@ public class InstructorController
     {
         try
         {
-            // service - update vStudent grade
+            // service - update student grade
             System.out.println(studentCourse.getStudent());
             System.out.println(studentCourse.getGrade());
             System.out.println(studentCourse.getCourse());

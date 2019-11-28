@@ -90,7 +90,8 @@ public class TransferInfo implements Serializable
     @Override
     public String toString()
     {
-        return "TransferInfo{" + "transferInfoId=" + transferInfoId + ", transferSchoolName='" + transferSchoolName + '\'' + ", term=" + term + ", vStudent=" + student.getStudentId() + '}';
+        return "TransferInfo{" + "transferInfoId=" + transferInfoId + ", transferSchoolName='"
+                + transferSchoolName + '\'' + ", term=" + term + ", student=" + student.getStudentId() + '}';
     }
 }
 

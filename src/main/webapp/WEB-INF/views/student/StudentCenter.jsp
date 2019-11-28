@@ -31,11 +31,11 @@
                             <th>Zip Code</th>
                         </tr>
                         <tr>
-                            <td>${sessionScope.get("vStudent").getAddress().getStreet()}</td>
-                            <td>${sessionScope.get("vStudent").getAddress().getCrossStreet()}</td>
-                            <td>${sessionScope.get("vStudent").getAddress().getCity()}</td>
-                            <td>${sessionScope.get("vStudent").getAddress().getState()}</td>
-                            <td>${sessionScope.get("vStudent").getAddress().getZipCode()}</td>
+                            <td>${sessionScope.get("student").getAddress().getStreet()}</td>
+                            <td>${sessionScope.get("student").getAddress().getCrossStreet()}</td>
+                            <td>${sessionScope.get("student").getAddress().getCity()}</td>
+                            <td>${sessionScope.get("student").getAddress().getState()}</td>
+                            <td>${sessionScope.get("student").getAddress().getZipCode()}</td>
                         </tr>
                     </table>
                 </div>
@@ -51,9 +51,9 @@
                             <th>Phone</th>
                         </tr>
                         <tr>
-                            <td>${sessionScope.get("vStudent").getContact().getCollegeEmail()}</td>
-                            <td>${sessionScope.get("vStudent").getContact().getEmail()}</td>
-                            <td>${sessionScope.get("vStudent").getContact().getPhone()}</td>
+                            <td>${sessionScope.get("student").getContact().getCollegeEmail()}</td>
+                            <td>${sessionScope.get("student").getContact().getEmail()}</td>
+                            <td>${sessionScope.get("student").getContact().getPhone()}</td>
                         </tr>
                     </table>
                 </div>
