@@ -130,6 +130,8 @@ public class Utility
     {
         Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> studentCourseSet = new LinkedHashSet<>();
 
+        if(studentCourses == null) return studentCourseSet;
+
         studentCourses.forEach(e ->
         {
             com.hamidur.cunyfirst.viewTier.models.StudentCourse studentCourse =
@@ -138,6 +140,7 @@ public class Utility
             studentCourse.setCourse(toViewCourse(e.getCourse()));
             studentCourse.setCourseStatus(e.getCourseStatus());
             studentCourse.setGrade(e.getGrade());
+            studentCourse.setTerm(toViewTerm(e.getTerm()));
 
             studentCourseSet.add(studentCourse);
         });
@@ -227,6 +230,8 @@ public class Utility
     {
         Map<com.hamidur.cunyfirst.viewTier.models.SecurityQuestion, String> securityQuestions = new LinkedHashMap<>();
 
+        if(studentSecurityQuestions == null) return securityQuestions;
+
         studentSecurityQuestions.forEach(e ->
                 securityQuestions.put(toViewSecurityQuestion(e.getSecurityQuestion()), e.getAnswer()));
 
@@ -245,6 +250,7 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.TransferInfo toViewTransferInfo(TransferInfo transferInfo)
     {
+        if(transferInfo == null) return new com.hamidur.cunyfirst.viewTier.models.TransferInfo();
         return new com.hamidur.cunyfirst.viewTier.models.TransferInfo
                 (transferInfo.getTransferSchoolName(), toViewTerm(transferInfo.getTerm()));
     }
@@ -267,6 +273,8 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo toViewHighSchoolInfo(HighSchoolInfo schoolInfo)
     {
+        if(schoolInfo == null) return new com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo();
+
         com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo view =
                 new com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo();
 
@@ -311,6 +319,7 @@ public class Utility
 
     public static Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> toViewFafsas(Set<FAFSA> fafsas)
     {
+        if(fafsas == null) return new LinkedHashSet<>();
         Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsaSet = new LinkedHashSet<>();
 
         fafsas.forEach(e ->

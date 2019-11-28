@@ -125,7 +125,7 @@
                     <th>Security Questions</th>
                 </tr>
                 <c:forEach var="question" items="${student.questionsAns.keySet()}">
-                    <tr><td>${question}</td></tr>
+                    <tr><td>${question.question}</td></tr>
                 </c:forEach>
             </table>
         </div>
