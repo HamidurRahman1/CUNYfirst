@@ -1,6 +1,8 @@
 package com.hamidur.cunyfirst.daoTier.daoServices;
 
 import com.hamidur.cunyfirst.daoTier.models.Instructor;
+import com.hamidur.cunyfirst.daoTier.models.InstructorLogin;
+import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
 import org.hibernate.Session;
@@ -18,12 +20,20 @@ public class InstructorService
     public Instructor insertInstructor(Instructor daoInstructor)
     {
         Session session = sessionFactory.openSession();
-
         session.beginTransaction();
         session.save(daoInstructor);
-        session.flush();
-        session.clear();
+
+        session.save(daoInstructor);
+
+        InstructorLogin instructorLogin = createLogin(daoInstructor.getPerson(), daoInstructor.getInstructorId());
+        daoInstructor.setLogin(instructorLogin);
+        instructorLogin.setInstructor(daoInstructor);
+
+        session.save(instructorLogin);
+        session.update(daoInstructor);
+
         session.getTransaction().commit();
+
         session.close();
 
         return daoInstructor;
@@ -38,5 +48,15 @@ public class InstructorService
         session.clear();
         session.getTransaction().commit();
         session.close();
+    }
+
+    private InstructorLogin createLogin(Person person, Integer instructorId)
+    {
+        String username = person.getFirstName()+"."+person.getLastName()+String.valueOf(instructorId).substring(0, 3);
+
+        InstructorLogin login = new InstructorLogin();
+        login.setActive(false);
+        login.setUserName(username);
+        return login;
     }
 }

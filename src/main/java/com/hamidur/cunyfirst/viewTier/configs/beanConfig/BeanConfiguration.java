@@ -28,11 +28,14 @@ import com.hamidur.cunyfirst.viewTier.models.Term;
 import com.hamidur.cunyfirst.viewTier.models.TransferInfo;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
+import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
@@ -46,6 +49,20 @@ import java.util.Set;
 @Lazy
 public class BeanConfiguration
 {
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public ApplicationContextProvider applicationContextProvider()
+    {
+        return new ApplicationContextProvider();
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
+    public ApplicationContext applicationContext()
+    {
+        return applicationContextProvider().getApplicationContext();
+    }
+
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     public PropertyHandler propertyHandler()

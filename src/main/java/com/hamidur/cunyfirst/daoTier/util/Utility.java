@@ -42,8 +42,18 @@ public class Utility
 
     public static Instructor toDaoInstructor(com.hamidur.cunyfirst.viewTier.models.Instructor instructor)
     {
-        return new Instructor(instructor.getFirstName(), instructor.getLastName(), instructor.getSsn(),
-                LocalDate.parse(instructor.getDateOfBirth()), instructor.getGender());
+        Instructor instructor1 = new Instructor();
+        Person person = new Person();
+
+        person.setFirstName(instructor.getFirstName());
+        person.setLastName(instructor.getLastName());
+        String[] parts = instructor.getDateOfBirth().split("/");
+        person.setDateOfBirth(LocalDate.of(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]), Integer.parseInt(parts[0])));
+        person.setSsn(instructor.getSsn());
+        person.setGender(instructor.getGender());
+
+        instructor1.setPerson(person);
+        return instructor1;
     }
 
     public static com.hamidur.cunyfirst.viewTier.models.Instructor toViewInstructor(Instructor daoInstructor)
@@ -57,6 +67,8 @@ public class Utility
         instructor.setSsn(daoInstructor.getPerson().getSsn());
         instructor.setDateOfBirth(daoInstructor.getPerson().getDateOfBirth().toString());
         instructor.setGender(daoInstructor.getPerson().getGender());
+
+        instructor.setLogin(toViewInstructorLogin(daoInstructor.getLogin()));
 
         return instructor;
     }
@@ -295,7 +307,8 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.InstructorLogin toViewInstructorLogin(InstructorLogin daoLogin)
     {
-        return new com.hamidur.cunyfirst.viewTier.models.InstructorLogin(daoLogin.getUserName(), daoLogin.getPassword());
+        return new com.hamidur.cunyfirst.viewTier.models.InstructorLogin
+                (daoLogin.getUserName(), daoLogin.getPassword(), daoLogin.getActive());
     }
 
     public static InstructorLogin toDaoInstructorLogin(com.hamidur.cunyfirst.viewTier.models.InstructorLogin login)

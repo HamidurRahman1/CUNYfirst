@@ -107,7 +107,7 @@ public class AdminController
         {
             model.addAttribute("url", "/admin/services/insert/processed/student");
             model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("student", applicationContext.getBean(Student.class));
+            model.addAttribute("student", new Student());
             model.addAttribute("genders", propertyHandler.getGenders());
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());

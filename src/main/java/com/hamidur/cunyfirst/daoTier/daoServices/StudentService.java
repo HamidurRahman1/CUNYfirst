@@ -121,6 +121,7 @@ public class StudentService
     {
         int i = 6;
         String username = person.getFirstName()+"."+person.getLastName()+String.valueOf(studentId).substring(i);
+
         Login login = new Login();
         login.setUserName(username);
         login.setActive(false);
