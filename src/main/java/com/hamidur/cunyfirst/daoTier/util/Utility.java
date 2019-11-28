@@ -16,8 +16,6 @@ import com.hamidur.cunyfirst.daoTier.models.StudentCourse;
 import com.hamidur.cunyfirst.daoTier.models.StudentSecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
@@ -112,8 +110,12 @@ public class Utility
 
     public static Address toDaoAddress(com.hamidur.cunyfirst.viewTier.models.Address address)
     {
-        return new Address(address.getStreet(), address.getCrossStreet(),
+        Address address1 = new Address(address.getStreet(), address.getCrossStreet(),
                 address.getCity(), address.getState(), address.getZipCode());
+
+        if(address.getAddressId() == null) return address1;
+        else address.setAddressId(address.getAddressId());
+        return address1;
     }
 
     public static com.hamidur.cunyfirst.viewTier.models.Address toViewAddress(Address address)
@@ -135,7 +137,10 @@ public class Utility
 
     public static Contact toDaoContact(com.hamidur.cunyfirst.viewTier.models.Contact contact)
     {
-        return new Contact(contact.getCollegeEmail(), contact.getEmail(), contact.getPhone());
+        Contact contact1 = new Contact(contact.getCollegeEmail(), contact.getEmail(), contact.getPhone());
+        if(contact.getContactId() == null) return contact1;
+        else contact1.setContactId(contact.getContactId());
+        return contact1;
     }
 
     public static Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> toViewStudentCourses(Set<StudentCourse> studentCourses)
@@ -187,8 +192,7 @@ public class Utility
         person.setFirstName(student.getFirstName());
         person.setLastName(student.getLastName());
         person.setSsn(student.getSsn());
-        String[] parts = student.getDateOfBirth().split("/");
-        person.setDateOfBirth(LocalDate.of(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]), Integer.parseInt(parts[0])));
+        person.setDateOfBirth(toDaoDOB(student.getDateOfBirth()));
         person.setGender(student.getGender());
 
         daoStudent.setPerson(person);
@@ -205,7 +209,7 @@ public class Utility
         viewStudent.setFirstName(daoStudent.getPerson().getFirstName());
         viewStudent.setLastName(daoStudent.getPerson().getLastName());
         viewStudent.setSsn(daoStudent.getPerson().getSsn());
-        viewStudent.setDateOfBirth(daoStudent.getPerson().getDateOfBirth().toString());
+        viewStudent.setDateOfBirth(toViewDOB(daoStudent.getPerson().getDateOfBirth()));
         viewStudent.setGender(daoStudent.getPerson().getGender());
 
         return viewStudent;
@@ -269,8 +273,19 @@ public class Utility
 
     public static TransferInfo toDaoTransferInfo(com.hamidur.cunyfirst.viewTier.models.TransferInfo transferInfo)
     {
-        if(transferInfo == null) return new TransferInfo();
-        return new TransferInfo(transferInfo.getTransferSchoolName(), toDaoTerm(transferInfo.getTerm()));
+        TransferInfo transferInfo1 = new TransferInfo();
+
+        if(transferInfo == null)
+        {
+            transferInfo1.setTerm(toDaoTerm(new com.hamidur.cunyfirst.viewTier.models.Term()));
+            return transferInfo1;
+        }
+        transferInfo1.setTransferSchoolName(transferInfo.getTransferSchoolName());
+        transferInfo1.setTerm(toDaoTerm(new com.hamidur.cunyfirst.viewTier.models.Term()));
+
+        if(transferInfo.getTransferId() == null) return transferInfo1;
+        else transferInfo1.setTransferInfoId(transferInfo.getTransferId());
+        return transferInfo1;
     }
 
     public static com.hamidur.cunyfirst.viewTier.models.Term toViewTerm(Term term)
@@ -301,8 +316,11 @@ public class Utility
 
     public static HighSchoolInfo toDaoHighSchoolInfo(com.hamidur.cunyfirst.viewTier.models.HighSchoolInfo schoolInfo)
     {
-        return new HighSchoolInfo(schoolInfo.getHighSchoolName(), schoolInfo.getYear(), schoolInfo.getCity(),
-                schoolInfo.getCountry());
+        HighSchoolInfo highSchoolInfo = new HighSchoolInfo
+                (schoolInfo.getHighSchoolName(), schoolInfo.getYear(), schoolInfo.getCity(), schoolInfo.getCountry());
+        if(schoolInfo.getHighSchoolId() == null) return highSchoolInfo;
+        else highSchoolInfo.setHighSchoolId(schoolInfo.getHighSchoolId());
+        return highSchoolInfo;
     }
 
     public static com.hamidur.cunyfirst.viewTier.models.InstructorLogin toViewInstructorLogin(InstructorLogin daoLogin)
@@ -345,5 +363,16 @@ public class Utility
         });
 
         return fafsaSet;
+    }
+
+    public static LocalDate toDaoDOB(String dob)
+    {
+        String parts[] = dob.split("/");
+        return LocalDate.of(Integer.parseInt(parts[2]), Integer.parseInt(parts[1]), Integer.parseInt(parts[0]));
+    }
+
+    public static String toViewDOB(LocalDate dob)
+    {
+        return dob.getDayOfWeek().getValue()+"/"+dob.getMonthValue()+"/"+dob.getYear();
     }
 }

@@ -9,6 +9,7 @@ import com.hamidur.cunyfirst.daoTier.util.Utility;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
+import java.time.LocalDate;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,28 @@ public class StudentService
     public StudentService(final HibernateUtility hibernateUtility)
     {
         this.sessionFactory = hibernateUtility.getSessionFactory();
+    }
+
+    public com.hamidur.cunyfirst.viewTier.models.Student getStudentById(Integer studentId)
+    {
+        Session session = sessionFactory.openSession();
+        Student student = session.get(Student.class, studentId);
+
+        com.hamidur.cunyfirst.viewTier.models.Student viewStudent = Utility.toViewStudent(student);
+
+        viewStudent.setAddress(Utility.toViewAddress(student.getAddresses().iterator().next()));
+        viewStudent.setContact(Utility.toViewContact(student.getContact()));
+        viewStudent.setLogin(Utility.toViewStudentLogin(student.getLogin()));
+        viewStudent.setHighSchoolInfo(Utility.toViewHighSchoolInfo(student.getHighSchoolInfo()));
+        viewStudent.setTransferInfo(Utility.toViewTransferInfo(student.getTransferInfo()));
+        viewStudent.setLogin(Utility.toViewStudentLogin(student.getLogin()));
+
+        viewStudent.setFafsas(Utility.toViewFafsas(student.getFafsas()));
+        viewStudent.setQuestionAnswers(Utility.toViewStudentSecurityQuestionsAns(student.getQuestionAnswers()));
+        viewStudent.setStudentCourses(Utility.toViewStudentCourses(student.getStudentCourses()));
+
+        session.close();
+        return viewStudent;
     }
 
     public Student insertStudent(Student daoStudent)
@@ -50,26 +73,33 @@ public class StudentService
         return daoStudent;
     }
 
-    public com.hamidur.cunyfirst.viewTier.models.Student getStudentById(Integer studentId)
+    public void updateStudentsInfo(com.hamidur.cunyfirst.viewTier.models.Student viewStudent)
     {
         Session session = sessionFactory.openSession();
-        Student student = session.get(Student.class, studentId);
+        session.beginTransaction();
 
-        com.hamidur.cunyfirst.viewTier.models.Student viewStudent = Utility.toViewStudent(student);
+        Student daoStudent = session.get(Student.class, viewStudent.getStudentId());
 
-        viewStudent.setAddress(Utility.toViewAddress(student.getAddresses().iterator().next()));
-        viewStudent.setContact(Utility.toViewContact(student.getContact()));
-        viewStudent.setLogin(Utility.toViewStudentLogin(student.getLogin()));
-        viewStudent.setHighSchoolInfo(Utility.toViewHighSchoolInfo(student.getHighSchoolInfo()));
-        viewStudent.setTransferInfo(Utility.toViewTransferInfo(student.getTransferInfo()));
-        viewStudent.setLogin(Utility.toViewStudentLogin(student.getLogin()));
+        daoStudent.setStudentId(viewStudent.getStudentId());
+        Person person = new Person();
+        person.setFirstName(viewStudent.getFirstName());
+        person.setLastName(viewStudent.getLastName());
+        person.setGender(viewStudent.getGender());
+        person.setSsn(viewStudent.getSsn());
+        person.setDateOfBirth(Utility.toDaoDOB(viewStudent.getDateOfBirth()));
+        daoStudent.setPerson(person);
 
-        viewStudent.setFafsas(Utility.toViewFafsas(student.getFafsas()));
-        viewStudent.setQuestionAnswers(Utility.toViewStudentSecurityQuestionsAns(student.getQuestionAnswers()));
-        viewStudent.setStudentCourses(Utility.toViewStudentCourses(student.getStudentCourses()));
+        daoStudent.addAddress(Utility.toDaoAddress(viewStudent.getAddress()));
+        daoStudent.setContact(Utility.toDaoContact(viewStudent.getContact()));
+        daoStudent.setHighSchoolInfo(Utility.toDaoHighSchoolInfo(viewStudent.getHighSchoolInfo()));
+        daoStudent.setTransferInfo(Utility.toDaoTransferInfo(viewStudent.getTransferInfo()));
 
+        session.saveOrUpdate(daoStudent);
+
+        System.out.println("updated");
+        session.getTransaction().commit();
+        System.out.println("commited");
         session.close();
-        return viewStudent;
     }
 
     public void getStudentBySSN(String ssn)

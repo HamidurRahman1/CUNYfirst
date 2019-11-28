@@ -50,6 +50,16 @@ public class Address implements Serializable
         this.state = state;
         this.zipCode = zipCode;
     }
+
+    public Address(Integer addressId, String street, String crossStreet, String city, String state, String zipCode)
+    {
+        this.addressId = addressId;
+        this.street = street;
+        this.crossStreet = crossStreet;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+    }
     
     public Integer getAddressId()
     {

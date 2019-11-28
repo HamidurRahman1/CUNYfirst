@@ -4,6 +4,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 public class Address implements Serializable
 {
@@ -99,7 +100,24 @@ public class Address implements Serializable
     {
         this.zipCode = zipCode;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getStreet(), address.getStreet()) &&
+                Objects.equals(getCrossStreet(), address.getCrossStreet()) &&
+                Objects.equals(getCity(), address.getCity()) &&
+                Objects.equals(getState(), address.getState()) &&
+                Objects.equals(getZipCode(), address.getZipCode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStreet(), getCrossStreet(), getCity(), getState(), getZipCode());
+    }
+
     @Override
     public String toString()
     {

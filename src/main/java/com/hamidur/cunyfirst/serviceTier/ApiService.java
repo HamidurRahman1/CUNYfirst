@@ -10,8 +10,6 @@ import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -31,13 +29,17 @@ public class ApiService
         this.adminService = adminService;
     }
 
+    public Student getStudentById(Integer studentId)
+    {
+        return studentService.getStudentById(studentId);
+    }
+
     public Student insertStudent(Student viewStudent)
     {
         if(viewStudent == null) throw new IllegalArgumentException("Student cannot be null");
         else if(viewStudent.getAddress() == null) throw new IllegalArgumentException("Address cannot be null");
         else if(viewStudent.getContact() == null) throw new IllegalArgumentException("Contact cannot be null");
         else if(viewStudent.getHighSchoolInfo() == null) throw new IllegalArgumentException("High School Info must be provided");
-        else if(viewStudent.getTransferInfo() == null) throw new IllegalArgumentException("Transfer Info cannot be null");
 
         com.hamidur.cunyfirst.daoTier.models.Student daoStudent = Utility.toDaoStudent(viewStudent);
 
@@ -52,6 +54,16 @@ public class ApiService
         viewStudent.setStudentId(daoStudent.getStudentId());
 
         return viewStudent;
+    }
+
+    public void updateStudentsInfo(Student student)
+    {
+        if(student == null) throw new IllegalArgumentException("Student cannot be null");
+        else if(student.getAddress() == null) throw new IllegalArgumentException("Address cannot be null");
+        else if(student.getContact() == null) throw new IllegalArgumentException("Contact cannot be null");
+        else if(student.getHighSchoolInfo() == null) throw new IllegalArgumentException("High School Info must be provided");
+
+        studentService.updateStudentsInfo(student);
     }
 
     public Course insertCourse(Course course)
@@ -73,10 +85,5 @@ public class ApiService
     {
         if(instructor == null) throw new IllegalArgumentException("Instructor cannot be null");
         return Utility.toViewInstructor(instructorService.insertInstructor(Utility.toDaoInstructor(instructor)));
-    }
-
-    public Student getStudentById(Integer studentId)
-    {
-        return studentService.getStudentById(studentId);
     }
 }

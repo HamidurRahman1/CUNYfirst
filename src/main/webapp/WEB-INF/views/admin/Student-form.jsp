@@ -5,7 +5,7 @@
 
 <html>
 <head>
-    <title>Adding a Student</title>
+    <title>${title}</title>
 </head>
 <body>
 

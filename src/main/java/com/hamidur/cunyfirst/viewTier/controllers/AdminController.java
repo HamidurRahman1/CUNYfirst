@@ -111,6 +111,7 @@ public class AdminController
             model.addAttribute("genders", propertyHandler.getGenders());
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
+            model.addAttribute("title", "Adding a Student");
         }
         catch (IOException ex)
         {
@@ -157,10 +158,11 @@ public class AdminController
         {
             model.addAttribute("url", "/admin/services/update/updated/student");
             model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("student", ViewRelatedTester.testStudent());
+            model.addAttribute("student", apiService.getStudentById(studentId));
             model.addAttribute("genders", propertyHandler.getGenders());
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
+            model.addAttribute("title", "Updating a Student");
         }
         catch (IOException ex)
         {
@@ -170,15 +172,28 @@ public class AdminController
     }
 
     @PostMapping("/services/update/updated/student")
-    public String updatesStudent(@ModelAttribute("student") Student student, Model model)
+    public String updatesStudent(@ModelAttribute Student student, Model model)
     {
         model.addAttribute("name", "../admin/AdminName.jsp");
         model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
 
-        model.addAttribute("title", "Student Updated");
-        model.addAttribute("message", "Student with ID: "+student.getStudentId()
-                +" has been successfully updated.");
-        return "generic/Message";
+        try
+        {
+            student.setStudentId(10000001);
+
+            apiService.updateStudentsInfo(student);
+
+            System.out.println("af");
+            model.addAttribute("title", "Student Updated");
+            model.addAttribute("message", "Student with ID: "+student.getStudentId()
+                    +" has been successfully updated.");
+            return "generic/Message";
+        }
+        catch (Exception ex)
+        {
+            System.out.println("ex: " + ex.getMessage());
+            return "redirect:/admin/services/update/updateable/student?studentId="+student.getStudentId();
+        }
     }
 
     @GetMapping("/services/delete/getStudent")
