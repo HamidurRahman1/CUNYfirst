@@ -3,24 +3,16 @@ package com.hamidur.cunyfirst.viewTier.models;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.LinkedHashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Student extends Person implements Serializable
 {
     private Integer studentId;
-    @Autowired
     private Address address;
-    @Autowired
     private Contact contact;
-    @Autowired
     private HighSchoolInfo highSchoolInfo;
-    @Autowired
     private TransferInfo transferInfo;
-    @Autowired
     private Login login;
     @Autowired
     private Map<SecurityQuestion, String> questionAnswers;

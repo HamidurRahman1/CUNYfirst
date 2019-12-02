@@ -30,23 +30,17 @@ import java.util.List;
 @RequestMapping("/admin")
 public class AdminController
 {
-    private final ApplicationContext applicationContext;
-    private final ApiService apiService;
-    private final PropertyHandler propertyHandler;
-
-    public AdminController(@Autowired final ApplicationContext applicationContext,
-                           @Autowired final ApiService apiService,
-                           @Autowired final PropertyHandler propertyHandler)
-    {
-        this.applicationContext = applicationContext;
-        this.apiService = apiService;
-        this.propertyHandler = propertyHandler;
-    }
+    @Autowired
+    private ApplicationContext applicationContext;
+    @Autowired
+    private ApiService apiService;
+    @Autowired
+    private PropertyHandler propertyHandler;
 
     @GetMapping("/login")
     public String studentLogin(Model model)
     {
-        model.addAttribute("login", new Login());
+        model.addAttribute("login", applicationContext.getBean(Login.class));
         model.addAttribute("title", "Admin");
         model.addAttribute("url", "/admin/processAdminLogin");
         model.addAttribute("methodType", propertyHandler.POST);
@@ -108,7 +102,10 @@ public class AdminController
         {
             model.addAttribute("url", "/admin/services/insert/processed/student");
             model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("student", new Student());
+
+            Student student = applicationContext.getBean(Student.class);
+
+            model.addAttribute("student", student);
             model.addAttribute("genders", propertyHandler.getGenders());
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
@@ -236,7 +233,7 @@ public class AdminController
     {
         try
         {
-            model.addAttribute("instructor", new Instructor());
+            model.addAttribute("instructor", applicationContext.getBean(Instructor.class));
             model.addAttribute("url", "/admin/services/insert/processed/instructor");
             model.addAttribute("methodType", propertyHandler.POST);
             model.addAttribute("genders", propertyHandler.getGenders());
@@ -359,7 +356,7 @@ public class AdminController
         {
             model.addAttribute("url", "/admin/services/insert/processed/course");
             model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("course", new Course());
+            model.addAttribute("course", applicationContext.getBean(Course.class));
             model.addAttribute("courseNames", propertyHandler.getCourseNames());
             model.addAttribute("courseLevels", propertyHandler.getCourseLevels());
             model.addAttribute("courseCredits", propertyHandler.getCourseCredits());

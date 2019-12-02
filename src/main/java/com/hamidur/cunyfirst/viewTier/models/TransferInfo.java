@@ -10,7 +10,6 @@ public class TransferInfo implements Serializable
     private Integer transferId;
     @Size(min = 10, max = 50)
     private String transferSchoolName;
-    @Autowired
     private Term term;
     
     public TransferInfo() {}

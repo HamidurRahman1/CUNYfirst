@@ -80,6 +80,10 @@ public class BeanConfiguration
         student.setHighSchoolInfo(highSchoolInfo());
         student.setTransferInfo(transferInfo());
         student.setLogin(login());
+        student.setQuestionAnswers(questionAnswers());
+        student.setFafsas(fafsas());
+        student.setStudentCourses(studentCourses());
+
         return student;
     }
 
@@ -173,7 +177,10 @@ public class BeanConfiguration
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Instructor instructor()
     {
-        return new Instructor();
+        Instructor instructor = new Instructor();
+        instructor.setLogin(instructorLogin());
+        instructor.setInstructorCourses(instructorCourses());
+        return instructor;
     }
 
     @Bean

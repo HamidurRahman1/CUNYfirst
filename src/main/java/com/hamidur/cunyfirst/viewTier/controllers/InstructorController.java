@@ -5,6 +5,7 @@ import com.hamidur.cunyfirst.viewTier.ViewRelatedTester;
 import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.InstructorCourse;
+import com.hamidur.cunyfirst.viewTier.models.InstructorLogin;
 import com.hamidur.cunyfirst.viewTier.models.Login;
 import com.hamidur.cunyfirst.viewTier.models.PropertyHandler;
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
@@ -26,23 +27,17 @@ import java.util.Arrays;
 @RequestMapping("/instructor")
 public class InstructorController
 {
-    private final ApplicationContext applicationContext;
-    private final ApiService apiService;
-    private final PropertyHandler propertyHandler;
-
-    public InstructorController(@Autowired final ApplicationContext applicationContext,
-                                @Autowired final ApiService apiService,
-                                @Autowired final PropertyHandler propertyHandler)
-    {
-        this.applicationContext = applicationContext;
-        this.apiService = apiService;
-        this.propertyHandler = propertyHandler;
-    }
+    @Autowired
+    private ApplicationContext applicationContext;
+    @Autowired
+    private ApiService apiService;
+    @Autowired
+    private PropertyHandler propertyHandler;
 
     @RequestMapping("/login")
     public String instructorLogin(Model model)
     {
-        model.addAttribute("login", new Login());
+        model.addAttribute("login", applicationContext.getBean(InstructorLogin.class));
         model.addAttribute("title", "Instructor");
         model.addAttribute("url", "/instructor/processInstructorLogin");
         model.addAttribute("methodType", propertyHandler.POST);
@@ -56,7 +51,7 @@ public class InstructorController
     }
 
     @PostMapping("/processInstructorLogin")
-    public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
+    public String processLogin(@ModelAttribute("login") InstructorLogin login, HttpSession session)
     {
         Instructor instructor = ViewRelatedTester.testInstructor();
         session.setAttribute("instructor", instructor);

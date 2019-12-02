@@ -7,10 +7,10 @@ import java.util.Objects;
 public class StudentCourse
 {
     @Autowired
-    private Student student;
-    @Autowired
     private Course course;
+    @Autowired
     private String courseStatus;
+    @Autowired
     private String grade;
     @Autowired
     private Term term;
@@ -23,25 +23,6 @@ public class StudentCourse
         this.courseStatus = courseStatus;
         this.grade = grade;
         this.term = term;
-    }
-    
-    public StudentCourse(Student student, Course course, String courseStatus, String grade, Term term)
-    {
-        this.student = student;
-        this.course = course;
-        this.courseStatus = courseStatus;
-        this.grade = grade;
-        this.term = term;
-    }
-    
-    public Student getStudent()
-    {
-        return student;
-    }
-    
-    public void setStudent(Student student)
-    {
-        this.student = student;
     }
     
     public Course getCourse()
@@ -83,30 +64,27 @@ public class StudentCourse
     {
         this.term = term;
     }
-    
+
     @Override
-    public boolean equals(Object o)
-    {
-        if(this == o) return true;
-        if(! (o instanceof StudentCourse)) return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof StudentCourse)) return false;
         StudentCourse that = (StudentCourse) o;
-        return Objects.equals(getStudent(), that.getStudent())
-                && Objects.equals(getCourse(), that.getCourse())
-                && getCourseStatus().equals(that.getCourseStatus())
-                && Objects.equals(getGrade(), that.getGrade())
-                && Objects.equals(getTerm(), that.getTerm());
+        return Objects.equals(getCourse(), that.getCourse()) &&
+                Objects.equals(getCourseStatus(), that.getCourseStatus()) &&
+                Objects.equals(getGrade(), that.getGrade()) &&
+                Objects.equals(getTerm(), that.getTerm());
     }
-    
+
     @Override
-    public int hashCode()
-    {
-        return Objects.hash(getStudent(), getCourse(), getCourseStatus(), getGrade(), getTerm());
+    public int hashCode() {
+        return Objects.hash(getCourse(), getCourseStatus(), getGrade(), getTerm());
     }
-    
+
     @Override
     public String toString()
     {
-        return "StudentCourse{" + "student=" + student + ", course=" + course + ", courseStatus=" +
-                courseStatus + ", grade=" + grade + ", term=" + term + '}';
+        return "StudentCourse{" + "course=" + course.getCourseLevel() + ", courseStatus=" +
+                courseStatus + ", grade=" + grade + ", term=" + term.getTermName() + '}';
     }
 }

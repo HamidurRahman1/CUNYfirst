@@ -25,18 +25,12 @@ import java.util.Set;
 @RequestMapping("/student")
 public class StudentController
 {
-    private final ApplicationContext applicationContext;
-    private final ApiService apiService;
-    private final PropertyHandler propertyHandler;
-
-    public StudentController(@Autowired final ApplicationContext applicationContext,
-                             @Autowired final ApiService apiService,
-                             @Autowired final PropertyHandler propertyHandler)
-    {
-        this.applicationContext = applicationContext;
-        this.apiService = apiService;
-        this.propertyHandler = propertyHandler;
-    }
+    @Autowired
+    private ApplicationContext applicationContext;
+    @Autowired
+    private ApiService apiService;
+    @Autowired
+    private PropertyHandler propertyHandler;
 
     @GetMapping("/login")
     public String studentLogin(Model model)
