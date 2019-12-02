@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.IOException;
@@ -183,7 +184,6 @@ public class AdminController
 
             apiService.updateStudentsInfo(student);
 
-            System.out.println("af");
             model.addAttribute("title", "Student Updated");
             model.addAttribute("message", "Student with ID: "+student.getStudentId()
                     +" has been successfully updated.");
@@ -372,7 +372,7 @@ public class AdminController
     }
 
     @PostMapping("/services/insert/processed/course")
-    public String processCourse(@Valid @ModelAttribute("course")Course course, Model model)
+    public String processCourse(@ModelAttribute("course")Course course, Model model)
     {
         try
         {

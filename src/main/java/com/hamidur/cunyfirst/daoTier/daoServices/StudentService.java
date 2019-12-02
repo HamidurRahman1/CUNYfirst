@@ -1,5 +1,6 @@
 package com.hamidur.cunyfirst.daoTier.daoServices;
 
+import com.hamidur.cunyfirst.daoTier.models.Address;
 import com.hamidur.cunyfirst.daoTier.models.Login;
 import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.models.Student;
@@ -89,16 +90,19 @@ public class StudentService
         person.setDateOfBirth(Utility.toDaoDOB(viewStudent.getDateOfBirth()));
         daoStudent.setPerson(person);
 
-        daoStudent.addAddress(Utility.toDaoAddress(viewStudent.getAddress()));
+        Address daoAddress = daoStudent.getAddresses().iterator().next();
+        daoAddress.setStreet(viewStudent.getAddress().getStreet());
+        daoAddress.setCrossStreet(viewStudent.getAddress().getCrossStreet());
+        daoAddress.setCity(viewStudent.getAddress().getCity());
+        daoAddress.setState(viewStudent.getAddress().getState());
+        daoAddress.setZipCode(viewStudent.getAddress().getZipCode());
+
         daoStudent.setContact(Utility.toDaoContact(viewStudent.getContact()));
         daoStudent.setHighSchoolInfo(Utility.toDaoHighSchoolInfo(viewStudent.getHighSchoolInfo()));
         daoStudent.setTransferInfo(Utility.toDaoTransferInfo(viewStudent.getTransferInfo()));
 
         session.saveOrUpdate(daoStudent);
-
-        System.out.println("updated");
         session.getTransaction().commit();
-        System.out.println("commited");
         session.close();
     }
 

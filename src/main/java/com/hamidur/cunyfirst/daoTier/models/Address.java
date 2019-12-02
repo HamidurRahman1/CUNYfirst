@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 @Entity(name = "Address")
 @Table(name = "Addresses")
@@ -130,7 +131,24 @@ public class Address implements Serializable
     {
         this.student = student;
     }
-    
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Address)) return false;
+        Address address = (Address) o;
+        return Objects.equals(getStreet(), address.getStreet()) &&
+                Objects.equals(getCrossStreet(), address.getCrossStreet()) &&
+                Objects.equals(getCity(), address.getCity()) &&
+                Objects.equals(getState(), address.getState()) &&
+                Objects.equals(getZipCode(), address.getZipCode());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStreet(), getCrossStreet(), getCity(), getState(), getZipCode());
+    }
+
     @Override
     public String toString()
     {
