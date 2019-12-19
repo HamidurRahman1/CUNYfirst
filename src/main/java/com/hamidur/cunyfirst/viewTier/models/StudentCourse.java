@@ -8,9 +8,7 @@ public class StudentCourse
 {
     @Autowired
     private Course course;
-    @Autowired
     private String courseStatus;
-    @Autowired
     private String grade;
     @Autowired
     private Term term;

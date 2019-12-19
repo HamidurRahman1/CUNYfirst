@@ -78,7 +78,7 @@ public class StudentController
     @GetMapping("/get/getCourseHistory")
     public String getThisStudentCourseHistory(Model model, @SessionAttribute("student")Student student)
     {
-        Set<StudentCourse> set = ViewRelatedTester.studentCourses();
+        Set<StudentCourse> set = apiService.getStudentCourseHistory(student.getStudentId());
         student.setStudentCourses(set);
         model.addAttribute("studentCourse", set);
         return "student/CourseHistory";

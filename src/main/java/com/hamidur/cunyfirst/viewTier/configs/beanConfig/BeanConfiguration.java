@@ -170,6 +170,18 @@ public class BeanConfiguration
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public StudentCourse studentCourse()
+    {
+        StudentCourse studentCourse = new StudentCourse();
+        studentCourse.setTerm(term());
+        studentCourse.setGrade(new String());
+        studentCourse.setCourseStatus(new String());
+        studentCourse.setCourse(course());
+        return studentCourse;
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Map<SecurityQuestion, String> questionAnswers()
     {
         return new LinkedHashMap<>();

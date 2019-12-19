@@ -7,6 +7,7 @@ import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.models.Student;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
+import com.hamidur.cunyfirst.daoTier.models.StudentCourse;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -142,7 +143,7 @@ public class StudentService
     public Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> getStudentFafsas(Integer studentId)
     {
         Session session = sessionFactory.openSession();
-        Query query = session.createQuery("From FAFSA where studentId= :id");
+        Query query = session.createQuery("From FAFSA where studentId = :id");
         query.setParameter("id", studentId);
         List<FAFSA> daoFafsas = query.list();
 
@@ -167,7 +168,32 @@ public class StudentService
     
     public void insertStudentCourses(Integer studentId, Set<com.hamidur.cunyfirst.viewTier.models.Course> courses) {}
     
-    public void getStudentCourses(Integer studentId) {}
+    public Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> getStudentCourses(Integer studentId)
+    {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("From StudentCourse where studentId = :id");
+        query.setParameter("id", studentId);
+        List<StudentCourse> daoCourses = query.list();
+
+        Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> viewCourses = new LinkedHashSet<>();
+
+        for(StudentCourse course : daoCourses)
+        {
+            com.hamidur.cunyfirst.viewTier.models.StudentCourse viewCourse =
+                    applicationContext.getBean(com.hamidur.cunyfirst.viewTier.models.StudentCourse.class);
+
+            viewCourse.setTerm(Utility.toViewTerm(course.getTerm()));
+            viewCourse.setCourse(Utility.toViewCourse(course.getCourse()));
+            viewCourse.setCourseStatus(course.getCourseStatus());
+            viewCourse.setGrade(course.getGrade());
+
+            viewCourses.add(viewCourse);
+        }
+
+        session.close();
+
+        return viewCourses;
+    }
 
     public boolean isStudentExists(Integer studentId) {return false;}
     public boolean isStudentExists(String ssn) {return false;}

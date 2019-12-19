@@ -11,6 +11,7 @@ import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
+import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -99,5 +100,10 @@ public class ApiService
     public Set<FAFSA> getStudentFafsas(Integer studentId)
     {
         return studentService.getStudentFafsas(studentId);
+    }
+
+    public Set<StudentCourse> getStudentCourseHistory(Integer studentId)
+    {
+        return studentService.getStudentCourses(studentId);
     }
 }
