@@ -100,11 +100,6 @@ public class InstructorController
     {
         try
         {
-            // service - update student grade
-            System.out.println(studentCourse.getStudent());
-            System.out.println(studentCourse.getGrade());
-            System.out.println(studentCourse.getCourse());
-
             model.addAttribute("name", "../instructor/InstructorName.jsp");
             model.addAttribute("serviceCenter", "../instructor/ServiceCenter.jsp");
 

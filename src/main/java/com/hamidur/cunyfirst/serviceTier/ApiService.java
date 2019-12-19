@@ -12,6 +12,8 @@ import com.hamidur.cunyfirst.viewTier.models.Student;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApiService
 {
@@ -85,5 +87,10 @@ public class ApiService
     {
         if(instructor == null) throw new IllegalArgumentException("Instructor cannot be null");
         return Utility.toViewInstructor(instructorService.insertInstructor(Utility.toDaoInstructor(instructor)));
+    }
+
+    public List<Course> getOfferedCourses()
+    {
+        return courseService.getCourses();
     }
 }

@@ -87,7 +87,7 @@ public class StudentController
     @GetMapping("/get/getCourses")
     public String getCourses(Model model)
     {
-        model.addAttribute("courses", ViewRelatedTester.demoCourses());
+        model.addAttribute("courses", apiService.getOfferedCourses());
         return "student/GetCourses";
     }
 }

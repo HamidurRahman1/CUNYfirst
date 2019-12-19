@@ -176,7 +176,7 @@ public class Utility
             studentCourse.setCourse(toDaoCourse(e.getCourse()));
             studentCourse.setCourseStatus(e.getCourseStatus());
             studentCourse.setGrade(e.getGrade());
-            studentCourse.setStudent(toDaoStudent(e.getStudent()));
+//            studentCourse.setStudent(toDaoStudent(e.getStudent()));
 
             studentCourseSet.add(studentCourse);
         });

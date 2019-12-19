@@ -6,7 +6,6 @@ import com.hamidur.cunyfirst.daoTier.util.Utility;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -37,16 +36,12 @@ public class CourseService
     public List<com.hamidur.cunyfirst.viewTier.models.Course> getCourses()
     {
         Session session = sessionFactory.openSession();
-//        List<Course> daoCourses =
-//                session.createQuery("from Course").list();
+        List<Course> daoCourses = session.createQuery("from Course").list();
+        session.close();
 
-        List<com.hamidur.cunyfirst.viewTier.models.Course> viewCourses =
-                new LinkedList<>();
+        List<com.hamidur.cunyfirst.viewTier.models.Course> viewCourses = new LinkedList<>();
 
-//        for(Course course: daoCourses)
-//        {
-//            viewCourses.add(Utility.toViewCourse(course));
-//        }
+        for(Course course: daoCourses) viewCourses.add(Utility.toViewCourse(course));
         return viewCourses;
     }
 }
