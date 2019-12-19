@@ -161,6 +161,15 @@ public class BeanConfiguration
 
     @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public FAFSA fafsa()
+    {
+        FAFSA fafsa = new FAFSA();
+        fafsa.setTerm(term());
+        return fafsa;
+    }
+
+    @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
     public Map<SecurityQuestion, String> questionAnswers()
     {
         return new LinkedHashMap<>();

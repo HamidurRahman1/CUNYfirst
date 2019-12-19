@@ -43,7 +43,7 @@ public class ViewRelatedTester
     public static Student testStudent()
     {
         Student student = new Student("Hamidur", "Rahman", "090212999", "10/05/1997", Gender.M.toString());
-        student.setStudentId(20021001);
+        student.setStudentId(10000001);
         student.setAddress(testAddress());
         student.setContact(testContact());
         student.setHighSchoolInfo(testHighSchoolInfo());

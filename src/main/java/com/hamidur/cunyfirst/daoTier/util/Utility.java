@@ -16,6 +16,8 @@ import com.hamidur.cunyfirst.daoTier.models.StudentCourse;
 import com.hamidur.cunyfirst.daoTier.models.StudentSecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.models.TransferInfo;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
@@ -25,6 +27,9 @@ import java.util.Set;
 
 public class Utility
 {
+    @Autowired
+    private static ApplicationContext applicationContext;
+
     public static com.hamidur.cunyfirst.viewTier.models.Course toViewCourse(Course daoCourse)
     {
         return new com.hamidur.cunyfirst.viewTier.models.Course
@@ -375,4 +380,12 @@ public class Utility
     {
         return dob.getDayOfWeek().getValue()+"/"+dob.getMonthValue()+"/"+dob.getYear();
     }
+
+//    public static com.hamidur.cunyfirst.viewTier.models.FAFSA toViewFafsa(FAFSA fafsa) {
+//        com.hamidur.cunyfirst.viewTier.models.FAFSA viewFafsa =
+//                applicationContext.getBean(com.hamidur.cunyfirst.viewTier.models.FAFSA.class);
+//        viewFafsa.setTerm(Utility.toViewTerm(fafsa.getTerm()));
+//        viewFafsa.setAmount(fafsa.getAmount());
+//        return
+//    }
 }

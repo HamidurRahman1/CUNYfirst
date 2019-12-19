@@ -69,7 +69,7 @@ public class StudentController
     @GetMapping("/get/getFAFSAs")
     public String getFafsas(Model model, @SessionAttribute("student")Student student)
     {
-        Set<FAFSA> fafsas = ViewRelatedTester.fafsas();
+        Set<FAFSA> fafsas = apiService.getStudentFafsas(student.getStudentId());
         student.setFafsas(fafsas);
         model.addAttribute("fafsas", fafsas);
         return "student/DisplayFafsas";

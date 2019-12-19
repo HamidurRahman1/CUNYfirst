@@ -7,12 +7,14 @@ import com.hamidur.cunyfirst.daoTier.daoServices.StudentService;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
 
 import com.hamidur.cunyfirst.viewTier.models.Course;
+import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ApiService
@@ -92,5 +94,10 @@ public class ApiService
     public List<Course> getOfferedCourses()
     {
         return courseService.getCourses();
+    }
+
+    public Set<FAFSA> getStudentFafsas(Integer studentId)
+    {
+        return studentService.getStudentFafsas(studentId);
     }
 }

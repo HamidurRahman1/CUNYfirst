@@ -1,6 +1,7 @@
 package com.hamidur.cunyfirst.daoTier.daoServices;
 
 import com.hamidur.cunyfirst.daoTier.models.Address;
+import com.hamidur.cunyfirst.daoTier.models.FAFSA;
 import com.hamidur.cunyfirst.daoTier.models.Login;
 import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.models.Student;
@@ -9,8 +10,11 @@ import com.hamidur.cunyfirst.daoTier.util.Utility;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
-import java.time.LocalDate;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -18,6 +22,8 @@ import java.util.Set;
 
 public class StudentService
 {
+    @Autowired
+    private ApplicationContext applicationContext;
     private final SessionFactory sessionFactory;
 
     public StudentService(final HibernateUtility hibernateUtility)
@@ -133,7 +139,29 @@ public class StudentService
     
     public void insertStudentFafsas(Integer studentId, Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsas) {}
     
-    public void getStudentFafsas(Integer studentId) {}
+    public Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> getStudentFafsas(Integer studentId)
+    {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("From FAFSA where studentId= :id");
+        query.setParameter("id", studentId);
+        List<FAFSA> daoFafsas = query.list();
+
+        Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> viewFafsas = new LinkedHashSet<>();
+
+        for(FAFSA fafsa : daoFafsas)
+        {
+            com.hamidur.cunyfirst.viewTier.models.FAFSA viewFafsa =
+                    applicationContext.getBean(com.hamidur.cunyfirst.viewTier.models.FAFSA.class);
+
+            viewFafsa.setTerm(Utility.toViewTerm(fafsa.getTerm()));
+            viewFafsa.setAmount(fafsa.getAmount());
+
+            viewFafsas.add(viewFafsa);
+        }
+        session.close();
+
+        return viewFafsas;
+    }
     
     public void updateStudentFafsas(Integer studentId, Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsas) {}
     
