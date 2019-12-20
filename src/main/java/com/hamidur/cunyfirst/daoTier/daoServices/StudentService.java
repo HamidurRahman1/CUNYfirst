@@ -118,7 +118,32 @@ public class StudentService
 
     }
 
-    public void getStudentByLogin(String userName, String password) {}
+    public com.hamidur.cunyfirst.viewTier.models.Student getStudentByLogin(String userName, String password)
+    {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("From Login where userName = :un and password = :pass");
+        query.setParameter("un", userName);
+        query.setParameter("pass", password);
+        Login daoLogin = (Login)query.getResultList().iterator().next();
+        Student student = daoLogin.getStudent();
+
+        System.out.println(student);
+
+
+        com.hamidur.cunyfirst.viewTier.models.Student viewStudent =
+                applicationContext.getBean(com.hamidur.cunyfirst.viewTier.models.Student.class);
+
+        viewStudent.setStudentId(student.getStudentId());
+        viewStudent.setFirstName(student.getPerson().getFirstName());
+        viewStudent.setLastName(student.getPerson().getLastName());
+
+        viewStudent.setAddress(Utility.toViewAddress(student.getAddresses().iterator().next()));
+        viewStudent.setContact(Utility.toViewContact(student.getContact()));
+
+        session.close();
+
+        return viewStudent;
+    }
 
     public void getStudents() {}
     

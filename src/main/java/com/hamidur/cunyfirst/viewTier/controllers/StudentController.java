@@ -52,12 +52,18 @@ public class StudentController
     @PostMapping("/processStudentLogin")
     public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
     {
-        session.setAttribute("login", login);
-        Student student = ViewRelatedTester.testStudent();
-        student.setLogin(login);
-        session.removeAttribute("login");
-        session.setAttribute("student", student);
-        return "redirect:/student/studentCenter";
+        try
+        {
+            Student student = apiService.getStudentByLogin(login.getUsername(), login.getPassword());
+            student.setLogin(login);
+            session.setAttribute("student", student);
+            return "redirect:/student/studentCenter";
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+            return "redirect:/error/Errors";
+        }
     }
 
     @GetMapping("/studentCenter")

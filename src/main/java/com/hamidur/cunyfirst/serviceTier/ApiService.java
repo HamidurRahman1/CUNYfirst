@@ -39,6 +39,15 @@ public class ApiService
         return studentService.getStudentById(studentId);
     }
 
+    public Student getStudentByLogin(String username, String password) throws Exception
+    {
+        if(username == null || username.isEmpty())
+            throw new Exception("username cannot be null or em[ty");
+        if(password == null || password.isEmpty())
+            throw new Exception("password cannot be null or empty");
+        return studentService.getStudentByLogin(username, password);
+    }
+
     public Student insertStudent(Student viewStudent)
     {
         if(viewStudent == null) throw new IllegalArgumentException("Student cannot be null");
