@@ -23,13 +23,13 @@ import java.util.Set;
 
 public class StudentService
 {
-    @Autowired
     private ApplicationContext applicationContext;
     private final SessionFactory sessionFactory;
 
-    public StudentService(final HibernateUtility hibernateUtility)
+    public StudentService(final HibernateUtility hibernateUtility, final ApplicationContext applicationContext)
     {
         this.sessionFactory = hibernateUtility.getSessionFactory();
+        this.applicationContext = applicationContext;
     }
 
     public com.hamidur.cunyfirst.viewTier.models.Student getStudentById(Integer studentId)
@@ -239,5 +239,33 @@ public class StudentService
         login.setUserName(username);
         login.setActive(false);
         return login;
+    }
+
+    public void updateStudentGrade(com.hamidur.cunyfirst.viewTier.models.StudentCourse studentCourse)
+    {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Student student = session.get(Student.class, studentCourse.getStudent());
+        Set<StudentCourse> studentCourseSet = student.getStudentCourses();
+
+        StudentCourse studentCourse1 = new StudentCourse();
+        studentCourse1.setStudent(Utility.toDaoStudent(studentCourse.getStudent()));
+        studentCourse1.setCourse(Utility.toDaoCourse(studentCourse.getCourse()));
+        studentCourse1.setCourseStatus(studentCourse.getCourseStatus());
+        studentCourse1.setGrade(studentCourse.getGrade());
+        studentCourse1.setTerm(Utility.toDaoTerm(studentCourse.getTerm()));
+
+        studentCourseSet.forEach(e ->
+        {
+            if(e.getCourse().equals(studentCourse1.getCourse()))
+            {
+                e.setGrade(studentCourse1.getGrade());
+                return;
+            }
+        });
+
+        session.getTransaction().commit();
+        session.close();
     }
 }

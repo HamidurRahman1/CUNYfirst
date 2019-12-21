@@ -256,7 +256,7 @@ public class BeanConfiguration
     @Lazy
     public StudentService studentService()
     {
-        return new StudentService(hibernateUtility());
+        return new StudentService(hibernateUtility(), applicationContext());
     }
 
     @Bean
@@ -264,7 +264,7 @@ public class BeanConfiguration
     @Lazy
     public CourseService courseService()
     {
-        return new CourseService(hibernateUtility());
+        return new CourseService(hibernateUtility(), applicationContext());
     }
 
     @Bean
@@ -272,7 +272,7 @@ public class BeanConfiguration
     @Lazy
     public AdminService adminService()
     {
-        return new AdminService(hibernateUtility());
+        return new AdminService(hibernateUtility(), applicationContext());
     }
 
     @Bean
@@ -280,6 +280,6 @@ public class BeanConfiguration
     @Lazy
     public InstructorService instructorService()
     {
-        return new InstructorService(hibernateUtility());
+        return new InstructorService(hibernateUtility(), applicationContext());
     }
 }

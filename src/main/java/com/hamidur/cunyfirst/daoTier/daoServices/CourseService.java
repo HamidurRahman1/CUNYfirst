@@ -6,17 +6,20 @@ import com.hamidur.cunyfirst.daoTier.util.Utility;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.context.ApplicationContext;
 
 import java.util.LinkedList;
 import java.util.List;
 
 public class CourseService
 {
+    private final ApplicationContext applicationContext;
     private final SessionFactory sessionFactory;
 
-    public CourseService(final HibernateUtility hibernateUtility)
+    public CourseService(final HibernateUtility hibernateUtility, final ApplicationContext applicationContext)
     {
         this.sessionFactory = hibernateUtility.getSessionFactory();
+        this.applicationContext = applicationContext;
     }
 
     public Course insertCourse(Course daoCourse)

@@ -6,12 +6,11 @@ import java.util.Objects;
 
 public class StudentCourse
 {
-    @Autowired
     private Course course;
     private String courseStatus;
     private String grade;
-    @Autowired
     private Term term;
+    private Student student;
     
     public StudentCourse() {}
 
@@ -61,6 +60,14 @@ public class StudentCourse
     public void setTerm(Term term)
     {
         this.term = term;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
     }
 
     @Override

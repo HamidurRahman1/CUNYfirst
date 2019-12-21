@@ -4,22 +4,29 @@ import com.hamidur.cunyfirst.daoTier.models.Instructor;
 import com.hamidur.cunyfirst.daoTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.daoTier.models.InstructorLogin;
 import com.hamidur.cunyfirst.daoTier.models.Person;
+import com.hamidur.cunyfirst.daoTier.models.Student;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
+
+import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
+import org.springframework.context.ApplicationContext;
 
 import java.util.List;
 import java.util.Set;
 
 public class InstructorService
 {
+    private final ApplicationContext applicationContext;
     private final SessionFactory sessionFactory;
 
-    public InstructorService(final HibernateUtility hibernateUtility)
+    public InstructorService(final HibernateUtility hibernateUtility, final ApplicationContext applicationContext)
     {
         this.sessionFactory = hibernateUtility.getSessionFactory();
+        this.applicationContext = applicationContext;
     }
 
     public Instructor insertInstructor(Instructor daoInstructor)
@@ -99,5 +106,34 @@ public class InstructorService
                 Utility.toViewInstructorCourses(instructorCourses);
 
         return instructorCourses1;
+    }
+
+    public StudentCourse getStudentCourseByInstructorId(Integer instructorId, Integer studentId)
+    {
+        Session session = sessionFactory.openSession();
+        Set<InstructorCourse> instructorCourses = session.get(Instructor.class, instructorId).getInstructorCourses();
+        Set<com.hamidur.cunyfirst.daoTier.models.StudentCourse> studentCourseSet =
+                session.get(Student.class, studentId).getStudentCourses();
+
+        StudentCourse studentCourse = applicationContext.getBean(StudentCourse.class);
+
+        instructorCourses.forEach(ic ->
+        {
+            studentCourseSet.forEach(sc ->
+            {
+                if(sc.getCourse().equals(ic.getCourse()))
+                {
+                    studentCourse.setStudent(Utility.toViewStudent(sc.getStudent()));
+                    studentCourse.setGrade(sc.getGrade());
+                    studentCourse.setCourse(Utility.toViewCourse(sc.getCourse()));
+                    studentCourse.setCourseStatus(sc.getCourseStatus());
+                    studentCourse.setTerm(Utility.toViewTerm(sc.getTerm()));
+                    return;
+                }
+            });
+        });
+
+        session.close();
+        return studentCourse;
     }
 }

@@ -131,4 +131,14 @@ public class ApiService
     {
         return instructorService.getInstructorCoursesByInstructorId(instructorId);
     }
+
+    public StudentCourse getStudentCourseByInstructorId(Integer instructorId, Integer studentId)
+    {
+        return instructorService.getStudentCourseByInstructorId(instructorId, studentId);
+    }
+
+    public void updateStudentGrade(StudentCourse studentCourse)
+    {
+        studentService.updateStudentGrade(studentCourse);
+    }
 }

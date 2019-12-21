@@ -142,7 +142,7 @@ public class Course implements Serializable
         Course course = (Course) o;
         return Objects.equals(getCourseId(), course.getCourseId())
                 && Objects.equals(getCourseTitle(), course.getCourseTitle())
-                && getCourseName() == course.getCourseName()
+                && getCourseName().equals(course.getCourseName())
                 && Objects.equals(getCourseLevel(), course.getCourseLevel())
                 && Objects.equals(courseCredits, course.courseCredits)
                 && Objects.equals(getDescription(), course.getDescription());

@@ -62,7 +62,6 @@ public class InstructorController
     public String getCourses(Model model, HttpSession session)
     {
         Instructor instructor = (Instructor) session.getAttribute("instructor");
-        System.out.println(instructor);
         model.addAttribute("insCourses", apiService.getInstructorCoursesByInstructorId(instructor.getInstructorId()));
         return "instructor/InstructorCourses";
     }
@@ -81,11 +80,13 @@ public class InstructorController
     }
 
     @GetMapping("/get/getStudentCourse")
-    public String getStudent(Model model)
+    public String getStudent(@RequestParam("studentId")Integer studentId, Model model, HttpSession session)
     {
         try
         {
-            StudentCourse studentCourse = ViewRelatedTester.allStudentCourses().iterator().next();
+            Instructor instructor = (Instructor) session.getAttribute("instructor");
+            StudentCourse studentCourse = apiService.getStudentCourseByInstructorId(instructor.getInstructorId(), studentId);
+
             model.addAttribute("studentCourse", studentCourse);
             model.addAttribute("grades", propertyHandler.getGrades());
         }
@@ -101,11 +102,13 @@ public class InstructorController
     {
         try
         {
+            apiService.updateStudentGrade(studentCourse);
+
             model.addAttribute("name", "../instructor/InstructorName.jsp");
             model.addAttribute("serviceCenter", "../instructor/ServiceCenter.jsp");
 
             model.addAttribute("title", "Student Updated");
-            model.addAttribute("message", "Student with ID: "+101
+            model.addAttribute("message", "Student with ID: "+studentCourse.getStudent().getStudentId()
                     +" has been successfully updated.");
         }
         catch (Exception ex)

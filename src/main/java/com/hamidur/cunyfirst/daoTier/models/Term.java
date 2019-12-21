@@ -62,21 +62,20 @@ public class Term implements Serializable
     {
         this.termYear = termYear;
     }
-    
+
     @Override
-    public boolean equals(Object o)
-    {
-        if(this == o) return true;
-        if(! (o instanceof Term)) return false;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Term)) return false;
         Term term = (Term) o;
-        return Objects.equals(getTermId(), term.getTermId()) && Objects.equals(getTermName(), term.getTermName())
-                && Objects.equals(getTermYear(), term.getTermYear());
+        return Objects.equals(getTermName(), term.getTermName()) &&
+                Objects.equals(getTermYear(), term.getTermYear());
     }
-    
+
     @Override
     public int hashCode()
     {
-        return Objects.hash(getTermId(), getTermName(), getTermYear());
+        return Objects.hash(getTermName(), getTermYear());
     }
     
     @Override
