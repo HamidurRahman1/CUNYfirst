@@ -53,8 +53,15 @@ public class InstructorController
     @PostMapping("/processInstructorLogin")
     public String processLogin(@ModelAttribute("login") InstructorLogin login, HttpSession session)
     {
-        Instructor instructor = ViewRelatedTester.testInstructor();
-        session.setAttribute("instructor", instructor);
+        try
+        {
+            Instructor instructor = apiService.getInstructorByLogin(login.getUsername(), login.getPassword());
+            session.setAttribute("instructor", instructor);
+        }
+        catch (Exception ex)
+        {
+            System.out.println(ex.getMessage());
+        }
         return "redirect:/instructor/instructorCenter";
     }
 

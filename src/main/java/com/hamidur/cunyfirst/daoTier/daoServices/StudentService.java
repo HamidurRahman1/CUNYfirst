@@ -113,11 +113,6 @@ public class StudentService
         session.close();
     }
 
-    public void getStudentBySSN(String ssn)
-    {
-
-    }
-
     public com.hamidur.cunyfirst.viewTier.models.Student getStudentByLogin(String userName, String password)
     {
         Session session = sessionFactory.openSession();
@@ -144,26 +139,6 @@ public class StudentService
 
         return viewStudent;
     }
-
-    public void getStudents() {}
-    
-    public void validateLogin(String username, String password)
-    {}
-    
-    public void updateStudentPassword(Integer studentId, String newPassword)
-    {}
-    
-    public void insertStudentSecurityQuestions(Integer studentId,
-                    Map<com.hamidur.cunyfirst.viewTier.models.SecurityQuestion, String> questionAnswers)
-    {}
-    
-    public void getStudentSecurityQuestions(Integer studentId) {}
-    
-    public void updateStudentSecurityQuestions(Integer studentId,
-                    Map<com.hamidur.cunyfirst.viewTier.models.SecurityQuestion, String> questionAnswers)
-    {}
-    
-    public void insertStudentFafsas(Integer studentId, Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsas) {}
     
     public Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> getStudentFafsas(Integer studentId)
     {
@@ -188,11 +163,7 @@ public class StudentService
 
         return viewFafsas;
     }
-    
-    public void updateStudentFafsas(Integer studentId, Set<com.hamidur.cunyfirst.viewTier.models.FAFSA> fafsas) {}
-    
-    public void insertStudentCourses(Integer studentId, Set<com.hamidur.cunyfirst.viewTier.models.Course> courses) {}
-    
+
     public Set<com.hamidur.cunyfirst.viewTier.models.StudentCourse> getStudentCourses(Integer studentId)
     {
         Session session = sessionFactory.openSession();
@@ -219,16 +190,6 @@ public class StudentService
 
         return viewCourses;
     }
-
-    public boolean isStudentExists(Integer studentId) {return false;}
-    public boolean isStudentExists(String ssn) {return false;}
-    public boolean isLoginExists(String userName) {return false;}
-
-    public List<com.hamidur.cunyfirst.viewTier.models.Student> getAllStudents() {return new LinkedList<>();}
-    public List<com.hamidur.cunyfirst.viewTier.models.Course> getAllCourses() {return new LinkedList<>();}
-    public List<com.hamidur.cunyfirst.viewTier.models.Course> getAllCoursesByTerm
-            (com.hamidur.cunyfirst.viewTier.models.Term term)
-    {return new LinkedList<>();}
 
     private Login createLogin(Person person, Integer studentId)
     {

@@ -29,6 +29,29 @@ public class InstructorService
         this.applicationContext = applicationContext;
     }
 
+    public com.hamidur.cunyfirst.viewTier.models.Instructor getInstructorByLogin(String username, String password)
+    {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("From InstructorLogin where userName = :un and password = :pass");
+        query.setParameter("un", username);
+        query.setParameter("pass", password);
+
+        InstructorLogin daoLogin = (InstructorLogin) query.getResultList().iterator().next();
+        Instructor instructor = daoLogin.getInstructor();
+
+
+        com.hamidur.cunyfirst.viewTier.models.Instructor viewInstructor =
+                applicationContext.getBean(com.hamidur.cunyfirst.viewTier.models.Instructor.class);
+
+        viewInstructor.setInstructorId(instructor.getInstructorId());
+        viewInstructor.setFirstName(instructor.getPerson().getFirstName());
+        viewInstructor.setLastName(instructor.getPerson().getLastName());
+
+        session.close();
+
+        return viewInstructor;
+    }
+
     public Instructor insertInstructor(Instructor daoInstructor)
     {
         Session session = sessionFactory.openSession();

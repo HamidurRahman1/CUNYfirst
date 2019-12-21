@@ -43,7 +43,7 @@ public class ApiService
     public Student getStudentByLogin(String username, String password) throws Exception
     {
         if(username == null || username.isEmpty())
-            throw new Exception("username cannot be null or em[ty");
+            throw new Exception("username cannot be null or empty");
         if(password == null || password.isEmpty())
             throw new Exception("password cannot be null or empty");
         return studentService.getStudentByLogin(username, password);
@@ -140,5 +140,14 @@ public class ApiService
     public void updateStudentGrade(StudentCourse studentCourse)
     {
         studentService.updateStudentGrade(studentCourse);
+    }
+
+    public Instructor getInstructorByLogin(String username, String password) throws Exception
+    {
+        if(username == null || username.isEmpty())
+            throw new Exception("username cannot be null or empty");
+        if(password == null || password.isEmpty())
+            throw new Exception("password cannot be null or empty");
+        return instructorService.getInstructorByLogin(username, password);
     }
 }
