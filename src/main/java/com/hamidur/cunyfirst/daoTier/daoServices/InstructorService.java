@@ -1,14 +1,17 @@
 package com.hamidur.cunyfirst.daoTier.daoServices;
 
 import com.hamidur.cunyfirst.daoTier.models.Instructor;
+import com.hamidur.cunyfirst.daoTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.daoTier.models.InstructorLogin;
 import com.hamidur.cunyfirst.daoTier.models.Person;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
+import org.hibernate.query.Query;
+
+import java.util.List;
+import java.util.Set;
 
 public class InstructorService
 {
@@ -82,5 +85,19 @@ public class InstructorService
         session.update(daoInstructor);
         session.getTransaction().commit();
         session.close();
+    }
+
+    public Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> getInstructorCoursesByInstructorId(Integer instructorId)
+    {
+        Session session = sessionFactory.openSession();
+        Query query = session.createQuery("From InstructorCourse where instructorId = :id");
+        query.setParameter("id", instructorId);
+
+        List<InstructorCourse> instructorCourses = query.list();
+
+        Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> instructorCourses1 =
+                Utility.toViewInstructorCourses(instructorCourses);
+
+        return instructorCourses1;
     }
 }

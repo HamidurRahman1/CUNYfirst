@@ -224,6 +224,18 @@ public class BeanConfiguration
     }
 
     @Bean
+    @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+    public InstructorCourse instructorCourse()
+    {
+        InstructorCourse instructorCourse = new InstructorCourse();
+
+        instructorCourse.setTerm(term());
+        instructorCourse.setCourse(course());
+
+        return instructorCourse;
+    }
+
+    @Bean
     @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
     @Lazy
     public HibernateUtility hibernateUtility()

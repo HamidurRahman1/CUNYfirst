@@ -62,7 +62,8 @@ public class InstructorController
     public String getCourses(Model model, HttpSession session)
     {
         Instructor instructor = (Instructor) session.getAttribute("instructor");
-        model.addAttribute("insCourses", ViewRelatedTester.instructorCourses());
+        System.out.println(instructor);
+        model.addAttribute("insCourses", apiService.getInstructorCoursesByInstructorId(instructor.getInstructorId()));
         return "instructor/InstructorCourses";
     }
 

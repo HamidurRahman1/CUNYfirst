@@ -22,6 +22,7 @@ import org.springframework.context.ApplicationContext;
 import java.time.LocalDate;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -95,7 +96,7 @@ public class Utility
     }
 
     public static Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> toViewInstructorCourses
-            (Set<InstructorCourse> daoInstructorCourses)
+            (List<InstructorCourse> daoInstructorCourses)
     {
         Set<com.hamidur.cunyfirst.viewTier.models.InstructorCourse> courses = new LinkedHashSet<>();
 
@@ -105,7 +106,6 @@ public class Utility
                     new com.hamidur.cunyfirst.viewTier.models.InstructorCourse();
 
             instructorCourse.setCourse(Utility.toViewCourse(e.getCourse()));
-            instructorCourse.setInstructor(Utility.toViewInstructor(e.getInstructor()));
             instructorCourse.setTerm(Utility.toViewTerm(e.getTerm()));
 
             courses.add(instructorCourse);

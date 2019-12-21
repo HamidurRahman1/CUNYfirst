@@ -9,6 +9,7 @@ import com.hamidur.cunyfirst.daoTier.util.Utility;
 import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
+import com.hamidur.cunyfirst.viewTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.viewTier.models.Student;
 
 import com.hamidur.cunyfirst.viewTier.models.StudentCourse;
@@ -124,5 +125,10 @@ public class ApiService
     public void updateInstructorInfo(Instructor instructor)
     {
         instructorService.updateInstructorInfo(instructor);
+    }
+
+    public Set<InstructorCourse> getInstructorCoursesByInstructorId(Integer instructorId)
+    {
+        return instructorService.getInstructorCoursesByInstructorId(instructorId);
     }
 }
