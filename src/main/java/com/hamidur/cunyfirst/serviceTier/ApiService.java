@@ -115,4 +115,14 @@ public class ApiService
     {
         return studentService.getStudentCourses(studentId);
     }
+
+    public Instructor getInstructorById(Integer instructorId)
+    {
+        return instructorService.getInstructor(instructorId);
+    }
+
+    public void updateInstructorInfo(Instructor instructor)
+    {
+        instructorService.updateInstructorInfo(instructor);
+    }
 }

@@ -7,6 +7,8 @@ import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 
 public class InstructorService
 {
@@ -39,15 +41,17 @@ public class InstructorService
         return daoInstructor;
     }
 
-    public void getInstructor(Integer instructorId)
+    public com.hamidur.cunyfirst.viewTier.models.Instructor getInstructor(Integer instructorId)
     {
         Session session = sessionFactory.openSession();
         Instructor daoInstructor = session.get(Instructor.class, instructorId);
-        // return instructors
-        session.flush();
-        session.clear();
-        session.getTransaction().commit();
+
+        com.hamidur.cunyfirst.viewTier.models.Instructor viewInstructor;
+        viewInstructor = Utility.toViewInstructor(daoInstructor);
+
         session.close();
+
+        return viewInstructor;
     }
 
     private InstructorLogin createLogin(Person person, Integer instructorId)
@@ -58,5 +62,25 @@ public class InstructorService
         login.setActive(false);
         login.setUserName(username);
         return login;
+    }
+
+    public void updateInstructorInfo(com.hamidur.cunyfirst.viewTier.models.Instructor instructor)
+    {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Instructor daoInstructor = session.get(Instructor.class, instructor.getInstructorId());
+
+        Person person = new Person();
+        person.setFirstName(instructor.getFirstName());
+        person.setLastName(instructor.getLastName());
+        person.setGender(instructor.getGender());
+        person.setSsn(instructor.getSsn());
+        person.setDateOfBirth(Utility.toDaoDOB(instructor.getDateOfBirth()));
+        daoInstructor.setPerson(person);
+
+        session.update(daoInstructor);
+        session.getTransaction().commit();
+        session.close();
     }
 }

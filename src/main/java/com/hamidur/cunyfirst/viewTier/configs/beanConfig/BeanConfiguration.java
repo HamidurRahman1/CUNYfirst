@@ -29,13 +29,11 @@ import com.hamidur.cunyfirst.viewTier.models.TransferInfo;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.annotation.Scope;
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;

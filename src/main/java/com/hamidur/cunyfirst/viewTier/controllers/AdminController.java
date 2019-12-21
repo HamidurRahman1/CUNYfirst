@@ -124,15 +124,18 @@ public class AdminController
         try
         {
             student1 = apiService.insertStudent(student1);
+
             model.addAttribute("student", student1);
             model.addAttribute("who", "Student");
             model.addAttribute("firstName", student1.getFirstName());
             model.addAttribute("lastName", student1.getLastName());
             model.addAttribute("username", student1.getLogin().getUsername());
             model.addAttribute("id", student1.getStudentId());
+
             return "generic/Insertion";
         }
-        catch(IllegalArgumentException ex) {
+        catch(IllegalArgumentException ex)
+        {
             return "admin/Student-form";
         }
     }
@@ -161,6 +164,7 @@ public class AdminController
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
             model.addAttribute("title", "Updating a Student");
+            model.addAttribute("studentId", studentId);
         }
         catch (IOException ex)
         {
@@ -170,14 +174,17 @@ public class AdminController
     }
 
     @PostMapping("/services/update/updated/student")
-    public String updatesStudent(@ModelAttribute Student student, Model model)
+    public String updatesStudent(@ModelAttribute("student") Student student,
+                                 @ModelAttribute("studentId") String studentId, Model model)
     {
         model.addAttribute("name", "../admin/AdminName.jsp");
         model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
 
         try
         {
-            student.setStudentId(10000001);
+            System.out.println(student.getStudentId() + " - " + studentId);
+
+            student.setStudentId(Integer.parseInt(studentId));
 
             apiService.updateStudentsInfo(student);
 
@@ -278,13 +285,13 @@ public class AdminController
     }
 
     @GetMapping("/services/update/updateable/instructor")
-    public String updateableInstructor(@RequestParam("instructorId") Integer instructorId, Model model)
+    public String updateableInstructor(@RequestParam("instructorId")Integer instructorId, Model model)
     {
         try
         {
             model.addAttribute("url", "/admin/services/update/updated/instructor");
             model.addAttribute("methodType", propertyHandler.POST);
-            model.addAttribute("instructor", ViewRelatedTester.testInstructor());
+            model.addAttribute("instructor", apiService.getInstructorById(instructorId));
             model.addAttribute("genders", propertyHandler.getGenders());
         }
         catch (IOException ex)
@@ -295,8 +302,10 @@ public class AdminController
     }
 
     @PostMapping("/services/update/updated/instructor")
-    public String updatedInstructor(@ModelAttribute("instructor") Instructor instructor, Model model)
+    public String updatedInstructor(@ModelAttribute("instructor")Instructor instructor, Model model)
     {
+        apiService.updateInstructorInfo(instructor);
+
         model.addAttribute("name", "../admin/AdminName.jsp");
         model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
 
