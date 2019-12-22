@@ -39,10 +39,10 @@ public class Instructor implements Serializable
     private Person person;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "instructor",
-            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST})
+            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH})
     private Set<InstructorCourse> instructorCourses = new LinkedHashSet <>();
 
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "instructor")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "instructor", cascade = CascadeType.ALL)
     private InstructorLogin login;
     
     public Instructor()

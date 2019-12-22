@@ -160,4 +160,8 @@ public class ApiService
             throw new Exception("password cannot be null or empty");
         return adminService.getAdminByLogin(username, password);
     }
+
+    public void deleteInstructor(Integer instructorId) {
+        instructorService.deleteInstructor(instructorId);
+    }
 }

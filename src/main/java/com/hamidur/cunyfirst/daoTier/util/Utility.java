@@ -327,7 +327,7 @@ public class Utility
 
     public static com.hamidur.cunyfirst.viewTier.models.InstructorLogin toViewInstructorLogin(InstructorLogin daoLogin)
     {
-        return new com.hamidur.cunyfirst.viewTier.models.InstructorLogin
+        return daoLogin == null ? new com.hamidur.cunyfirst.viewTier.models.InstructorLogin() : new com.hamidur.cunyfirst.viewTier.models.InstructorLogin
                 (daoLogin.getUserName(), daoLogin.getPassword(), daoLogin.getActive());
     }
 

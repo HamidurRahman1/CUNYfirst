@@ -9,6 +9,7 @@ import com.hamidur.cunyfirst.daoTier.models.FAFSA;
 import com.hamidur.cunyfirst.daoTier.models.Gender;
 import com.hamidur.cunyfirst.daoTier.models.HighSchoolInfo;
 import com.hamidur.cunyfirst.daoTier.models.Instructor;
+import com.hamidur.cunyfirst.daoTier.models.InstructorCourse;
 import com.hamidur.cunyfirst.daoTier.models.Login;
 import com.hamidur.cunyfirst.daoTier.models.SecurityQuestion;
 import com.hamidur.cunyfirst.daoTier.models.Student;
@@ -24,29 +25,30 @@ import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class DaoRelatedTester
 {
     public static void main(String[] args)
     {
-        Student student = null;
+        Instructor instructor = null;
         Session session = HibernateUtility.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        student = session.get(Student.class, 10000001);
+        instructor = session.get(Instructor.class, 108);
 
-        System.out.println("-> " + student);
-        System.out.println("-> " + student.getPerson());
-        System.out.println("-> " + student.getContact());
-        System.out.println("-> " + student.getAddresses().iterator().next());
-        System.out.println("-> " + student.getLogin());
-        System.out.println("-> " + student.getHighSchoolInfo());
-        System.out.println("-> " + student.getTransferInfo());
-        System.out.println("-> " + student.getFafsas());
-        System.out.println("-> " + student.getQuestionAnswers());
-        System.out.println("-> " + student.getStudentCourses());
+        System.out.println("-> " + instructor);
+        System.out.println("-> " + instructor.getPerson());
+        System.out.println("-> " + instructor.getLogin());
+        System.out.println("-> " + instructor.getInstructorCourses());
 
+        Set<InstructorCourse> instructorCourses = instructor.getInstructorCourses();
 
+        instructorCourses.forEach(e -> session.delete(e));
+
+        session.delete(instructor);
+
+        session.getTransaction().commit();
         session.close();
         HibernateUtility.getInstance().closeSessionFactory();
     }

@@ -336,17 +336,20 @@ public class AdminController
     @GetMapping("/services/delete/deletable/instructor")
     public String deletableInstructor(@RequestParam("instructorId") Integer instructorId, Model model)
     {
+        Instructor instructor = apiService.getInstructorById(instructorId);
+
         model.addAttribute("who", propertyHandler.INSTRUCTOR.toLowerCase());
-        model.addAttribute("object", ViewRelatedTester.testInstructor());
-        model.addAttribute("id", ViewRelatedTester.testInstructor().getInstructorId());
+        model.addAttribute("object", instructor);
+        model.addAttribute("id", instructor.getInstructorId());
         model.addAttribute("url", "/admin/services/delete/deleted/instructor");
         model.addAttribute("methodType", propertyHandler.GET);
         return "admin/Deletable";
     }
 
     @GetMapping("/services/delete/deleted/instructor")
-    public String instructorDeleted(@RequestParam("id") Integer instructorId, Model model)
+    public String instructorDeleted(@ModelAttribute("id") Integer instructorId, Model model)
     {
+        apiService.deleteInstructor(instructorId);
         model.addAttribute("name", "../admin/AdminName.jsp");
         model.addAttribute("serviceCenter", "../admin/ServiceCenter.jsp");
 

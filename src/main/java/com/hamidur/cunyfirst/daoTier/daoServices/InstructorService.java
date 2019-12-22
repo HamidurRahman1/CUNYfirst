@@ -159,4 +159,19 @@ public class InstructorService
         session.close();
         return studentCourse;
     }
+
+    public void deleteInstructor(Integer instructorId)
+    {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Instructor instructor = session.get(Instructor.class, instructorId);
+
+        instructor.getInstructorCourses().forEach(e -> session.delete(e));
+
+        session.delete(instructor);
+
+        session.getTransaction().commit();
+        session.close();
+    }
 }
