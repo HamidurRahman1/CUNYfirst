@@ -53,9 +53,16 @@ public class AdminController
     @PostMapping("/processAdminLogin")
     public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
     {
-        Admin admin = ViewRelatedTester.testAdmin();
-        session.setAttribute("admin", admin);
-        return "redirect:/admin/services";
+        try
+        {
+            Admin admin = apiService.getAdminByLogin(login.getUsername(), login.getPassword());
+            session.setAttribute("admin", admin);
+            return "redirect:/admin/services";
+        }
+        catch (Exception ex)
+        {
+            return "redirect:/error/Errors";
+        }
     }
 
     @GetMapping("/services")

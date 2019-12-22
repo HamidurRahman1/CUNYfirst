@@ -2,6 +2,7 @@ package com.hamidur.cunyfirst.daoTier.util;
 
 import com.hamidur.cunyfirst.daoTier.models.Address;
 import com.hamidur.cunyfirst.daoTier.models.Admin;
+import com.hamidur.cunyfirst.daoTier.models.AdminLogin;
 import com.hamidur.cunyfirst.daoTier.models.Contact;
 import com.hamidur.cunyfirst.daoTier.models.Course;
 import com.hamidur.cunyfirst.daoTier.models.FAFSA;
@@ -59,7 +60,8 @@ public class HibernateUtility
                                                     .addAnnotatedClass(Admin.class)
                                                     .addAnnotatedClass(Phone.class)
                                                     .addAnnotatedClass(Person.class)
-                                                    .addAnnotatedClass(InstructorLogin.class);
+                                                    .addAnnotatedClass(InstructorLogin.class)
+                                                    .addAnnotatedClass(AdminLogin.class);
 
         StandardServiceRegistryBuilder registry = new StandardServiceRegistryBuilder();
         registry.applySettings(config.getProperties());

@@ -122,9 +122,6 @@ public class StudentService
         Login daoLogin = (Login)query.getResultList().iterator().next();
         Student student = daoLogin.getStudent();
 
-        System.out.println(student);
-
-
         com.hamidur.cunyfirst.viewTier.models.Student viewStudent =
                 applicationContext.getBean(com.hamidur.cunyfirst.viewTier.models.Student.class);
 

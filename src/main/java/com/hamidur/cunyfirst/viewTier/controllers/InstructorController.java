@@ -57,12 +57,13 @@ public class InstructorController
         {
             Instructor instructor = apiService.getInstructorByLogin(login.getUsername(), login.getPassword());
             session.setAttribute("instructor", instructor);
+            return "redirect:/instructor/instructorCenter";
         }
         catch (Exception ex)
         {
             System.out.println(ex.getMessage());
+            return "redirect:/error/Errors";
         }
-        return "redirect:/instructor/instructorCenter";
     }
 
     @GetMapping("/get/getCourses")

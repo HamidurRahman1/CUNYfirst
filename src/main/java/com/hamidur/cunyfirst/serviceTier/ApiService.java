@@ -6,6 +6,7 @@ import com.hamidur.cunyfirst.daoTier.daoServices.InstructorService;
 import com.hamidur.cunyfirst.daoTier.daoServices.StudentService;
 import com.hamidur.cunyfirst.daoTier.util.Utility;
 
+import com.hamidur.cunyfirst.viewTier.models.Admin;
 import com.hamidur.cunyfirst.viewTier.models.Course;
 import com.hamidur.cunyfirst.viewTier.models.FAFSA;
 import com.hamidur.cunyfirst.viewTier.models.Instructor;
@@ -149,5 +150,14 @@ public class ApiService
         if(password == null || password.isEmpty())
             throw new Exception("password cannot be null or empty");
         return instructorService.getInstructorByLogin(username, password);
+    }
+
+    public Admin getAdminByLogin(String username, String password) throws Exception
+    {
+        if(username == null || username.isEmpty())
+            throw new Exception("username cannot be null or empty");
+        if(password == null || password.isEmpty())
+            throw new Exception("password cannot be null or empty");
+        return adminService.getAdminByLogin(username, password);
     }
 }
