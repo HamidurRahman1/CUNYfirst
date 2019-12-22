@@ -164,4 +164,8 @@ public class ApiService
     public void deleteInstructor(Integer instructorId) {
         instructorService.deleteInstructor(instructorId);
     }
+
+    public void deleteStudent(Integer studentId) {
+        studentService.deleteStudent(studentId);
+    }
 }

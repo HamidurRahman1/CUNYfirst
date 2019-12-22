@@ -31,22 +31,28 @@ public class DaoRelatedTester
 {
     public static void main(String[] args)
     {
-        Instructor instructor = null;
+        Student student = null;
         Session session = HibernateUtility.getInstance().getSessionFactory().openSession();
         session.beginTransaction();
 
-        instructor = session.get(Instructor.class, 108);
+        student = session.get(Student.class, 10000002);
 
-        System.out.println("-> " + instructor);
-        System.out.println("-> " + instructor.getPerson());
-        System.out.println("-> " + instructor.getLogin());
-        System.out.println("-> " + instructor.getInstructorCourses());
+        System.out.println("-> " + student);
+        System.out.println("-> " + student.getPerson());
+        System.out.println("-> " + student.getLogin());
+        System.out.println("-> " + student.getAddresses().iterator().next());
+        System.out.println("-> " + student.getContact());
+        System.out.println("-> " + student.getHighSchoolInfo());
+        System.out.println("-> " + student.getTransferInfo());
+        System.out.println("-> " + student.getQuestionAnswers());
+        System.out.println("-> " + student.getFafsas());
+        System.out.println("-> " + student.getStudentCourses());
 
-        Set<InstructorCourse> instructorCourses = instructor.getInstructorCourses();
-
-        instructorCourses.forEach(e -> session.delete(e));
-
-        session.delete(instructor);
+        student.getAddresses().forEach(address -> session.delete(address));
+        student.getFafsas().forEach(fafsa -> fafsa.setStudent(null));
+        student.getQuestionAnswers().forEach(ssq -> session.delete(ssq));
+        student.getStudentCourses().forEach(sc -> session.delete(sc));
+        session.delete(student);
 
         session.getTransaction().commit();
         session.close();

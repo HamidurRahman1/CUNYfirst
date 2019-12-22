@@ -226,4 +226,22 @@ public class StudentService
         session.getTransaction().commit();
         session.close();
     }
+
+    public void deleteStudent(Integer studentId)
+    {
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+
+        Student student = session.get(Student.class, studentId);
+
+        student.getAddresses().forEach(address -> session.delete(address));
+        student.getFafsas().forEach(fafsa -> fafsa.setStudent(null));
+        student.getQuestionAnswers().forEach(ssq -> session.delete(ssq));
+        student.getStudentCourses().forEach(sc -> session.delete(sc));
+
+        session.delete(student);
+
+        session.getTransaction().commit();
+        session.close();
+    }
 }

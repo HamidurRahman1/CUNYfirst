@@ -43,26 +43,26 @@ public class Student implements Serializable
     private Set<Address> addresses = new LinkedHashSet <>();
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student",
-            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST})
+            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH})
     private Set<FAFSA> fafsas = new LinkedHashSet <>();
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
     private Set<StudentSecurityQuestion> questionAnswers = new LinkedHashSet <>();
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
     private Contact contact;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
     private Login login;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
     private HighSchoolInfo highSchoolInfo;
     
-    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student")
+    @OneToOne(fetch = FetchType.LAZY, mappedBy = "student", cascade = CascadeType.ALL)
     private TransferInfo transferInfo;
     
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "student",
-            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH, CascadeType.PERSIST})
+            cascade = {CascadeType.REFRESH, CascadeType.MERGE, CascadeType.DETACH})
     private Set<StudentCourse> studentCourses = new LinkedHashSet <>();
     
     public Student()
