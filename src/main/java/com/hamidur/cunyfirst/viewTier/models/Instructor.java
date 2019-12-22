@@ -3,7 +3,6 @@ package com.hamidur.cunyfirst.viewTier.models;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
-import java.util.LinkedHashSet;
 import java.util.Objects;
 import java.util.Set;
 

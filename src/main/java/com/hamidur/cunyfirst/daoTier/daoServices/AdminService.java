@@ -1,8 +1,6 @@
 package com.hamidur.cunyfirst.daoTier.daoServices;
 
 import com.hamidur.cunyfirst.daoTier.models.AdminLogin;
-import com.hamidur.cunyfirst.daoTier.models.Login;
-import com.hamidur.cunyfirst.daoTier.models.Student;
 import com.hamidur.cunyfirst.daoTier.models.Term;
 import com.hamidur.cunyfirst.daoTier.util.HibernateUtility;
 import com.hamidur.cunyfirst.daoTier.util.Utility;

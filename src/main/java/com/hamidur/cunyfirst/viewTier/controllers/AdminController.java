@@ -51,7 +51,7 @@ public class AdminController
     }
 
     @PostMapping("/processAdminLogin")
-    public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
+    public String processLogin(@ModelAttribute("login") Login login, HttpSession session, Model model)
     {
         try
         {
@@ -61,7 +61,8 @@ public class AdminController
         }
         catch (Exception ex)
         {
-            return "redirect:/error/Errors";
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
     }
 
@@ -93,7 +94,7 @@ public class AdminController
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
             return "redirect:/admin/services/get/getStudent";
         }
     }
@@ -113,12 +114,12 @@ public class AdminController
             model.addAttribute("states", propertyHandler.getStates());
             model.addAttribute("countries", propertyHandler.getCountries());
             model.addAttribute("title", "Adding a Student");
+            return "admin/Student-form";
         }
-        catch (IOException ex)
-        {
-            System.out.println(ex.getMessage());
+        catch (IOException ex) {
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "admin/Student-form";
     }
 
     @PostMapping("/services/insert/processed/student")
@@ -139,6 +140,7 @@ public class AdminController
         }
         catch(IllegalArgumentException ex)
         {
+            model.addAttribute("error", ex.getMessage());
             return "admin/Student-form";
         }
     }
@@ -168,12 +170,13 @@ public class AdminController
             model.addAttribute("countries", propertyHandler.getCountries());
             model.addAttribute("title", "Updating a Student");
             model.addAttribute("studentId", studentId);
+            return "admin/Student-form";
         }
         catch (IOException ex)
         {
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "admin/Student-form";
     }
 
     @PostMapping("/services/update/updated/student")
@@ -198,7 +201,6 @@ public class AdminController
         }
         catch (Exception ex)
         {
-            System.out.println("ex: " + ex.getMessage());
             return "redirect:/admin/services/update/updateable/student?studentId="+student.getStudentId();
         }
     }
@@ -247,13 +249,13 @@ public class AdminController
             model.addAttribute("url", "/admin/services/insert/processed/instructor");
             model.addAttribute("methodType", propertyHandler.POST);
             model.addAttribute("genders", propertyHandler.getGenders());
+            return "admin/Instructor-form";
         }
         catch (IOException ex)
         {
-            // redirect
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "admin/Instructor-form";
     }
 
     @PostMapping("/services/insert/processed/instructor")
@@ -296,12 +298,13 @@ public class AdminController
             model.addAttribute("methodType", propertyHandler.POST);
             model.addAttribute("instructor", apiService.getInstructorById(instructorId));
             model.addAttribute("genders", propertyHandler.getGenders());
+            return "admin/Instructor-form";
         }
         catch (IOException ex)
         {
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "admin/Instructor-form";
     }
 
     @PostMapping("/services/update/updated/instructor")
@@ -371,12 +374,13 @@ public class AdminController
             model.addAttribute("courseNames", propertyHandler.getCourseNames());
             model.addAttribute("courseLevels", propertyHandler.getCourseLevels());
             model.addAttribute("courseCredits", propertyHandler.getCourseCredits());
+            return "admin/Course-form";
         }
         catch (IOException ex)
         {
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "admin/Course-form";
     }
 
     @PostMapping("/services/insert/processed/course")

@@ -1,7 +1,6 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.Objects;
 
 public class Admin extends Person implements Serializable

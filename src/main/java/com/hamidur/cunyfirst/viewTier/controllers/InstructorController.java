@@ -61,7 +61,6 @@ public class InstructorController
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
             return "redirect:/error/Errors";
         }
     }
@@ -97,12 +96,13 @@ public class InstructorController
 
             model.addAttribute("studentCourse", studentCourse);
             model.addAttribute("grades", propertyHandler.getGrades());
+            return "instructor/StudentCourseGrade";
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "instructor/StudentCourseGrade";
     }
 
     @PostMapping("/update/grades")
@@ -118,11 +118,12 @@ public class InstructorController
             model.addAttribute("title", "Student Updated");
             model.addAttribute("message", "Student with ID: "+studentCourse.getStudent().getStudentId()
                     +" has been successfully updated.");
+            return "generic/Message";
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
-        return "generic/Message";
     }
 }

@@ -28,9 +28,6 @@ import java.util.Set;
 
 public class Utility
 {
-    @Autowired
-    private static ApplicationContext applicationContext;
-
     public static com.hamidur.cunyfirst.viewTier.models.Course toViewCourse(Course daoCourse)
     {
         return new com.hamidur.cunyfirst.viewTier.models.Course

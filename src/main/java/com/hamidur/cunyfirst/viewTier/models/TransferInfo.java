@@ -1,7 +1,5 @@
 package com.hamidur.cunyfirst.viewTier.models;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 

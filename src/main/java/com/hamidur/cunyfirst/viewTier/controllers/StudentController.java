@@ -51,7 +51,7 @@ public class StudentController
     }
 
     @PostMapping("/processStudentLogin")
-    public String processLogin(@ModelAttribute("login") Login login, HttpSession session)
+    public String processLogin(@ModelAttribute("login") Login login, HttpSession session, Model model)
     {
         try
         {
@@ -62,8 +62,8 @@ public class StudentController
         }
         catch (Exception ex)
         {
-            System.out.println(ex.getMessage());
-            return "redirect:/error/Errors";
+            model.addAttribute("error", ex.getMessage());
+            return "redirect:/error/Error";
         }
     }
 
